@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  ###> doctrine/doctrine-bundle ###
+  db:
+    image: mariadb:latest
+    platform: linux/x86_64
+    container_name: db_cyrcrea
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: db_cyrcrea
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    networks:
+      - dev
+    ports:
+      - "3306:3306"
+  ###< doctrine/doctrine-bundle ###
+
+  ###> phpMyAdmin ###
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin_cyrcrea
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8085:80"
+    environment:
+      PMA_HOST: db
+    networks:
+      - dev
+  ###< phpMyAdmin ###
+
+  ###> MailDev ###
+  maildev:
+    image: maildev/maildev
+    container_name: maildev_cyrcrea
+    command: bin/maildev --web 80 --smtp 25 --hide-extensions STARTTLS
+    ports:
+      - "8081:80"
+    restart: always
+    networks:
+      - dev
+###< MailDev ###
+
+networks:
+  dev:
+
+volumes:
+  db-data:
