@@ -1,0 +1,220 @@
+@import '../variables/colors';
+
+.login_wrap {
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+.login_register_wrap {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+.login_footer {
+  margin-bottom: 20px;
+  margin-top: 5px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  a {
+    color: #687188;
+  }
+}
+.different_login {
+  text-align: center;
+  position: relative;
+  margin: 20px 0;
+  span {
+    background-color: #fff;
+    padding: 0 15px;
+    position: relative;
+    text-transform: uppercase;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    right: 0;
+    border-top: 1px solid #ddd;
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+.btn-login {
+  li {
+    margin: 0px 5px 0;
+    display: inline-block;
+    a {
+      border-radius: 5px;
+      padding: 10px 20px;
+      color: #fff;
+      display: block;
+      i {
+        margin-right: 10px;
+        font-size: 18px;
+        margin-left: 0;
+      }
+    }
+  }
+}
+.btn-facebook {
+  background: #3b5998;
+  border-color: #3b5998;
+  &:hover {
+    color: #fff;
+    background: #344e86;
+    border-color: #344e86;
+  }
+}
+.btn-google {
+  background: #d85040;
+  border-color: #d85040;
+  &:hover {
+    color: #fff;
+    background: #d33d2b;
+    border-color: #d33d2b;
+  }
+}
+.cs_wrap {
+  min-height: 100vh;
+  position: relative;
+  padding: 30px 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.countdown_time {
+  display: table;
+  width: 100%;
+  .countdown_box {
+    float: left;
+    width: 25%;
+    font-family: 'Roboto';
+    padding: 0 15px;
+  }
+  .cd_text {
+    display: block;
+  }
+}
+.countdown-wrap {
+  display: inline-block;
+  text-align: center;
+}
+.countdown_box {
+  .countdown {
+    color: #292b2c;
+    font-size: 40px;
+  }
+}
+.countdown_white {
+  .countdown_box {
+    .countdown {
+      color: #fff;
+    }
+    .cd_text {
+      color: #fff;
+    }
+  }
+}
+.countdown_style1 {
+  .countdown_box {
+    position: relative;
+    text-align: center;
+    &::before {
+      content: ":";
+      font-size: 40px;
+      font-weight: bold;
+      color: #000;
+      position: absolute;
+      right: -6px;
+    }
+    &:last-child {
+      &:before {
+        content: normal;
+      }
+    }
+  }
+}
+.countdown_style1.countdown_white {
+  .countdown_box {
+    &::before {
+      color: #fff;
+    }
+  }
+}
+.cs_logo {
+  margin-bottom: 30px;
+  display: block;
+}
+.cs_title {
+  line-height: 44px;
+  margin-bottom: 20px;
+}
+.cs_content {
+  .countdown_time {
+    margin-bottom: 30px;
+  }
+  .newsletter_form {
+    margin-bottom: 30px;
+  }
+}
+.countdown_style2 {
+  margin-left: -15px;
+  margin-right: -15px;
+  width: auto;
+  display: -ms-flexbox;
+  display: flex;
+  .countdown_box {
+    .countdown-wrap {
+      text-align: center;
+      border: 1px solid #ddd;
+      width: 100%;
+      padding: 10px;
+    }
+  }
+}
+.countdown_style3 {
+  margin-left: -15px;
+  margin-right: -15px;
+  width: auto;
+  display: -ms-flexbox;
+  display: flex;
+  .countdown-wrap {
+    width: 100%;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.03);
+  }
+}
+.countdown_time.countdown_style4 {
+  margin: 0 -2px;
+  width: auto;
+  display: block;
+  .countdown_box {
+    padding: 0 2px;
+  }
+}
+.countdown_style4 {
+  .countdown_box {
+    .countdown-wrap {
+      text-align: center;
+      background-color: #f2f2f2;
+      width: 100%;
+      padding: 10px;
+    }
+  }
+}
+#to-login:hover {
+  color: $primary;
+}

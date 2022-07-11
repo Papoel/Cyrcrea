@@ -6,11 +6,14 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -33,14 +36,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private string $password;
 
+    #[Gedmo\Timestampable(on: 'create')]
     #[ORM\Column(type: 'datetime_immutable')]
     private \DateTimeImmutable $createdAt;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private \DateTimeImmutable $updatedAt;
-
-    #[ORM\Column(type: 'boolean', nullable: true)]
-    private bool $isVerify;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Address::class)]
     private Collection $addresses;
@@ -50,6 +51,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Review::class)]
     private Collection $reviews;
+
+    #[ORM\Column(type: 'boolean')]
+    private bool $isVerified = false;
 
     public function __construct()
     {
@@ -176,18 +180,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function isIsVerify(): ?bool
-    {
-        return $this->isVerify;
-    }
-
-    public function setIsVerify(?bool $isVerify): self
-    {
-        $this->isVerify = $isVerify;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Address>
      */
@@ -270,6 +262,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         if ($this->reviews->removeElement($review) && $review->getUser() === $this) {
             $review->setUser(null);
         }
+
+        return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
     }

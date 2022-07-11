@@ -1,0 +1,41 @@
+.error_wrap {
+  width: 100%;
+}
+.error_txt {
+  color: #333;
+  font-size: 150px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+.search_form {
+  form {
+    position: relative;
+    input {
+      height: 50px;
+      padding: 5px 60px 5px 20px;
+      &:focus {
+        height: 50px;
+      }
+    }
+  }
+  .icon_search {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    padding: 0;
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-left: 1px solid #ddd;
+    border-radius: 0;
+    padding-left: 15px;
+    i {
+      font-size: 24px;
+      margin-right: 0;
+    }
+  }
+}
+.form-note {
+  margin-top: 20px;
+}

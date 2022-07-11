@@ -1,7 +1,11 @@
 @import './components/black-component';
 @import './components/light-component';
+@import './components/breadcrumb';
+@import './components/login_registration';
+@import './components/errors';
 @import './variables/colors';
 @import '~bootstrap';
+@import '~bootstrap-icons';
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -13,7 +17,6 @@ body {
 .header {
   @include black-component;
 
-  margin-bottom: 30px;
   border-bottom: 2px solid $red-component-border;
   padding: 0;
 

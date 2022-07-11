@@ -12,16 +12,20 @@
     </head>
 
     <body>
-    <main role="main" class="container-fluid" id="content-app">
-        {# if flash message in session #}
-        {% if app.session.flashBag.has('success') %}
-            <div class="alert alert-success">
-                {{ include("partials/_flash_messages.html.twig") }}
-            </div>
-        {% endif %}
 
-        {% block body %}{% endblock %}
-    </main>
+    <header class="header">
+        {{ include ('./partials/navbar.html.twig') }}
+    </header>
+
+
+        <main role="main" class="container-fluid" id="content-app">
+            {# if flash message in session #}
+            {% if app.session.flashBag.has('success') %}
+                    {{ include("partials/_flash_messages.html.twig") }}
+            {% endif %}
+
+            {% block body %}{% endblock %}
+        </main>
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
