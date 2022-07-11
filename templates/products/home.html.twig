@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header class="header">
+        {% include './partials/navbar.html.twig' %}
+    </header>
+
+    <div id="app"></div>
+
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
