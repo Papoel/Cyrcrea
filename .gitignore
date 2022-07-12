@@ -54,3 +54,8 @@ yarn-error.log
 /.idea/php.settings.xml
 /.idea/php.xml.meta
 ###< phpstorm ###
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###

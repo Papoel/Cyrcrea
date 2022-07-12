@@ -10,8 +10,9 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UsersFixtures extends Fixture implements DependentFixtureInterface
 {
-
-    public function __construct(private UserPasswordHasherInterface $passwordHasher) {}
+    public function __construct(private UserPasswordHasherInterface $passwordHasher)
+    {
+    }
 
     public function load(ObjectManager $manager): void
     {
@@ -30,7 +31,6 @@ class UsersFixtures extends Fixture implements DependentFixtureInterface
 
         $manager->persist($userAdmin);
         $manager->flush();
-
     }
 
     public function getDependencies(): array
