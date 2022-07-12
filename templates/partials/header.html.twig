@@ -1,0 +1,94 @@
+<nav class="navbar navbar-expand-lg navbar-dark justify-content-between">
+    <a class="navbar-brand" href="/">
+        <span class="p-3">La Boutique CyrCréa</span>
+    </a>
+
+    <ul class="navbar-nav">
+        {% if app.user %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_logout') }}">
+                    Déconnexion
+                    <i class="bi bi-box-arrow-right"></i>
+                </a>
+            </li>
+
+        {% endif %}
+
+        {% if not app.user %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_login') }}">
+                    Connexion
+                    <i class="bi bi-box-arrow-in-right"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_register') }}">
+                    Inscription
+                    <i class="bi bi-person-plus"></i>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+
+</nav>
+
+<!-- Sous navBar -->
+{% if app.user %}
+    <div class="bg-light text-dark">
+        <div class="navbar-expand-lg navbar-light justify-content-between">
+            <nav class="expand-lg navbar-light justify-content-between">
+                <a href="" class="navbar navbar-expand-lg">
+                    <!-- Logo -->
+                    <img src="" alt="">
+                </a>
+                <div class="collapse navbar-collapse justify-content-between py-2" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="dropdown">
+                            <a class="nav-link" href="#">Accueil</a>
+                        </li>
+                        <li class="dropdown">
+                            <a class="nav-link" href="#" data-toggle="dropdown">Pages</a>
+                        </li>
+                        <li class="">
+                            <a class="nav-link" href="#" data-toggle="dropdown">Produits</a>
+
+                        </li>
+                        <li class="">
+                            <a class="nav-link" href="#" data-toggle="dropdown">Boutique</a>
+
+                        </li>
+                        <li><a class="nav-link nav_item" href="#">Contact</a></li>
+                    </ul>
+
+                    <!-- Form Search -->
+                    <div class="col-3">
+                        <div class="input-group">
+                            <input id="search-product"
+                                   class="form-control border-end-0 border rounded-pill"
+                                   type="text"
+                                   placeholder="Rechercher un produit">
+                            <span class="input-group-append">
+                                <button class="btn btn-outline-secondary border-start-0 border rounded-pill ms-3"
+                                        type="button">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Panier -->
+                    <span class="input-group-append">
+                    <a class="btn btn-outline-secondary border-start-0 border rounded-pill mx-3"
+                       href="#"
+                    >
+                        <i class="bi bi-cart3"></i>
+                    </a>
+                </span>
+
+                </div>
+
+            </nav>
+        </div>
+    </div>
+{% endif %}
