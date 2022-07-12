@@ -12,19 +12,13 @@
   align-items: center;
   position: relative;
 }
-.login_footer {
-  margin-bottom: 20px;
-  margin-top: 5px;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
+.redirection {
   a {
-    color: #687188;
+    color: $primary;
   }
+    a:hover {
+        color: #d2882a;
+    }
 }
 .different_login {
   text-align: center;
@@ -50,7 +44,7 @@
 }
 .btn-login {
   li {
-    margin: 0px 5px 0;
+    margin: 0 5px 0;
     display: inline-block;
     a {
       border-radius: 5px;
@@ -100,7 +94,7 @@
   .countdown_box {
     float: left;
     width: 25%;
-    font-family: 'Roboto';
+    font-family: 'Roboto', serif;
     padding: 0 15px;
   }
   .cd_text {

@@ -3,51 +3,105 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
-<main class="container">
-    <form class="mt-5" method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+    {{ include('partials/_title_section.html.twig', {'name': "Formulaire de connexion"})  }}
 
+    <main class="container">
         {% if app.user %}
             <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                Vous êtes déjà connecté avec le compte {{ app.user.userIdentifier }}, si ce n'est pas vous
+                veuillez vous <a href="{{ path('app_logout') }}">cliquer ici pour vous déconnecter</a>
+            </div>
+        {% else %}
+            <div class="login_register_wrap section mt-3 mb-3">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-6 col-md-10">
+                            <div class="login_wrap">
+                                <div class="p-5 bg-white">
+                                    <div class="heading_s1">
+                                        <h3 class="text-center p-3">Connexion</h3>
+                                    </div>
+
+                                    <form method="post">
+                                        <div class="message-flash">
+                                            {% if error %}
+                                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="form-group mx-2 mt-3">
+                                            <label class="text-muted mb-2" for="inputEmail">Email</label>
+                                            <input type="email"
+                                                   value="{{ last_username }}"
+                                                   name="email" id="inputEmail"
+                                                   class="form-control"
+                                                   autocomplete="email"
+                                                   required autofocus
+                                            >
+                                        </div>
+
+                                        <div class="form-group mx-2 mt-3">
+                                            <label class="text-muted mb-2" for="inputPassword">Mot de passe</label>
+                                            <input type="password"
+                                                   name="password"
+                                                   id="inputPassword"
+                                                   class="form-control"
+                                                   autocomplete="current-password"
+                                                   required
+                                            >
+                                        </div>
+
+                                        <input type="hidden" name="_csrf_token"
+                                               value="{{ csrf_token('authenticate') }}">
+
+                                        <div class="redirection d-flex justify-content-between form-group mx-2 mt-4">
+                                            <div class="check-form">
+                                                <div class="custom-checkbox">
+                                                    <input class="form-check-input" type="checkbox" name="checkbox"
+                                                           id="rememberMe" value="">
+                                                    <label class="form-check-label" for="rememberMe"><span>Se souvenir de moi</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mx-2">
+                                                <a href="#">Mot de passe oublié?</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group mx-2">
+                                            <button class="btn btn-primary mt-3 w-100" type="submit">Se connecter
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                    <div class="different_login">
+                                        <span> ou </span>
+                                    </div>
+
+                                    <ul class="btn-login list_none text-center">
+                                        <li>
+                                            <a href="#" class="btn-facebook">
+                                                <i class="bi bi-facebook"></i>Facebook</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="btn-google">
+                                                <i class="bi bi-google"></i>Google</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="redirection text-center bg-light mt-4 py-3">Vous n'avez pas encore de compte?
+                                        <br><a href="{{ path('app_register') }}">Inscrivez-vous maintenant.</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="inputEmail">Email</label>
-                    <input type="email"
-                           value="{{ last_username }}"
-                           name="email" id="inputEmail"
-                           class="form-control"
-                           autocomplete="email"
-                           required autofocus
-                    >
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="inputPassword">Password</label>
-                    <input type="password"
-                           name="password"
-                           id="inputPassword"
-                           class="form-control"
-                           autocomplete="current-password"
-                           required
-                    >
-                </div>
-            </div>
-        </div>
-
-
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-        {#
+        <!--    -->
+            {#
             Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
             See https://symfony.com/doc/current/security/remember_me.html
 
@@ -56,11 +110,6 @@
                     <input type="checkbox" name="_remember_me"> Remember me
                 </label>
             </div>
-        #}
-
-        <button class="btn btn-primary mt-5" type="submit">
-            Sign in
-        </button>
-    </form>
-</main>
+            #}
+    </main>
 {% endblock %}
