@@ -78,13 +78,20 @@
                     </div>
 
                     <!-- Panier -->
-                    <span class="input-group-append">
-                    <a class="btn btn-outline-secondary border-start-0 border rounded-pill mx-3"
-                       href="#"
-                    >
-                        <i class="bi bi-cart3"></i>
-                    </a>
-                </span>
+                    <div class="flex justify-content-end mx-1">
+                        <span class="input-group-append">
+                            <a class="btn btn-outline-secondary border-start-0 border rounded-pill" href="#">
+                                <i class="bi bi-cart3"></i>
+                            </a>
+                        </span>
+                        <!-- Paramètre du compte -->
+                        <span class="input-group-append">
+                            <a class="btn btn-outline-secondary border-start-0 border rounded-pill"
+                               href="{{ path('app_account') }}">
+                                <i class="bi bi-gear"></i>
+                            </a>
+                        </span>
+                    </div>
 
                 </div>
 
