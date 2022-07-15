@@ -6,77 +6,14 @@
 {{ include('partials/_title_section.html.twig', { name: 'Votre compte' }) }}
 
     <div class="section mt-3">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
+                {# Sidebar #}
                 <div class="col-lg-3 col-md-4">
-                    <div class="dashboard_menu">
-                        <ul class="nav nav-tabs flex-column" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active"
-                                   id="dashboard-tab"
-                                   data-toggle="tab"
-                                   href="#dashboard"
-                                   role="tab"
-                                   aria-controls="dashboard"
-                                   aria-selected="false">
-                                    <i class="ti-layout-grid2"></i>
-                                    Tableau de bord
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   id="orders-tab"
-                                   data-toggle="tab"
-                                   href="#orders"
-                                   role="tab"
-                                   aria-controls="orders"
-                                   aria-selected="false">
-                                    <i class="ti-shopping-cart-full"></i>
-                                    Mes commandes
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   id="address-tab"
-                                   data-toggle="tab"
-                                   href="#address" role="tab"
-                                   aria-controls="address"
-                                   aria-selected="true">
-                                    <i class="ti-location-pin"></i>
-                                    Mes adresses
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   id="account-detail-tab"
-                                   data-toggle="tab"
-                                   href="#account-detail"
-                                   role="tab"
-                                   aria-controls="account-detail"
-                                   aria-selected="true">
-                                    <i class="ti-id-badge"></i>
-                                    Détails du compte
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="{{ path('app_logout')}}">
-                                    <i class="ti-lock"></i>
-                                    Déconnexion
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    {{ include('partials/_sidebar_account.html.twig') }}
                 </div>
+                {# End Sidebar #}
                 <div class="col-lg-9 col-md-8">
-
-                    <div class="alert alert-success alert-dismissible fade show" role="alert"> message flash
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-
                     <div class="tab-content dashboard_content">
                         <div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                             <div class="card">
@@ -238,15 +175,12 @@
 
     {% block javascripts %}
         <script>
-            document.querySelector(document).addEventListener('click', '#header-overlay, .sidemenu_close',function() {
-                document.querySelector('.sidetoggle').classList.remove('open');
-                document.querySelector('body').classList.remove('sidetoggle_active');
-                document.querySelector('.sidebar_menu').classList.remove('active');
-                document.querySelector('#header-overlay').fadeOut('3000',function(){
-                    document.querySelector('#header-overlay').remove();
-                });
-                return false;
-            });
+            function displayDetails() {
+                const detail = document.querySelector('#account-detail');
+                // detail.classListToggle('fade');
+                detail.style.backgroundColor = '#f00';
+                console.log('calling')
+            }
         </script>
     {% endblock %}
 
