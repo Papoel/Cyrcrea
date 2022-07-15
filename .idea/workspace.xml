@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/_sidebar_account.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_sidebar_account.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/_sidebar_account.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/account/_sidebar_account.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,11 +244,11 @@
       <recent name="$PROJECT_DIR$/public/assets/js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/partials/account" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/assets/scss" />
       <recent name="$PROJECT_DIR$/assets" />
-      <recent name="$PROJECT_DIR$/assets/js" />
     </key>
   </component>
   <component name="RunManager">
@@ -270,7 +272,7 @@
       <workItem from="1657775141942" duration="1286000" />
       <workItem from="1657776441464" duration="1636000" />
       <workItem from="1657778094976" duration="1141000" />
-      <workItem from="1657890356169" duration="4116000" />
+      <workItem from="1657890356169" duration="8246000" />
     </task>
     <servers />
   </component>

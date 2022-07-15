@@ -20,4 +20,10 @@ class AccountController extends AbstractController
     {
         return $this->render('account/account_detail.html.twig');
     }
+
+    #[Route('/account-address', name: 'app_account-address')]
+    public function address(): Response
+    {
+        return $this->render('account/account_detail.html.twig');
+    }
 }
