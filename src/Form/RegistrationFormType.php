@@ -24,7 +24,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Prénom',
                 'label_attr' => ['class' => 'text-muted text-capitalize'],
                 'attr' => [
-                    'placeholder' => 'prénom',
+                    'placeholder' => 'Bruce',
                 ],
             ])
 
@@ -32,7 +32,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Nom',
                 'label_attr' => ['class' => 'text-muted text-capitalize'],
                 'attr' => [
-                    'placeholder' => 'nom',
+                    'placeholder' => 'Wayne',
                 ],
             ])
 

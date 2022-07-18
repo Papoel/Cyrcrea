@@ -62,6 +62,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->reviews = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->getFullName();
+    }
+
+    public function getFullName(): string
+    {
+        $firstname = $this->firstname;
+        $lastname = $this->lastname;
+
+        $firstname = ucfirst($firstname);
+        $lastname = ucfirst($lastname);
+
+        return $firstname . ' ' . $lastname;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

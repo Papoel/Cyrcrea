@@ -1,0 +1,47 @@
+<div class="card my-4">
+    <div class="card-header">
+         <h3>{{ name }}</h3>
+    </div>
+    <div class="card-body">
+        {{ form_start(formAddress) }}
+            <div class="row">
+
+                <div class="form-group col-md-6">
+                    {{ form_row(formAddress.name) }}
+                </div>
+
+                <div class="form-group col-md-6">
+                    {{ form_row(formAddress.company) }}
+                </div>
+
+                <div class="form-group col-md-6">
+                    {{ form_row(formAddress.address) }}
+                </div>
+
+                <div class="form-group col-md-6">
+                   {{ form_row(formAddress.complement) }}
+                </div>
+
+                <div class="form-group col-md-4">
+                    {{ form_row(formAddress.postal) }}
+                </div>
+
+                <div class="form-group col-md-4">
+                    {{ form_row(formAddress.city) }}
+                </div>
+
+                <div class="form-group col-md-4">
+                    {{ form_row(formAddress.country) }}
+                </div>
+
+                <div class="form-group col-md-4">
+                    {{ form_row(formAddress.phone) }}
+                </div>
+
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary w-100 p-3 my-2" name="submit" value="Submit">Enregistrer</button>
+                </div>
+            </div>
+        {{ form_end(formAddress) }}
+    </div>
+</div>

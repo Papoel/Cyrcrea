@@ -39,6 +39,22 @@ class AddressRepository extends ServiceEntityRepository
         }
     }
 
+     /**
+     * @return Address[]
+      * Returns an array of User Addresses objects
+     */
+    public function findUserAddresses($value): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.user = :val')
+            ->setParameter('val', $value)
+            ->orderBy('a.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Address[] Returns an array of Address objects
 //     */
