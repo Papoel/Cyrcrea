@@ -53,7 +53,6 @@ class AddressFormType extends AbstractType
                     ])
                 ]
             ])
-            /* TODO: Pourquoi j'ai une erreur quand je valide mon formulaire avec le champ 'complement' null */
             ->add('complement', TextType::class, [
                 'required' => false,
                 'label' => 'complément d\'adresse',
