@@ -5,7 +5,6 @@ namespace App\Controller\Account;
 use App\Entity\Address;
 use App\Entity\User;
 use App\Form\AddressFormType;
-use App\Repository\AddressRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,7 +45,7 @@ class AccountController extends AbstractController
     }
 
     #[Route('/address/add', name: 'app_address_add', methods: ['GET', 'POST'])]
-    public function addAddress(Request $request, EntityManagerInterface $manager): Response
+    public function addAddress(Request $request, EntityManagerInterface $entityManager): Response
     {
         $address = new Address();
         $user = $this->getUser();
@@ -56,13 +55,15 @@ class AccountController extends AbstractController
         $data = $form->getData();
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var User $user */
             $address->setUser($user);
 
-            $manager->persist($address);
+            $entityManager->persist($address);
+            $entityManager->flush();
 
-            $manager->flush();
+            $this->addFlash('success', 'Votre adresse à bien été ajoutée.');
 
-            return $this->redirectToRoute('app_account');
+            return $this->redirectToRoute('app_address_show');
         }
 
         return $this->renderForm('account/address/add.html.twig', [
@@ -82,7 +83,7 @@ class AccountController extends AbstractController
 
             $this->addFlash('success', 'Votre adresse à bien été mis à jour.');
 
-            return $this->redirectToRoute('app_account', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_address_show', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('account/address/edit.html.twig', [

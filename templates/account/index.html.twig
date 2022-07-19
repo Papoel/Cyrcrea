@@ -16,20 +16,8 @@
 
                 <div class="col-lg-9 col-md-8">
                     {{ include('partials/account/_account_welcome_card.html.twig') }}
-                    <div class="tab-content dashboard_content">
-                        {% block content %}
-                            <div class="row">
-                                </div>
-                            </div>
-                        {% endblock %}
-                    </div>
-
-                        {# Modification Account Detail #}
-
-                        {# End Modification Account Detail #}
-
-                        {# Formulaire d'ajout d'adresse #}
-
+                    <div class="my-3">
+                        {% block content %}{% endblock %}
                     </div>
                 </div>
             </div>
