@@ -18,12 +18,8 @@ class AddressFormType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Nommez votre adresse',
-                'label_attr' => [
-                    'class' => 'text-muted text-uppercase'
-                ],
-                'attr' => [
-                    'placeholder' => 'La Batcave'
-                ],
+                'label_attr' => ['class' => 'text-muted text-uppercase'],
+                'attr' => ['placeholder' => 'La Batcave'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Vous devez donner un nom à votre adresse'
@@ -31,22 +27,15 @@ class AddressFormType extends AbstractType
                 ]
             ])
             ->add('company', TextType::class, [
+                'required' => false,
                 'label' => 'nom de Société',
-                'label_attr' => [
-                    'class' => 'text-muted text-uppercase'
-                ],
-                'attr' => [
-                    'placeholder' => 'Renseigner le nom de votre entreprise'
-                ]
+                'label_attr' => ['class' => 'text-muted text-uppercase'],
+                'attr' => ['placeholder' => 'Renseigner le nom de votre entreprise']
             ])
             ->add('address', TextType::class, [
                 'label' => 'adresse',
-                'label_attr' => [
-                    'class' => 'text-muted text-uppercase'
-                ],
-                'attr' => [
-                    'placeholder' => '1 rue de la paix'
-                ],
+                'label_attr' => ['class' => 'text-muted text-uppercase'],
+                'attr' => ['placeholder' => '1 rue de la paix'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Vous devez renseigner une adresse'
@@ -56,21 +45,13 @@ class AddressFormType extends AbstractType
             ->add('complement', TextType::class, [
                 'required' => false,
                 'label' => 'complément d\'adresse',
-                'label_attr' => [
-                    'class' => 'text-muted text-uppercase'
-                ],
-                'attr' => [
-                    'placeholder' => 'Appartement B11'
-                ],
+                'label_attr' => ['class' => 'text-muted text-uppercase'],
+                'attr' => ['placeholder' => 'Appartement B11'],
             ])
             ->add('city', TextType::class, [
                 'label' => 'ville',
-                'label_attr' => [
-                    'class' => 'text-muted text-uppercase'
-                ],
-                'attr' => [
-                    'placeholder' => 'Gotham City'
-                ],
+                'label_attr' => ['class' => 'text-muted text-uppercase'],
+                'attr' => ['placeholder' => 'Gotham City'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Renseigner votre Ville'
@@ -79,9 +60,8 @@ class AddressFormType extends AbstractType
             ])
             ->add('postal', TextType::class, [
                 'label' => 'code postal',
-                'label_attr' => [
-                    'class' => 'text-muted text-uppercase'
-                ],
+                'label_attr' => ['class' => 'text-muted text-uppercase'],
+                'attr' => ['placeholder' => '59000'],
                 'constraints' => [
                     new Length(
                         [
@@ -94,15 +74,13 @@ class AddressFormType extends AbstractType
             // Importer la liste des pays (Api Rest Country ?)
             ->add('country', TextType::class, [
                 'label' => 'pays',
-                'label_attr' => [
-                    'class' => 'text-muted text-uppercase'
-                ],
+                'label_attr' => ['class' => 'text-muted text-uppercase'],
+                'attr' => ['placeholder' => 'France'],
             ])
             ->add('phone', TextType::class, [
                 'label' => 'téléphone',
-                'label_attr' => [
-                    'class' => 'text-muted text-uppercase'
-                ],
+                'label_attr' => ['class' => 'text-muted text-uppercase'],
+                'attr' => ['placeholder' => '0610203040'],
                 'constraints' => [
                     new Length(
                         [
