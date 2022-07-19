@@ -91,4 +91,30 @@ class AccountController extends AbstractController
         ]);
     }
 
+    #[Route('/address/delete/{id}', name: 'app_address_delete', methods: ['POST'])]
+    public function deleteAddress(Request $request, EntityManagerInterface $entityManager, Address $address): Response
+    {
+        /** @var User $user */
+        $user = $this->security->getUser();
+
+        if (
+            $this->isCsrfTokenValid(
+                'address_deletion_' .
+                $address->getId(),
+                $request->request->get('csrf_token')
+            )
+        ) {
+            $entityManager->remove($address);
+            $entityManager->flush();
+
+            $this->addFlash(
+                'danger',
+                sprintf('L\'adresse %s a bien été effacée !', $address->getName())
+            );
+
+            return $this->redirectToRoute('app_address_show');
+        }
+
+        return $this->render('account/index.html.twig');
+    }
 }

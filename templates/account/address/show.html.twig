@@ -5,7 +5,8 @@
     <a href="{{ path('app_address_add') }}" class="btn btn-md btn-primary mb-3">Ajouter une adresse</a>
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        {% for address in addresses %}
+        {% if addresses is not null %}
+            {% for address in addresses %}
             <div class="col">
                 <div class="card">
                     <div class="card-header">
@@ -52,11 +53,24 @@
                     <div class="card-footer py-3">
                         <div class="btn-group d-flex justify-content-between mx-1">
                             <a href="{{ path('app_address_edit', {'id':address.id}) }}" class="btn btn-md btn-warning rounded mx-2">Modifier</a>
-                            <a href="#" class="btn btn-md btn-danger rounded">Supprimer</a>
+                            <!--<a href="#" class="btn btn-md btn-danger rounded">Supprimer</a>-->
+                            <a href="#"
+                               class="btn btn-md btn-danger rounded"
+                               onclick="event.preventDefault(); confirm('Êtes-vous sûr de vouloir supprimer cette adresse ?') && document.getElementById('js-event-deletion-form').submit();">
+                                <form id="js-event-deletion-form"
+                                      action="{{ path('app_address_delete', {'id': address.id}) }}"
+                                      method="POST">
+                                    <input type="hidden" name="csrf_token"
+                                       value="{{ csrf_token('address_deletion_' ~ address.id) }}"
+                                    >
+                                </form>
+                                Supprimer
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         {% endfor %}
+        {% endif %}
     </div>
 {% endblock %}

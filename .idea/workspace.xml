@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/src/Controller/Account/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Account/AccountController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/account/address/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/address/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/account/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/account/_form-address.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/account/_form-address.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +275,7 @@
       <workItem from="1657890356169" duration="8632000" />
       <workItem from="1657998249615" duration="8953000" />
       <workItem from="1658070560119" duration="26045000" />
-      <workItem from="1658222796438" duration="2910000" />
+      <workItem from="1658222796438" duration="6878000" />
     </task>
     <servers />
   </component>
