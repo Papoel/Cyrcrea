@@ -28,6 +28,19 @@ yarn-error.log
 
 ###> phpstorm ###
 /.idea/
+/.idea/codeStyles
+/.idea/commandlinetools
+/.idea/dataSources
+/.idea/inspectionProfiles
+/.idea/cyrcrea.iml
+/.idea/dataSources.xml
+/.idea/dataSources.local.xml
+/.idea/dbnavigator.xml
+/.idea/modules.xml
+/.idea/php.xml
+/.idea/symfony2.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
 
 ###< phpstorm ###
 
