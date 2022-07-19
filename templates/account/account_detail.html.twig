@@ -1,5 +1,82 @@
-{% extends 'base.html.twig' %}
+{% extends 'account/index.html.twig' %}
 
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h3>Détail de votre compte</h3>
+        </div>
+
+        <div class="card-body">
+            <form method="post" name="enq">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Prénom <span class="required">*</span></label>
+                        <input value="{{ details.firstname }}" class="form-control" name="name" type="text">
+                     </div>
+
+                     <div class="form-group col-md-6">
+                        <label>Nom <span class="required">*</span></label>
+                        <input value="{{ details.lastname }}" class="form-control" name="phone">
+                    </div>
+
+                    <div class="form-group col-md-12 mt-3">
+                        <label>Email <span class="required">*</span></label>
+                        <input value="{{ details.email }}" class="form-control" name="email" type="email">
+                    </div>
+
+                    <hr class="separator">
+
+                    {% for address in addresses %}
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="text-center"> Adresse {{ loop.index}} </h4>
+                                </div>
+                                <div class="card-body">
+                                    <address class="d-flex flex-column">
+                                        <span class="mb-1">
+                                            <span class="text-muted text-uppercase title">Nom:</span>
+                                            <span class="">{{ address.name }}</span>
+                                        </span>
+                                        <span class="mb-1">
+                                            <span class="text-muted text-uppercase">Société:</span>
+                                            <span class="">{{ address.company }}</span>
+                                        </span>
+                                        <span class="mb-1">
+                                            <span class="text-muted text-uppercase">Adresse:</span>
+                                            <span class="">{{ address.address }}</span>
+                                        </span>
+
+                                        {% if address.complement is not null %}
+                                            <span class="mb-1">
+                                                <span class="text-muted text-uppercase">Complément:</span>
+                                                <span class="">{{ address.complement }}</span>
+                                            </span>
+                                        {% endif %}
+
+                                        <span class="mb-1">
+                                            <span class="text-muted text-uppercase">Ville:</span>
+                                            <span class="">{{ address.city }}</span>
+                                        </span>
+                                        <span class="mb-1">
+                                            <span class="text-muted text-uppercase">Code Postal:</span>
+                                            <span class="">{{ address.postal }}</span>
+                                        </span>
+                                        <span class="mb-1">
+                                            <span class="text-muted text-uppercase">Téléphone:</span>
+                                            <span class="">{{ address.phone }}</span>
+                                        </span>
+                                    </address>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{#
 {% block body %}
     <div class="tab-pane fade" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
         <div class="card">
@@ -46,4 +123,11 @@
             </div>
         </div>
     </div>
+{% endblock %}
+#}
+{% block javascripts %}
+    <script>
+        const welcome_card = document.querySelector('#welcome_card')
+        welcome_card.classList.add('d-none')
+    </script>
 {% endblock %}

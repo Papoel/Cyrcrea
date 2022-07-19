@@ -26,18 +26,27 @@ class AccountController extends AbstractController
     }
 
     #[Route('/account-detail', name: 'app_account-detail')]
-    public function detail(): Response
+    public function detail(EntityManagerInterface $entityManager): Response
     {
-        return $this->render('account/account_detail.html.twig');
+        /** @var User $user */
+        $user = $this->getUser();
+        $userDetails = $entityManager->getRepository(User::class)->find($user);
+        $userAddresses = $entityManager->getRepository(Address::class)->findUserAddresses($user);
+
+
+        return $this->render('account/account_detail.html.twig', [
+            'details' => $userDetails,
+            'addresses' => $userAddresses
+        ]);
     }
 
     #[Route('/address/show', name: 'app_address_show', methods: ['GET'])]
-    public function showAddress(EntityManagerInterface $em): Response
+    public function showAddress(EntityManagerInterface $entityManager): Response
     {
         /** @var User $user */
         $user = $this->getUser();
 
-        $addresses = $em->getRepository(Address::class)->findUserAddresses($user->getId());
+        $addresses = $entityManager->getRepository(Address::class)->findUserAddresses($user->getId());
 
         return $this->render('account/address/show.html.twig', [
             'addresses' => $addresses

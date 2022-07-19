@@ -6,10 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scss/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scss/variables/colors.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/variables/colors.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Account/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Account/AccountController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Address.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Address.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AddressFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AddressFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/account_detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/account_detail.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/account/address/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/address/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/account/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/account/_sidebar_account.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/account/_sidebar_account.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +281,7 @@
       <workItem from="1657998249615" duration="8953000" />
       <workItem from="1658070560119" duration="26045000" />
       <workItem from="1658222796438" duration="7188000" />
-      <workItem from="1658257574443" duration="2379000" />
+      <workItem from="1658257574443" duration="12216000" />
     </task>
     <servers />
   </component>
