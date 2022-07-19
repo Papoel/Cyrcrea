@@ -75,3 +75,14 @@ aside {
 .capitalize {
   text-transform: capitalize;
 }
+
+.separator {
+  border: 0;
+  border-radius: 50%;
+  height: 4px !important;
+  width: 50%;
+  margin: 40px 0 40px 25%;
+  opacity: .6;
+  background-image: linear-gradient(to left, #CCC, $primary, #CCC);
+
+}
