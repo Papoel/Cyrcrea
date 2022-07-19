@@ -17,7 +17,7 @@ class Address
     private string $name;
 
     #[ORM\Column(type: 'string', length: 150, nullable: true)]
-    private string $company;
+    private ?string $company;
 
     #[ORM\Column(type: 'text')]
     private string $address;
@@ -35,7 +35,7 @@ class Address
     private string $country;
 
     #[ORM\Column(type: 'string', length: 30, nullable: true)]
-    private string $phone;
+    private ?string $phone;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'addresses')]
     #[ORM\JoinColumn(nullable: true)]
