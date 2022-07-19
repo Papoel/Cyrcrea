@@ -27,14 +27,12 @@
                                 <span class="">{{ address.address }}</span>
                             </span>
 
-                            {#
                             {% if address.complement is not null %}
-                                <span class="d-flex justify-content-between mb-1">
-                                    <span class="fs-6">Complément d'adresse:</span>
+                                <span class="mb-1">
+                                    <span class="text-muted text-uppercase">Complément:</span>
                                     <span class="">{{ address.complement }}</span>
                                 </span>
                             {% endif %}
-                            #}
 
                             <span class="mb-1">
                                 <span class="text-muted text-uppercase">Ville:</span>

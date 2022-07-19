@@ -23,7 +23,7 @@ class Address
     private string $address;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private string $complement;
+    private ?string $complement;
 
     #[ORM\Column(type: 'string', length: 255)]
     private string $city;
