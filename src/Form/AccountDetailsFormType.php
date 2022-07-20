@@ -50,15 +50,16 @@ class AccountDetailsFormType extends AbstractType
                 ],
             ])
             ->add('plainPassword', RepeatedType::class, [
+                'required' => false,
                 'type' => PasswordType::class,
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'first_options' => [
-                    'label' => 'Mot de passe',
+                    'label' => 'Nouveau mot de passe',
                     'label_attr' => ['class' => 'text-muted'],
                 ],
                 'second_options' => [
-                    'label' => 'Confirmation du mot de passe',
+                    'label' => 'Confirmation du nouveau mot de passe',
                     'label_attr' => ['class' => 'text-muted'],
                 ],
 

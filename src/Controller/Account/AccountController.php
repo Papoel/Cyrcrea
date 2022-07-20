@@ -4,6 +4,7 @@ namespace App\Controller\Account;
 
 use App\Entity\Address;
 use App\Entity\User;
+use App\Form\AccountDetailsFormType;
 use App\Form\AddressFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,6 +38,29 @@ class AccountController extends AbstractController
         return $this->render('account/account_detail.html.twig', [
             'details' => $userDetails,
             'addresses' => $userAddresses
+        ]);
+    }
+
+    #[Route('/account-detail/edit', name: 'app_account_edit', methods: ['GET', 'POST'])]
+    public function editAccount(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+
+        $form = $this->createForm(AccountDetailsFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Vos informations ont été modifié avec succès.');
+
+            return $this->redirectToRoute('app_account', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('account/account_edit.html.twig', [
+            'formAccount' => $form
         ]);
     }
 

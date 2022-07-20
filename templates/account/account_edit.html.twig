@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification Compte{% endblock %}
+
+{% block body %}
+    {{ include('partials/_title_section.html.twig', { name: 'Modifier vos informations personelles' }) }}
+
+    {{ include('partials/account/_form_account_edit.html.twig', { name: 'Modification de vos données personelles' }) }}
+{% endblock %}
