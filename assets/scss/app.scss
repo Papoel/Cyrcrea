@@ -6,12 +6,10 @@
 @import './variables/colors';
 @import '~bootstrap';
 @import '~bootstrap-icons';
+@import '~bootstrap/scss/variables';
 
 body {
   font-family: 'Montserrat', sans-serif;
-  a, a:hover  {
-    color: #363626;
-  }
 }
 
 .header {
@@ -84,5 +82,35 @@ aside {
   margin: 40px 0 40px 25%;
   opacity: .6;
   background-image: linear-gradient(to left, #CCC, $primary, #CCC);
+}
 
+
+a.link {
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  color: $primary;
+}
+
+a.link:hover {
+  font-weight: bold;
+}
+
+a.link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 3px;
+  border-radius: 50%;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to left, $hover, $primary, $hover);
+  transform-origin: bottom right;
+  transition: transform 0.5s ease-out;
+}
+
+a.link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
