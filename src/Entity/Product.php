@@ -54,9 +54,13 @@ class Product
     #[ORM\OneToMany(mappedBy: 'productId', targetEntity: Review::class)]
     private Product $reviews;
 
+    #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'products')]
+    private Collection $Categories;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
+        $this->Categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -234,6 +238,30 @@ class Product
                 $review->setProductId(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Categories>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->Categories;
+    }
+
+    public function addCategory(Categories $category): self
+    {
+        if (!$this->Categories->contains($category)) {
+            $this->Categories[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Categories $category): self
+    {
+        $this->Categories->removeElement($category);
 
         return $this;
     }

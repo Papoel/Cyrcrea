@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Categories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/ProductHasCategories.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ProductHasCategoriesRepository.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +281,7 @@
       <workItem from="1658257574443" duration="13094000" />
       <workItem from="1658316737536" duration="10856000" />
       <workItem from="1658358669275" duration="4396000" />
-      <workItem from="1658401036739" duration="6507000" />
+      <workItem from="1658401036739" duration="8021000" />
     </task>
     <servers />
   </component>
