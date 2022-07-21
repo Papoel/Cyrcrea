@@ -50,19 +50,18 @@ class AccountDetailsFormType extends AbstractType
                 ],
             ])
             ->add('plainPassword', RepeatedType::class, [
-                'required' => false,
                 'type' => PasswordType::class,
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'first_options' => [
                     'label' => 'Nouveau mot de passe',
-                    'label_attr' => ['class' => 'text-muted'],
+                    'label_attr' => ['class' => 'text-uppercase text-muted'],
                 ],
                 'second_options' => [
                     'label' => 'Confirmation du nouveau mot de passe',
-                    'label_attr' => ['class' => 'text-muted'],
+                    'label_attr' => ['class' => 'text-uppercase text-muted'],
                 ],
-
+                'required' => false,
                 'invalid_message' => 'Les mots de passe doivent être identique',
                 'constraints' => [
                     new NotBlank([
