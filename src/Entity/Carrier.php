@@ -28,8 +28,8 @@ class Carrier
     #[ORM\Column(type: 'datetime_immutable')]
     private \DateTimeImmutable $createdAt;
 
-    #[ORM\Column(type: 'datetime_immutable')]
-    private \DateTimeImmutable $updatedAt;
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    private ?\DateTimeImmutable $updatedAt;
 
     public function getId(): ?int
     {
