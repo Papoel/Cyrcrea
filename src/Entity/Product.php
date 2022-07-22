@@ -51,8 +51,8 @@ class Product
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private string $tags;
 
-    #[ORM\OneToMany(mappedBy: 'productId', targetEntity: Review::class)]
-    private Product $reviews;
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Review::class)]
+    private Collection $reviews;
 
     #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'products')]
     private Collection $Categories;
@@ -224,7 +224,7 @@ class Product
     {
         if (!$this->reviews->contains($review)) {
             $this->reviews[] = $review;
-            $review->setProductId($this);
+            $review->setProduct($this);
         }
 
         return $this;
@@ -234,8 +234,8 @@ class Product
     {
         if ($this->reviews->removeElement($review)) {
             // set the owning side to null (unless already changed)
-            if ($review->getProductId() === $this) {
-                $review->setProductId(null);
+            if ($review->getProduct() === $this) {
+                $review->setProduct(null);
             }
         }
 

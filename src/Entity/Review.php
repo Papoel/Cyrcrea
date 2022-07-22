@@ -23,7 +23,7 @@ class Review
     private User $user;
 
     #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'reviews')]
-    private Product $productId;
+    private Product $product;
 
     public function getId(): ?int
     {
@@ -66,14 +66,14 @@ class Review
         return $this;
     }
 
-    public function getProductId(): ?Product
+    public function getProduct(): ?Product
     {
-        return $this->productId;
+        return $this->product;
     }
 
-    public function setProductId(?Product $productId): self
+    public function setProduct(?Product $product): self
     {
-        $this->productId = $productId;
+        $this->product = $product;
 
         return $this;
     }
