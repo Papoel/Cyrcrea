@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Categories.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/ProductHasCategories.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ProductHasCategoriesRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Security/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Security/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +216,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/papoel/Documents/sandbox/SitesWeb/cyrcrea/public",
+    "last_opened_file_path": "/Users/papoel/Documents/sandbox/SitesWeb/cyrcrea/public/images",
     "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -226,7 +225,7 @@
     "nodejs_package_manager_path": "npm",
     "php.override.implement.member.chooser.php.doc": "NONE",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
+    "settings.editor.selected.configurable": "FoldableProjectViewConfigurable",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -239,11 +238,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/public/assets/images" />
       <recent name="$PROJECT_DIR$/public/assets" />
       <recent name="$PROJECT_DIR$/public/assets/css" />
-      <recent name="$PROJECT_DIR$/public/assets/js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/account/address" />
@@ -281,7 +280,9 @@
       <workItem from="1658257574443" duration="13094000" />
       <workItem from="1658316737536" duration="10856000" />
       <workItem from="1658358669275" duration="4396000" />
-      <workItem from="1658401036739" duration="8021000" />
+      <workItem from="1658401036739" duration="8397000" />
+      <workItem from="1658488361647" duration="833000" />
+      <workItem from="1658489222944" duration="1828000" />
     </task>
     <servers />
   </component>
