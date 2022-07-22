@@ -16,7 +16,7 @@ class CategoriesFixtures extends Fixture
             'drone',
             'gadget',
             'montre',
-            'phone'
+            'portable'
         ];
 
         for ($i = 1, $iMax = count($categories); $i <= $iMax; $i++) {
@@ -33,7 +33,14 @@ class CategoriesFixtures extends Fixture
 
 
             $manager->persist($category);
+            $this->addReference(sprintf('category%d', $i), $category);
         }
         $manager->flush();
     }
+
+    public static function getGroups(): array
+    {
+        return ['category'];
+    }
+
 }
