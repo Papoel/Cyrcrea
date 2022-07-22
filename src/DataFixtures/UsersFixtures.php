@@ -80,8 +80,6 @@ class UsersFixtures extends Fixture implements DependentFixtureInterface
 
     public function getDependencies(): array
     {
-        return [
-            AddressFixtures::class,
-        ];
+        return [AddressFixtures::class];
     }
 }

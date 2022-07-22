@@ -177,7 +177,7 @@ class Order
     {
         if (!$this->orderDetails->contains($orderDetail)) {
             $this->orderDetails[] = $orderDetail;
-            $orderDetail->setOrderId($this);
+            $orderDetail->setOrder($this);
         }
 
         return $this;
@@ -187,8 +187,8 @@ class Order
     {
         if ($this->orderDetails->removeElement($orderDetail)) {
             // set the owning side to null (unless already changed)
-            if ($orderDetail->getOrderId() === $this) {
-                $orderDetail->setOrderId(null);
+            if ($orderDetail->getOrder() === $this) {
+                $orderDetail->setOrder(null);
             }
         }
 

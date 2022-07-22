@@ -36,8 +36,14 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
             $order->setUser($this->getReference(sprintf('user%s', $faker->numberBetween(1, 3))));
 
             $manager->persist($order);
+            $this->addReference(sprintf('order%d', $i), $order);
         }
         $manager->flush();
+    }
+
+    public static function getGroups(): array
+    {
+        return ['order'];
     }
 
     public function getDependencies(): array
