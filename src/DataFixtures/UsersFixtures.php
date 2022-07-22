@@ -53,7 +53,7 @@ class UsersFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($userAdmin);
         $users[] = $userAdmin;
 
-        for ($i = 1; $i <= 20; ++$i) {
+        for ($i = 1; $i <= 3; ++$i) {
             $users = [];
             $user = new User();
 
