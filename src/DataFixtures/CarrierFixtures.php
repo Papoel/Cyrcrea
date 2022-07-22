@@ -19,14 +19,20 @@ class CarrierFixtures extends Fixture
 
             $carrier->setName($faker->company());
             $carrier->setDescription($faker->text($faker->numberBetween(50, 250)));
-            $carrier->setPrice($faker->randomFloat(2, 0.99, 49.99));
+            $carrier->setPrice($faker->randomFloat(2, 0, 9.90));
             $carrier->setCarriercol($faker->word(2));
             $carrier->setCreatedAt(new \DateTimeImmutable());
 
             $manager->persist($carrier);
+            $this->addReference(sprintf('carrier%d', $i), $carrier);
+
             $carriers[] = $carrier;
         }
 
         $manager->flush();
+    }
+    public static function getGroups(): array
+    {
+        return ['carrier'];
     }
 }

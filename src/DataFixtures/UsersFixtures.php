@@ -65,11 +65,17 @@ class UsersFixtures extends Fixture implements DependentFixtureInterface
             $user->setIsVerified($faker->boolean());
 
             $manager->persist($user);
+            $this->addReference(sprintf('user%d', $i), $user);
             $users[] = $user;
         }
 
 
         $manager->flush();
+    }
+
+    public static function getGroups(): array
+    {
+        return ['user'];
     }
 
     public function getDependencies(): array
