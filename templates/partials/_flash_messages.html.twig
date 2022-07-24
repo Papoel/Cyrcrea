@@ -1,4 +1,4 @@
-<div id="message-flashes" class="container-fluid p-0">
+<div id="message-flashes" class="container-fluid p-0 alert-dismissible">
     {% for type, messages in app.flashes %}
         {% for message in messages %}
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -11,16 +11,17 @@
             </svg>
             <div class="alert alert-{{type}} alert-dismissible fade show d-flex align-items-center" role="alert">
                 <svg
-                        class="bi flex-shrink-0 me-2"
-                        width="24"
-                        height="24"
-                        role="img"
-                        aria-label="{{type|capitalize}}:">
+                    class="bi flex-shrink-0 me-2"
+                    width="24"
+                    height="24"
+                    role="img"
+                    aria-label="{{type|capitalize}}:">
                     <use xlink:href="#{{type}}"/>
                 </svg>
                 <div>
                     {{ message }}
                     <button
+                            onclick="removeFlashMessage()"
                             type="button"
                             class="btn-close"
                             data-bs-dismiss="alert"
@@ -31,3 +32,10 @@
         {% endfor %}
     {% endfor %}
 </div>
+
+<script>
+    function removeFlashMessage() {
+        const message_flashes = document.querySelector('#message-flashes');
+        message_flashes.remove();
+    }
+</script>
