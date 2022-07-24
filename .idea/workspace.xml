@@ -6,17 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/bonnets/bonnet_femme_1.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/bonnet/bonnet_1.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/bonnets/bonnet_femme_2.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/bonnet/bonnet_2.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/bonnets/bonnet_femme_3.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/bonnet/bonnet_3.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/bonnets/bonnet_femme_4.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/bonnet/bonnet_4.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/phone/portable_1.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/portable/portable_1.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/phone/portable_2.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/portable/portable_2.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/phone/portable_3.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/portable/portable_3.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/phone/portable_4.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/portable/portable_4.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/CategoriesFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/CategoriesFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Review.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Review.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,7 +280,7 @@
       <workItem from="1658401036739" duration="8397000" />
       <workItem from="1658488361647" duration="833000" />
       <workItem from="1658489222944" duration="8753000" />
-      <workItem from="1658502267009" duration="3449000" />
+      <workItem from="1658502267009" duration="3859000" />
     </task>
     <servers />
   </component>
