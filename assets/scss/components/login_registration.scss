@@ -1,8 +1,9 @@
 @import '../variables/colors';
 
 .login_wrap {
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
 .login_register_wrap {
   display: -ms-flexbox;
   display: flex;
@@ -12,6 +13,7 @@
   align-items: center;
   position: relative;
 }
+
 .redirection {
   a {
     color: $primary;

@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Password Reset Email Sent{% endblock %}
+
+{% block body %}
+    {{ include('partials/_title_section.html.twig', {name:"Envoi de l'e-mail de réinitialisation du mot de passe"}) }}
+    <div class="login_register_wrap section mt-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-md-10">
+                    <div class="login_wrap">
+                        <div class="p-5 bg-white">
+                            <div class="py-3 ps-3">
+                                <h3 class="link">Réinitialisation du mot de passe</h3>
+                            </div>
+
+                            <div class="p-3">
+                                {% if resetToken.expirationMessageData == 0 %}
+                                    <div class="alert alert-danger">
+                                        <p class="fs-6">
+                                            Désolé, nous n'avons pas pu vous envoyer un e-mail de réinitialisation de mot de passe.
+                                        </p>
+                                    </div>
+                                    {% else %}
+                                    <div>
+                                    <p class="lead">
+                                        Si un compte correspondant à votre adresse e-mail existe, alors un e-mail
+                                        vient d'être envoyé.
+                                        Vous y trouverai un lien que vous pouvez utiliser pour réinitialiser
+                                        votre mot de passe.
+                                    </p>
+                                    <div class="bg-dark rounded">
+                                        <p class="text-center text-info lead p-2">
+                                        Ce lien expirera dans
+                                        {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+                                    </p>
+                                    </div>
+                                    <p class="lead">Si vous ne recevez pas d'e-mail, vérifiez votre dossier
+                                        de courrier indésirable (spam) ou votre adresse e-mail.
+                                    </p>
+                                    </div>
+                                {% endif %}
+                                <div class="d-flex justify-content-center my-4">
+                                    <a
+                                        class="btn btn-md btn-outline-primary me-1"
+                                        href="{{ path('app_forgot_password_request') }}">
+                                        essayez à nouveau
+                                    </a>
+                                </div>
+                            </div>
+
+                            <hr class="separator my-3">
+
+                            <div class="p-3">
+                                <p class="fs-6">
+                                    Vous n'avez pas de compte ?
+                                    <a class="link" href="{{ path('app_register')}}"> Inscrivez-vous maintenant.</a>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
