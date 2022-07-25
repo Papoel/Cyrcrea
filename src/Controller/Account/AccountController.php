@@ -114,7 +114,7 @@ class AccountController extends AbstractController
             $entityManager->persist($address);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Votre adresse à bien été mis à jour.');
+            $this->addFlash('success', 'Votre adresse à bien été mise à jour.');
 
             return $this->redirectToRoute('app_address_show', [], Response::HTTP_SEE_OTHER);
         }
