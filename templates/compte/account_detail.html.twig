@@ -1,4 +1,4 @@
-{% extends 'account/index.html.twig' %}
+{% extends 'compte/index.html.twig' %}
 
 {% block content %}
     <div class="card mb-4">
@@ -75,7 +75,9 @@
                     <hr class="separator">
 
                     <div class="d-flex justify-content-center">
-                        <a class="btn btn-primary" href="{{ path('app_account_edit') }}">Modifier mes informations</a>
+                        <a class="btn btn-md btn-primary rounded me-1" href="{{ path('app_compte_edit') }}">Modifier mes informations</a>
+                        {# TODO: Créer et lier la possibilité d'effacer son compte client. #}
+                        <a class="btn btn-md btn-danger rounded ms-1" href="#" >Effacer mon compte</a>
                     </div>
                 </div>
             </form>
