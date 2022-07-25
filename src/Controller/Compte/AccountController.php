@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Account;
+namespace App\Controller\Compte;
 
 use App\Entity\Address;
 use App\Entity\User;
@@ -13,20 +13,20 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
-#[Route('/account')]
+#[Route('/compte')]
 class AccountController extends AbstractController
 {
     public function __construct(private Security $security)
     {
     }
 
-    #[Route('/', name: 'app_account')]
+    #[Route('/', name: 'app_compte')]
     public function index(): Response
     {
-        return $this->render('account/index.html.twig');
+        return $this->render('compte/index.html.twig');
     }
 
-    #[Route('/account-detail', name: 'app_account-detail')]
+    #[Route('/compte-detail', name: 'app_compte-detail')]
     public function detail(EntityManagerInterface $entityManager): Response
     {
         /** @var User $user */
@@ -35,14 +35,14 @@ class AccountController extends AbstractController
         $userAddresses = $entityManager->getRepository(Address::class)->findUserAddresses($user);
 
 
-        return $this->render('account/account_detail.html.twig', [
+        return $this->render('compte/account_detail.html.twig', [
             'details' => $userDetails,
             'addresses' => $userAddresses
         ]);
     }
 
-    #[Route('/account-detail/edit', name: 'app_account_edit', methods: ['GET', 'POST'])]
-    public function editAccount(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/compte-detail/edit', name: 'app_compte_edit', methods: ['GET', 'POST'])]
+    public function editCompte(Request $request, EntityManagerInterface $entityManager): Response
     {
         /** @var User $user */
         $user = $this->getUser();
@@ -54,12 +54,12 @@ class AccountController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Vos informations ont été modifié avec succès.');
+            $this->addFlash('success', 'Vos informations ont été modifiées avec succès.');
 
-            return $this->redirectToRoute('app_account', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_compte', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('account/account_edit.html.twig', [
+        return $this->renderForm('compte/account_edit.html.twig', [
             'formAccount' => $form
         ]);
     }
@@ -72,7 +72,7 @@ class AccountController extends AbstractController
 
         $addresses = $entityManager->getRepository(Address::class)->findUserAddresses($user->getId());
 
-        return $this->render('account/address/show.html.twig', [
+        return $this->render('compte/address/show.html.twig', [
             'addresses' => $addresses
         ]);
     }
@@ -99,7 +99,7 @@ class AccountController extends AbstractController
             return $this->redirectToRoute('app_address_show');
         }
 
-        return $this->renderForm('account/address/add.html.twig', [
+        return $this->renderForm('compte/address/add.html.twig', [
             'formAddress' => $form
         ]);
     }
@@ -114,12 +114,12 @@ class AccountController extends AbstractController
             $entityManager->persist($address);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Votre adresse à bien été mise à jour.');
+            $this->addFlash('success', 'Votre adresse a bien été mise à jour.');
 
             return $this->redirectToRoute('app_address_show', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('account/address/edit.html.twig', [
+        return $this->renderForm('compte/address/edit.html.twig', [
             'formAddress' => $form
         ]);
     }
@@ -148,6 +148,6 @@ class AccountController extends AbstractController
             return $this->redirectToRoute('app_address_show');
         }
 
-        return $this->render('account/index.html.twig');
+        return $this->render('compte/index.html.twig');
     }
 }

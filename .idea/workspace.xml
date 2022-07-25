@@ -6,6 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Account/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Compte/AccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Security/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Security/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/account_detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/compte/account_detail.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/account_edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/compte/account_edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/address/add.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/compte/address/add.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/address/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/compte/address/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/address/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/compte/address/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/compte/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/account/_account_welcome_card.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/compte/_account_welcome_card.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/account/_form-address.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/compte/_form-address.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/account/_form_account_edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/compte/_form_account_edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/account/_sidebar_account.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/compte/_sidebar_account.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,7 +298,7 @@
       <workItem from="1658489222944" duration="8753000" />
       <workItem from="1658502267009" duration="3859000" />
       <workItem from="1658659838171" duration="180000" />
-      <workItem from="1658661473112" duration="3961000" />
+      <workItem from="1658661473112" duration="7303000" />
     </task>
     <servers />
   </component>
