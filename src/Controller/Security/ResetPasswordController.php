@@ -10,7 +10,9 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -73,6 +75,8 @@ class ResetPasswordController extends AbstractController
     /**
      * Valide et traite l'URL de réinitialisation sur laquelle l'utilisateur a cliqué dans son courriel.
      */
+    // TODO: #2 => Pourquoi cette route me génère une page 404 ?
+    // TODO: Je n'arrive pas à me rendre sur cet URL ...
     #[Route('/reset/{token}', name: 'app_reset_password')]
     public function reset(
         Request $request,
@@ -80,6 +84,7 @@ class ResetPasswordController extends AbstractController
         TranslatorInterface $translator,
         string $token = null
     ): Response {
+        //dd('Je suis sur la route reset/{token}');
         if ($token) {
             // Nous stockons le jeton en session et le supprimons de l'URL, pour éviter que l'URL ne soit
             // chargée dans un navigateur et la fuite potentielle du jeton vers un JavaScript tiers.
@@ -90,17 +95,22 @@ class ResetPasswordController extends AbstractController
 
         $token = $this->getTokenFromSession();
         if (null === $token) {
-            throw $this->createNotFoundException("Aucun jeton de réinitialisation du mot de passe n'a été trouvé dans l'URL ou dans la session.");
+            throw $this->createNotFoundException(
+                message: "Aucun jeton de réinitialisation du mot de passe n'a été trouvé dans l'URL ou dans la session."
+            );
         }
 
         try {
             $user = $this->resetPasswordHelper->validateTokenAndFetchUser($token);
         } catch (ResetPasswordExceptionInterface $e) {
-            $this->addFlash('reset_password_error', sprintf(
-                '%s - %s',
-                $translator->trans(ResetPasswordExceptionInterface::MESSAGE_PROBLEM_VALIDATE, [], 'ResetPasswordBundle'),
-                $translator->trans($e->getReason(), [], 'ResetPasswordBundle')
-            ));
+            $this->addFlash(
+                'reset_password_error',
+                message: sprintf(
+                    '%s - %s',
+                    $translator->trans(ResetPasswordExceptionInterface::MESSAGE_PROBLEM_VALIDATE, [], 'ResetPasswordBundle'),
+                    $translator->trans($e->getReason(), [], 'ResetPasswordBundle')
+                )
+            );
 
             return $this->redirectToRoute('app_forgot_password_request');
         }
@@ -114,6 +124,7 @@ class ResetPasswordController extends AbstractController
             $this->resetPasswordHelper->removeResetRequest($token);
 
             // Encoder(hash) le mot de passe simple, et le définir.
+            /** @var User $user */
             $encodedPassword = $passwordHasher->hashPassword(
                 $user,
                 $form->get('plainPassword')->getData()
@@ -133,6 +144,7 @@ class ResetPasswordController extends AbstractController
         ]);
     }
 
+    // TODO: #1 => Pourquoi le Token n'est pas affiché ?...
     private function processSendingPasswordResetEmail(string $emailFormData, MailerInterface $mailer, TranslatorInterface $translator): RedirectResponse
     {
         $user = $this->entityManager->getRepository(User::class)->findOneBy([
@@ -151,12 +163,11 @@ class ResetPasswordController extends AbstractController
             // les lignes ci-dessous et changez la redirection en 'app_forgot_password_request'.
             // Attention : Cela peut révéler si un utilisateur est enregistré ou non.
             //
-            // $this->addFlash('reset_password_error', sprintf(
-            //     '%s - %s',
-            //     $translator->trans(ResetPasswordExceptionInterface::MESSAGE_PROBLEM_HANDLE, [], 'ResetPasswordBundle'),
-            //     $translator->trans($e->getReason(), [], 'ResetPasswordBundle')
-            // ));
-
+            $this->addFlash('reset_password_error', sprintf(
+                '%s - %s',
+                $translator->trans(ResetPasswordExceptionInterface::MESSAGE_PROBLEM_HANDLE, [], 'ResetPasswordBundle'),
+                $translator->trans($e->getReason(), [], 'ResetPasswordBundle')
+            ));
             return $this->redirectToRoute('app_check_email');
         }
 
@@ -170,11 +181,25 @@ class ResetPasswordController extends AbstractController
             ])
         ;
 
-        $mailer->send($email);
+        // dd("Dump de l'Email", $email->getContext()['resetToken']);
+        try {
+            $mailer->send($email);
+            $this->addFlash('success', 'Un email de réinitialisation de mot de passe a été envoyé à votre adresse email.');
+        } catch (TransportExceptionInterface $e) {
+            $this->addFlash('danger', 'Une erreur est survenue lors de l\'envoi de l\'email de réinitialisation de mot de passe.');
+        }
 
         // Stocker l'objet jeton dans la session pour le récupérer dans la route check-email.
-        $this->setTokenObjectInSession($resetToken);
+        // TODO: Ici la date d'expiration est bien set mais pas le Token ...
+        // TODO: Le Token n'est pas set car la fonction
+        // TODO: setTokenObjectInSession commence par $token->clearToken() (en commentant j'ai le Token)
+
+         $this->setTokenObjectInSession($resetToken);
+
 
         return $this->redirectToRoute('app_check_email');
     }
 }
+
+    // TODO: Lorsque le mail est généré j'ai une 404 ...
+    // TODO: Je dois régler le problème de la redirection vers la route reset/{token}

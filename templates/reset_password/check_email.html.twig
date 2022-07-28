@@ -15,31 +15,23 @@
                             </div>
 
                             <div class="p-3">
-                                {% if resetToken.expirationMessageData == 0 %}
-                                    <div class="alert alert-danger">
-                                        <p class="fs-6">
-                                            Désolé, nous n'avons pas pu vous envoyer un e-mail de réinitialisation de mot de passe.
-                                        </p>
-                                    </div>
-                                    {% else %}
-                                    <div>
-                                    <p class="lead">
-                                        Si un compte correspondant à votre adresse e-mail existe, alors un e-mail
-                                        vient d'être envoyé.
-                                        Vous y trouverai un lien que vous pouvez utiliser pour réinitialiser
-                                        votre mot de passe.
+                                <p class="lead">
+                                    Si un compte correspondant à votre adresse e-mail existe, alors un e-mail
+                                    vient d'être envoyé.
+                                    Vous y trouverai un lien que vous pouvez utiliser pour réinitialiser
+                                    votre mot de passe.
+                                </p>
+                                <div class="bg-dark rounded">
+                                    <p class="text-center text-info lead p-2">
+                                        Ce lien expirera {{ resetToken.getExpiresAt()|format_datetime('full','short', locale='fr') }}.
+                                        <span class="d-block text-danger font-weight-bold">
+                                            ({{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}).
+                                        </span>
                                     </p>
-                                    <div class="bg-dark rounded">
-                                        <p class="text-center text-info lead p-2">
-                                        Ce lien expirera dans
-                                        {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
-                                    </p>
-                                    </div>
-                                    <p class="lead">Si vous ne recevez pas d'e-mail, vérifiez votre dossier
-                                        de courrier indésirable (spam) ou votre adresse e-mail.
-                                    </p>
-                                    </div>
-                                {% endif %}
+                                </div>
+                                <p class="lead">Si vous ne recevez pas d'e-mail, vérifiez votre dossier
+                                    de courrier indésirable (spam) ou votre adresse e-mail.
+                                </p>
                                 <div class="d-flex justify-content-center my-4">
                                     <a
                                         class="btn btn-md btn-outline-primary me-1"

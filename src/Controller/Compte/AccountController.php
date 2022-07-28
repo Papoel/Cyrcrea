@@ -16,7 +16,7 @@ use Symfony\Component\Security\Core\Security;
 #[Route('/compte')]
 class AccountController extends AbstractController
 {
-    public function __construct(private Security $security)
+    public function __construct(private readonly Security $security)
     {
     }
 

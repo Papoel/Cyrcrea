@@ -21,24 +21,24 @@ class ChangePasswordFormType extends AbstractType
                     'attr' => ['autocomplete' => 'new-password'],
                     'constraints' => [
                         new NotBlank([
-                            'message' => 'Please enter a password',
+                            'message' => 'Veuillez saisir un mot de passe',
                         ]),
                         new Length([
                             'min' => 6,
-                            'minMessage' => 'Your password should be at least {{ limit }} characters',
-                            // max length allowed by Symfony for security reasons
+                            'minMessage' => 'Votre mot de passe doit comporter au moins {{ limite }} caractères.',
+                            // longueur maximale autorisée par Symfony pour des raisons de sécurité
                             'max' => 4096,
                         ]),
                     ],
-                    'label' => 'New password',
+                    'label' => 'Nouveau mot de passe',
                 ],
                 'second_options' => [
                     'attr' => ['autocomplete' => 'new-password'],
-                    'label' => 'Repeat Password',
+                    'label' => 'Répéter le mot de passe',
                 ],
-                'invalid_message' => 'The password fields must match.',
-                // Instead of being set onto the object directly,
-                // this is read and encoded in the controller
+                'invalid_message' => 'Les champs du mot de passe doivent correspondre.',
+                // Au lieu d'être fixé sur l'objet directement,
+                // ceci est lu et encodé dans le contrôleur
                 'mapped' => false,
             ])
         ;
