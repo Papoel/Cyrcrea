@@ -47,6 +47,7 @@ class AccountController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
 
+
         $form = $this->createForm(AccountDetailsFormType::class, $user);
         $form->handleRequest($request);
 

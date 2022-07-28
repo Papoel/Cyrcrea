@@ -18,6 +18,7 @@
                         {{ form_row(formAccount.email) }}
                     </div>
 
+                    <!--
                     <div class="form-group col-md-12">
                         <div class="mb-3">
                             <label
@@ -27,12 +28,12 @@
                             </label>
                             <div class="input-group">
                                 <input
-                                        id="currentPassword"
-                                        class="form-control"
-                                        type="password"
-                                        name="account_details_password"
-                                        placeholder="batman@gotham.dc"
-                                        value="{{ app.user.password }}"
+                                    id="currentPassword"
+                                    class="form-control"
+                                    type="password"
+                                    name="account_details_password"
+                                    placeholder="batman@gotham.dc"
+                                    value="{{ app.user.password }}"
                                 >
                                 <div id="passwordIcon" class="input-group-text" onclick="ShowPassword()">
                                     <svg id="showPassword" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye d-none" viewBox="0 0 16 16">
@@ -48,10 +49,17 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-group col-md-6">
-                       {{ form_row(formAccount.plainPassword) }}
+                    -->
+                    {# TODO: WIP: Afficher le form de réinitialisation du mot de passe #}
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            {{ form_start(resetForm) }}
+                                {{ form_row(resetForm.plainPassword) }}
+                                <button class="btn btn-primary">Réinitialiser le mot de passe</button>
+                            {{ form_end(resetForm) }}
+                        </div>
                     </div>
+
                 </div>
 
                 <div class="py-3">
