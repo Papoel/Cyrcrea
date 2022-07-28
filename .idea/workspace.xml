@@ -5,15 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scss/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scss/components/login_registration.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/components/login_registration.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/reset_password.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/reset_password.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/routing.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/routing.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/translation.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Compte/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Compte/AccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Security/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Security/ResetPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ChangePasswordFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ChangePasswordFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/compte/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/compte/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reset_password/check_email.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reset_password/check_email.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -207,6 +211,7 @@
       <path value="$PROJECT_DIR$/vendor/gedmo/doctrine-extensions" />
       <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
       <path value="$PROJECT_DIR$/vendor/symfonycasts/reset-password-bundle" />
+      <path value="$PROJECT_DIR$/vendor/twig/intl-extra" />
     </include_path>
   </component>
   <component name="ProjectId" id="2BhyJaArH6lphBvNmWDuLIJ04I7" />
@@ -292,7 +297,10 @@
       <workItem from="1658489222944" duration="8753000" />
       <workItem from="1658502267009" duration="3859000" />
       <workItem from="1658659838171" duration="180000" />
-      <workItem from="1658661473112" duration="20193000" />
+      <workItem from="1658661473112" duration="20485000" />
+      <workItem from="1658821677211" duration="19492000" />
+      <workItem from="1658922969990" duration="28000" />
+      <workItem from="1659003113704" duration="12551000" />
     </task>
     <servers />
   </component>
