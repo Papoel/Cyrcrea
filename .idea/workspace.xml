@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/config/packages/reset_password.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/reset_password.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Compte/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Compte/AccountController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Security/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Security/ResetPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ChangePasswordFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ChangePasswordFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/compte/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/compte/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/reset_password/check_email.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reset_password/check_email.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reset_password/request.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reset_password/request.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reset_password/reset.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reset_password/reset.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,7 +290,7 @@
       <workItem from="1658661473112" duration="20485000" />
       <workItem from="1658821677211" duration="19492000" />
       <workItem from="1658922969990" duration="28000" />
-      <workItem from="1659003113704" duration="12992000" />
+      <workItem from="1659003113704" duration="14502000" />
     </task>
     <servers />
   </component>
