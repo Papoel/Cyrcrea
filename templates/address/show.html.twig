@@ -1,0 +1,82 @@
+{% extends 'compte/index.html.twig' %}
+
+{% block content %}
+
+    {% if app.user.addresses is empty %}
+        <div class="alert alert-info my-3">
+          <p class="lead">
+              Vous n'avez pas encore enregistrer d'adresse cliquer sur le bouton ci dessous pour ajouter
+              votre première adresse.
+          </p>
+      </div>
+    {% endif %}
+
+    <a
+        href="{{ path('app_address_new') }}"
+        class="btn btn-primary my-3">
+        Ajouter une adresse
+    </a>
+
+    <div class="row row-cols-2 g-2">
+        {% for address in addresses %}
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h4 id="address_name" class="text-center text-uppercase text-muted"> {{ address.name}} </h4>
+                    </div>
+                    <div class="card-body">
+                        <address class="d-flex flex-column">
+                            {% if address.company is not null %}
+                                <span class="mb-1">
+                                    <span class="text-muted text-uppercase me-3">Société:</span>
+                                    <span id="address_company" class="fw-lighter">{{ address.company }}</span>
+                                </span>
+                            {% endif %}
+                            <span class="mb-1">
+                                <span class="text-muted text-uppercase me-3">Adresse:</span>
+                                <span id="address_address" class="fw-lighter">{{ address.address }}</span>
+                            </span>
+
+                            {% if address.complement is not null %}
+                                <span class="mb-1">
+                                    <span class="text-muted text-uppercase me-3">Complément:</span>
+                                    <span id="address_complement" class="fw-lighter">{{ address.complement }}</span>
+                                </span>
+                            {% endif %}
+
+                            <span class="mb-1">
+                                <span class="text-muted text-uppercase me-3">Ville:</span>
+                                <span id="address_city" class="fw-lighter">{{ address.city }}</span>
+                            </span>
+
+                            <span class="mb-1">
+                                <span class="text-muted text-uppercase me-3">Pays:</span>
+                                <span id="address_countryy" class="fw-lighter">{{ address.country|country_name }}</span>
+                            </span>
+
+                            <span class="mb-1">
+                                <span class="text-muted text-uppercase me-3">Code Postal:</span>
+                                <span id="address_code-postal" class="fw-lighter">{{ address.postal }}</span>
+                            </span>
+
+                            <span class="mb-1">
+                                <span class="text-muted text-uppercase me-3">Téléphone:</span>
+                                <span id="address_telephone" class="fw-lighter">{{ address.phone }}</span>
+                            </span>
+                        </address>
+                    </div>
+                    <div class="card-footer py-3">
+                        <div class="btn-group d-flex justify-content-between mx-1">
+                            <a
+                                href="{{ path('app_address_edit', {'id':address.id}) }}"
+                                class="btn btn-md btn-outline-warning rounded mx-2">
+                                Modifier
+                            </a>
+                            {{ include('address/_delete_form.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

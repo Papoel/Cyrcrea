@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'adresse{% endblock %}
+
+{% block body %}
+    {{ include('partials/_title_section.html.twig', { name: 'Modification de votre adresse' }) }}
+
+    <h1 class="text-center my-3">Modification de l'adresse ✍️️</h1>
+
+    {{ include('address/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+{% endblock %}

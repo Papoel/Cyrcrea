@@ -4,14 +4,14 @@ namespace App\Form;
 
 use App\Entity\Address;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class AddressFormType extends AbstractType
+class AddressType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -69,14 +69,31 @@ class AddressFormType extends AbstractType
                             'maxMessage' => 'Votre code postal ne doit pas excéder {{ limit }} caractères.',
                         ]
                     ),
+                    new NotBlank([
+                        'message' => 'Un code postal est attendu'
+                    ])
                 ],
             ])
             // Importer la liste des pays (Api Rest Country ?)
-            ->add('country', TextType::class, [
+            ->add('country', CountryType::class, [
                 'label' => 'pays',
                 'label_attr' => ['class' => 'text-muted text-uppercase'],
                 'attr' => ['placeholder' => 'France'],
+                'choice_loader' => null,
+                'choices' => [
+                    'Allemagne' => 'allemagne',
+                    'Belgique' => 'belgique',
+                    'France' => 'france',
+                    'Luxembourg' => 'luxembourg',
+                ],
+                'preferred_choices' => ['France' => 'france'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Vous devez chercher dans la liste votre pays de résidence ou de livraison'
+                    ])
+                ]
             ])
+
             ->add('phone', TextType::class, [
                 'label' => 'téléphone',
                 'label_attr' => ['class' => 'text-muted text-uppercase'],
