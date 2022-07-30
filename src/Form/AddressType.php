@@ -81,12 +81,12 @@ class AddressType extends AbstractType
                 'attr' => ['placeholder' => 'France'],
                 'choice_loader' => null,
                 'choices' => [
-                    'Allemagne' => 'allemagne',
-                    'Belgique' => 'belgique',
-                    'France' => 'france',
+                    'Allemagne' => 'Allemagne',
+                    'Belgique' => 'Belgique',
+                    'France' => 'France',
                     'Luxembourg' => 'luxembourg',
                 ],
-                'preferred_choices' => ['France' => 'france'],
+                'preferred_choices' => ['France' => 'France'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Vous devez chercher dans la liste votre pays de résidence ou de livraison'
