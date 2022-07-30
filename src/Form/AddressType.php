@@ -84,7 +84,7 @@ class AddressType extends AbstractType
                     'Allemagne' => 'Allemagne',
                     'Belgique' => 'Belgique',
                     'France' => 'France',
-                    'Luxembourg' => 'luxembourg',
+                    'Luxembourg' => 'Luxembourg',
                 ],
                 'preferred_choices' => ['France' => 'France'],
                 'constraints' => [
