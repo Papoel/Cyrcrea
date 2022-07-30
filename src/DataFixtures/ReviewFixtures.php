@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Review;
+use App\Entity\ReviewsProduct;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -15,7 +15,7 @@ class ReviewFixtures extends Fixture implements DependentFixtureInterface
         $faker = Faker\Factory::create('fr_FR');
 
         for ($i = 1; $i <= 200; $i++) {
-            $review = new Review();
+            $review = new ReviewsProduct();
             $review->setUser($this->getReference(
                 sprintf(
                     'user%d',

@@ -51,7 +51,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class)]
     private Collection $orders;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Review::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: ReviewsProduct::class)]
     private Collection $reviews;
 
     #[ORM\Column(type: 'boolean')]
@@ -269,14 +269,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Review>
+     * @return Collection<int, ReviewsProduct>
      */
     public function getReviews(): Collection
     {
         return $this->reviews;
     }
 
-    public function addReview(Review $review): self
+    public function addReview(ReviewsProduct $review): self
     {
         if (!$this->reviews->contains($review)) {
             $this->reviews[] = $review;
@@ -286,7 +286,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeReview(Review $review): self
+    public function removeReview(ReviewsProduct $review): self
     {
         // set the owning side to null (unless already changed)
         if ($this->reviews->removeElement($review) && $review->getUser() === $this) {

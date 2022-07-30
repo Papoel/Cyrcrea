@@ -24,23 +24,23 @@ class Product
     #[ORM\Column(type: 'text')]
     private string $description;
 
-    #[ORM\Column(type: 'string', length: 100, nullable: true)]
+    #[ORM\Column(type: 'text', nullable: true)]
     private string $moreInformations;
 
     #[ORM\Column(type: 'float')]
     private float $price;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
-    private bool $isBest;
+    private bool $isBest = false;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
-    private bool $isNewArrival;
+    private bool $isNewArrival = false;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
-    private bool $isFeatured;
+    private bool $isFeatured = false;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
-    private bool $isSpecialOffer;
+    private bool $isSpecialOffer = false;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private string $image;
@@ -51,16 +51,24 @@ class Product
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private string $tags;
 
-    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Review::class)]
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: ReviewsProduct::class)]
     private Collection $reviews;
 
     #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'products')]
     private Collection $Categories;
 
+    #[ORM\ManyToMany(targetEntity: TagsProduct::class, mappedBy: 'product')]
+    private Collection $tagsProducts;
+
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: RelatedProduct::class)]
+    private Collection $relatedProducts;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
         $this->Categories = new ArrayCollection();
+        $this->tagsProducts = new ArrayCollection();
+        $this->relatedProducts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -213,14 +221,14 @@ class Product
     }
 
     /**
-     * @return Collection<int, Review>
+     * @return Collection<int, ReviewsProduct>
      */
     public function getReviews(): Collection
     {
         return $this->reviews;
     }
 
-    public function addReview(Review $review): self
+    public function addReview(ReviewsProduct $review): self
     {
         if (!$this->reviews->contains($review)) {
             $this->reviews[] = $review;
@@ -230,7 +238,7 @@ class Product
         return $this;
     }
 
-    public function removeReview(Review $review): self
+    public function removeReview(ReviewsProduct $review): self
     {
         if ($this->reviews->removeElement($review)) {
             // set the owning side to null (unless already changed)
@@ -262,6 +270,63 @@ class Product
     public function removeCategory(Categories $category): self
     {
         $this->Categories->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TagsProduct>
+     */
+    public function getTagsProducts(): Collection
+    {
+        return $this->tagsProducts;
+    }
+
+    public function addTagsProduct(TagsProduct $tagsProduct): self
+    {
+        if (!$this->tagsProducts->contains($tagsProduct)) {
+            $this->tagsProducts->add($tagsProduct);
+            $tagsProduct->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTagsProduct(TagsProduct $tagsProduct): self
+    {
+        if ($this->tagsProducts->removeElement($tagsProduct)) {
+            $tagsProduct->removeProduct($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, RelatedProduct>
+     */
+    public function getRelatedProducts(): Collection
+    {
+        return $this->relatedProducts;
+    }
+
+    public function addRelatedProduct(RelatedProduct $relatedProduct): self
+    {
+        if (!$this->relatedProducts->contains($relatedProduct)) {
+            $this->relatedProducts->add($relatedProduct);
+            $relatedProduct->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRelatedProduct(RelatedProduct $relatedProduct): self
+    {
+        if ($this->relatedProducts->removeElement($relatedProduct)) {
+            // set the owning side to null (unless already changed)
+            if ($relatedProduct->getProduct() === $this) {
+                $relatedProduct->setProduct(null);
+            }
+        }
 
         return $this;
     }

@@ -6,17 +6,17 @@ use App\Repository\ReviewRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
-class Review
+class ReviewsProduct
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\Column(type: 'string', length: 45, nullable: true)]
+    #[ORM\Column(type: 'integer')]
     private string $note;
 
-    #[ORM\Column(type: 'string', length: 200)]
+    #[ORM\Column(type: 'text', nullable: true)]
     private string $comment;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'reviews')]

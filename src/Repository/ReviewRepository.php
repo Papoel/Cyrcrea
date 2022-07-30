@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Review;
+use App\Entity\ReviewsProduct;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Review>
+ * @extends ServiceEntityRepository<ReviewsProduct>
  *
- * @method Review|null find($id, $lockMode = null, $lockVersion = null)
- * @method Review|null findOneBy(array $criteria, array $orderBy = null)
- * @method Review[]    findAll()
- * @method Review[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ReviewsProduct|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ReviewsProduct|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ReviewsProduct[]    findAll()
+ * @method ReviewsProduct[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ReviewRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Review::class);
+        parent::__construct($registry, ReviewsProduct::class);
     }
 
-    public function add(Review $entity, bool $flush = false): void
+    public function add(ReviewsProduct $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class ReviewRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Review $entity, bool $flush = false): void
+    public function remove(ReviewsProduct $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class ReviewRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Review[] Returns an array of Review objects
+//     * @return ReviewsProduct[] Returns an array of ReviewsProduct objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class ReviewRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Review
+//    public function findOneBySomeField($value): ?ReviewsProduct
 //    {
 //        return $this->createQueryBuilder('r')
 //            ->andWhere('r.exampleField = :val')
