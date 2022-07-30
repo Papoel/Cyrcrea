@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/compte/account_detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/compte/account_detail.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/compte/account_edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/compte/account_edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/footer.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +227,7 @@
     "nodejs_package_manager_path": "npm",
     "php.override.implement.member.chooser.php.doc": "NONE",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Console Colors",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -289,7 +292,7 @@
       <workItem from="1658922969990" duration="28000" />
       <workItem from="1659003113704" duration="18404000" />
       <workItem from="1659106662406" duration="17186000" />
-      <workItem from="1659184168012" duration="8053000" />
+      <workItem from="1659184168012" duration="11680000" />
     </task>
     <servers />
   </component>
