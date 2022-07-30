@@ -6,7 +6,6 @@ use App\Entity\Address;
 use App\Entity\User;
 use App\Form\AddressType;
 use App\Repository\AddressRepository;
-use JetBrains\PhpStorm\NoReturn;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
