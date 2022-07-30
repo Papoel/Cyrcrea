@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/partials/compte/_form-address.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/compte/_form_account_edit.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scss/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scss/components/login_registration.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/components/login_registration.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +218,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/papoel/Documents/sandbox/SitesWeb/cyrcrea/public/images",
+    "last_opened_file_path": "/Users/papoel/Documents/sandbox/SitesWeb/cyrcrea/public/images/payment",
     "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -238,11 +240,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images/payment" />
       <recent name="$PROJECT_DIR$/public/images" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/public/assets/images" />
       <recent name="$PROJECT_DIR$/public/assets" />
-      <recent name="$PROJECT_DIR$/public/assets/css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/address" />
@@ -289,7 +291,8 @@
       <workItem from="1658821677211" duration="19492000" />
       <workItem from="1658922969990" duration="28000" />
       <workItem from="1659003113704" duration="18404000" />
-      <workItem from="1659106662406" duration="15370000" />
+      <workItem from="1659106662406" duration="17186000" />
+      <workItem from="1659184168012" duration="3909000" />
     </task>
     <servers />
   </component>

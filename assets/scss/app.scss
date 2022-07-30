@@ -41,7 +41,6 @@ aside {
 
   border-top: 2px solid $red-component-border;
   color: #fff;
-  margin-top: 30px;
 
   span {
     color: #ff0000;
@@ -113,4 +112,12 @@ a.link::after {
 a.link:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.border_top_transition {
+  border-top: 3px solid rgba(39, 97, 134, .5);
+}
+
+.border_bottom_transition {
+  border-bottom: 1px solid rgba(39, 97, 134, .5);
 }

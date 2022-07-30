@@ -26,6 +26,10 @@
             {% block body %}{% endblock %}
         </main>
 
+        <footer>
+            {{ include ('partials/footer.html.twig') }}
+        </footer>
+
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
