@@ -41,7 +41,7 @@ class AddressFixtures extends Fixture
         $address->setPhone('0762665642');
 
         $manager->persist($address);
-        $this->addReference('admin-address', $address);
+        $this->addReference('admin-adresse', $address);
         $addresses[] = $address;
 
         for ($i = 1; $i <= 20; ++$i) {
@@ -58,7 +58,7 @@ class AddressFixtures extends Fixture
             $address->setPhone($faker->phoneNumber());
 
             $manager->persist($address);
-            $this->addReference(sprintf('address%d', $i), $address);
+            $this->addReference(sprintf('adresse%d', $i), $address);
             $addresses[] = $address;
         }
 
@@ -67,6 +67,6 @@ class AddressFixtures extends Fixture
 
     public static function getGroups(): array
     {
-        return ['address'];
+        return ['adresse'];
     }
 }

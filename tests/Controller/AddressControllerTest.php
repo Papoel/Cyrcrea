@@ -11,7 +11,7 @@ class AddressControllerTest extends WebTestCase
 {
     private KernelBrowser $client;
     private AddressRepository $repository;
-    private string $path = '/address/';
+    private string $path = '/adresse/';
 
     protected function setUp(): void
     {
@@ -44,18 +44,18 @@ class AddressControllerTest extends WebTestCase
         self::assertResponseStatusCodeSame(200);
 
         $this->client->submitForm('Save', [
-            'address[name]' => 'Testing',
-            'address[company]' => 'Testing',
-            'address[address]' => 'Testing',
-            'address[complement]' => 'Testing',
-            'address[city]' => 'Testing',
-            'address[postal]' => 'Testing',
-            'address[country]' => 'Testing',
-            'address[phone]' => 'Testing',
-            'address[user]' => 'Testing',
+            'adresse[name]' => 'Testing',
+            'adresse[company]' => 'Testing',
+            'adresse[adresse]' => 'Testing',
+            'adresse[complement]' => 'Testing',
+            'adresse[city]' => 'Testing',
+            'adresse[postal]' => 'Testing',
+            'adresse[country]' => 'Testing',
+            'adresse[phone]' => 'Testing',
+            'adresse[user]' => 'Testing',
         ]);
 
-        self::assertResponseRedirects('/address/');
+        self::assertResponseRedirects('/adresse/');
 
         self::assertSame($originalNumObjectsInRepository + 1, count($this->repository->findAll()));
     }
@@ -103,18 +103,18 @@ class AddressControllerTest extends WebTestCase
         $this->client->request('GET', sprintf('%s%s/edit', $this->path, $fixture->getId()));
 
         $this->client->submitForm('Update', [
-            'address[name]' => 'Something New',
-            'address[company]' => 'Something New',
-            'address[address]' => 'Something New',
-            'address[complement]' => 'Something New',
-            'address[city]' => 'Something New',
-            'address[postal]' => 'Something New',
-            'address[country]' => 'Something New',
-            'address[phone]' => 'Something New',
-            'address[user]' => 'Something New',
+            'adresse[name]' => 'Something New',
+            'adresse[company]' => 'Something New',
+            'adresse[adresse]' => 'Something New',
+            'adresse[complement]' => 'Something New',
+            'adresse[city]' => 'Something New',
+            'adresse[postal]' => 'Something New',
+            'adresse[country]' => 'Something New',
+            'adresse[phone]' => 'Something New',
+            'adresse[user]' => 'Something New',
         ]);
 
-        self::assertResponseRedirects('/address/');
+        self::assertResponseRedirects('/adresse/');
 
         $fixture = $this->repository->findAll();
 
@@ -154,6 +154,6 @@ class AddressControllerTest extends WebTestCase
         $this->client->submitForm('Delete');
 
         self::assertSame($originalNumObjectsInRepository, count($this->repository->findAll()));
-        self::assertResponseRedirects('/address/');
+        self::assertResponseRedirects('/adresse/');
     }
 }

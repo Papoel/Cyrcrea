@@ -37,8 +37,8 @@ class AddressController extends AbstractController
             return $this->redirectToRoute('app_address_all', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('address/new.html.twig', [
-            'address' => $address,
+        return $this->renderForm('adresse/new.html.twig', [
+            'adresse' => $address,
             'form' => $form,
         ]);
     }
@@ -48,7 +48,7 @@ class AddressController extends AbstractController
     {
         $addresses = $addressRepository->findUserAddresses($this->getUser());
 
-        return $this->render('address/show.html.twig', [
+        return $this->render('adresse/show.html.twig', [
             'addresses' => $addresses,
         ]);
     }
@@ -56,8 +56,8 @@ class AddressController extends AbstractController
     #[Route('/{id}', name: 'app_address_show', methods: ['GET'])]
     public function show(Address $address): Response
     {
-        return $this->render('address/show.html.twig', [
-            'address' => $address,
+        return $this->render('adresse/show.html.twig', [
+            'adresse' => $address,
         ]);
     }
 
@@ -75,8 +75,8 @@ class AddressController extends AbstractController
             return $this->redirectToRoute('app_address_all', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('address/edit.html.twig', [
-            'address' => $address,
+        return $this->renderForm('adresse/edit.html.twig', [
+            'adresse' => $address,
             'form' => $form,
         ]);
     }

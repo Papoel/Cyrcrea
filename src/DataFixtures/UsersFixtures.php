@@ -48,7 +48,7 @@ class UsersFixtures extends Fixture implements DependentFixtureInterface
         $userAdmin->setCreatedAt(new \DateTimeImmutable());
         $userAdmin->setIsVerified(true);
 
-        $userAdmin->addAddress($this->getReference('admin-address'));
+        $userAdmin->addAddress($this->getReference('admin-adresse'));
 
         $manager->persist($userAdmin);
         $users[] = $userAdmin;
