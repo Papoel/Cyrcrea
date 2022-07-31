@@ -6,15 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scss/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/OrderDetailsFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/OrderDetailsFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/OrderFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/OrderFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/adresse/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/adresse/_delete_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/adresse/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/adresse/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/compte/account_detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/compte/account_detail.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/compte/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/compte/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/compte/_sidebar_account.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/compte/_sidebar_account.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/commande/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commande/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,7 +292,7 @@
       <workItem from="1659003113704" duration="18404000" />
       <workItem from="1659106662406" duration="17186000" />
       <workItem from="1659184168012" duration="12524000" />
-      <workItem from="1659258446927" duration="8356000" />
+      <workItem from="1659258446927" duration="8962000" />
     </task>
     <servers />
   </component>
@@ -316,5 +309,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>
