@@ -1,7 +1,7 @@
 {% extends 'compte/index.html.twig' %}
 
 {% block content %}
-    <div class="card mb-4">
+    <div class="card mb-2">
         <div class="card-header">
             <h3 class="text-center my-3">Détail de votre compte</h3>
         </div>
@@ -24,13 +24,18 @@
                         <input value="{{ details.email }}" class="form-control" name="email" type="email" disabled>
                     </div>
 
-                    <hr class="separator">
+                    <div class="form-group col-md-6 my-3">
+                        <label class="text-muted text-uppercase">Membre depuis le</label>
+                        <input value="{{ details.createdAt|date('d/m/Y') }}" class="form-control" name="email" type="email" disabled>
+                    </div>
+
+                    <hr class="separator my-3">
 
                     {% for address in addresses %}
-                        <div class="col-4 my-3">
-                            <div class="card">
+                        <div class="col-4 my-4">
+                            <div class="card h-100">
                                 <div class="card-header">
-                                    <h4 class="text-center"> Adresse {{ loop.index}} </h4>
+                                    <h4 class="text-center"> Adresse {{ loop.index}} - {{ address.name}} </h4>
                                 </div>
                                 <div class="card-body">
                                     <address class="d-flex flex-column">
