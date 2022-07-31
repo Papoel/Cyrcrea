@@ -2,6 +2,7 @@
 
 {% block content %}
     <div id="commandes-client" class="pe-2">
+
       <div class="card">
         <div class="card-header">
           <h1>Mes commandes</h1>
@@ -27,41 +28,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th># 1735</th>
-                  <td>22/06/2013</td>
-                  <td>150.00 €</td>
-                  <td><span class="badge rounded-pill text-dark bg-info">Being prepared</span></td>
-                  <td><a href="#" class="btn btn-primary btn-sm">Voir</a></td>
-                </tr>
-                <tr>
-                  <th># 1735</th>
-                  <td>22/06/2013</td>
-                  <td>150.00 €</td>
-                  <td><span class="badge rounded-pill text-light bg-info">Being prepared</span></td>
-                  <td><a href="#" class="btn btn-primary btn-sm">Voir</a></td>
-                </tr>
-                <tr>
-                  <th># 1735</th>
-                  <td>22/06/2013</td>
-                  <td>150.00 €</td>
-                  <td><span class="badge rounded-pill text-light bg-success">Received</span></td>
-                  <td><a href="#" class="btn btn-primary btn-sm">Voir</a></td>
-                </tr>
-                <tr>
-                  <th># 1735</th>
-                  <td>22/06/2013</td>
-                  <td>150.00 €</td>
-                  <td><span class="badge rounded-pill text-light bg-danger">Cancelled</span></td>
-                  <td><a href="#" class="btn btn-primary btn-sm">Voir</a></td>
-                </tr>
-                <tr>
-                  <th># 1735</th>
-                  <td>22/06/2013</td>
-                  <td>150.00 €</td>
-                  <td><span class="badge rounded-pill text-dark bg-warning">On hold</span></td>
-                  <td><a href="#" class="btn btn-primary btn-sm">Voir</a></td>
-                </tr>
+                  {% for commande in commandes %}
+                    <tr>
+                        <th># {{ loop.index }}</th>
+                        <td>{{ commande.createdAt|date('d/m/Y') }}</td>
+                        {# TODO: Afficher le prix depuis OrderDetail #}
+                        <td>€ € €</td>
+                        {# TODO: Ajouter le status dans Order #}
+                        <td><span class="badge rounded-pill text-dark bg-info">A venir</span></td>
+                        <td><a href="#" class="btn btn-primary btn-sm">Voir</a></td>
+                    </tr>
+                  {% endfor %}
               </tbody>
             </table>
           </div>
