@@ -1,0 +1,71 @@
+{% extends 'compte/index.html.twig' %}
+
+{% block content %}
+    <div id="commandes-client" class="pe-2">
+      <div class="card">
+        <div class="card-header">
+          <h1>Mes commandes</h1>
+        </div>
+        <div class="row p-2">
+        <p class="lead">Vos commandes en un seul endroit.</p>
+        <p class="text-muted fst-italic">Pour toutes questions, n'hésitez pas à
+          <a class="link" href="#">nous contacter</a>,
+          notre centre de service clientèle travaille pour vous 24 heures sur 24, 7 jours sur 7.
+        </p>
+        </div>
+        <hr>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Commande</th>
+                  <th>Date</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th># 1735</th>
+                  <td>22/06/2013</td>
+                  <td>150.00 €</td>
+                  <td><span class="badge rounded-pill text-dark bg-info">Being prepared</span></td>
+                  <td><a href="#" class="btn btn-primary btn-sm">Voir</a></td>
+                </tr>
+                <tr>
+                  <th># 1735</th>
+                  <td>22/06/2013</td>
+                  <td>150.00 €</td>
+                  <td><span class="badge rounded-pill text-light bg-info">Being prepared</span></td>
+                  <td><a href="#" class="btn btn-primary btn-sm">Voir</a></td>
+                </tr>
+                <tr>
+                  <th># 1735</th>
+                  <td>22/06/2013</td>
+                  <td>150.00 €</td>
+                  <td><span class="badge rounded-pill text-light bg-success">Received</span></td>
+                  <td><a href="#" class="btn btn-primary btn-sm">Voir</a></td>
+                </tr>
+                <tr>
+                  <th># 1735</th>
+                  <td>22/06/2013</td>
+                  <td>150.00 €</td>
+                  <td><span class="badge rounded-pill text-light bg-danger">Cancelled</span></td>
+                  <td><a href="#" class="btn btn-primary btn-sm">Voir</a></td>
+                </tr>
+                <tr>
+                  <th># 1735</th>
+                  <td>22/06/2013</td>
+                  <td>150.00 €</td>
+                  <td><span class="badge rounded-pill text-dark bg-warning">On hold</span></td>
+                  <td><a href="#" class="btn btn-primary btn-sm">Voir</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

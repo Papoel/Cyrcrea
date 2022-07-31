@@ -23,7 +23,7 @@ class OrderDetailsFixtures extends Fixture implements DependentFixtureInterface
             $orderDetail->setTaxe(20.00);
             $orderDetail->setSubTotalTtc($orderDetail->getSubTotalHt() * $orderDetail->getTaxe());
 
-            $orderDetail->setOrder($this->getReference(sprintf('order%d', $faker->numberBetween(1, 250))));
+            $orderDetail->setOrder($this->getReference(sprintf('commande%d', $faker->numberBetween(1, 250))));
             $manager->persist($orderDetail);
         }
         $manager->flush();

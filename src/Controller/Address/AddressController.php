@@ -14,6 +14,16 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/adresse')]
 class AddressController extends AbstractController
 {
+    #[Route('/', name: 'app_address_all', methods: ['GET'])]
+    public function all(AddressRepository $addressRepository): Response
+    {
+        $addresses = $addressRepository->findUserAddresses($this->getUser());
+
+        return $this->render('adresse/show.html.twig', [
+            'addresses' => $addresses,
+        ]);
+    }
+
     #[Route('/ajouter', name: 'app_address_new', methods: ['GET', 'POST'])]
     public function new(Request $request, AddressRepository $addressRepository): Response
     {
@@ -40,16 +50,6 @@ class AddressController extends AbstractController
         return $this->renderForm('adresse/new.html.twig', [
             'adresse' => $address,
             'form' => $form,
-        ]);
-    }
-
-    #[Route('/tout-voir', name: 'app_address_all', methods: ['GET'])]
-    public function all(AddressRepository $addressRepository): Response
-    {
-        $addresses = $addressRepository->findUserAddresses($this->getUser());
-
-        return $this->render('adresse/show.html.twig', [
-            'addresses' => $addresses,
         ]);
     }
 
