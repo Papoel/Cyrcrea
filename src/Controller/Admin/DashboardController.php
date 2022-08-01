@@ -2,6 +2,9 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Product;
+use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -20,32 +23,25 @@ class DashboardController extends AbstractDashboardController
         return $this->render('admin/dashboard.html.twig');
     }
 
-        // Option 1. Vous pouvez faire en sorte que votre tableau de bord redirige vers une page commune de votre backend.
-
-        // $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class) ;
-        // return $this->redirect($adminUrlGenerator->setController(OneOfYourCrudController::class)->generateUrl()) ;
-
-        // Option 2. Vous pouvez faire en sorte que votre tableau de bord redirige vers différentes pages selon l'utilisateur
-
-        // if ('jane' === $this->getUser()->getUsername()) {
-        // return $this->redirect('....') ;
-        // }
-
-        // Option 3. Vous pouvez rendre un modèle personnalisé pour afficher un véritable tableau de bord avec des widgets, etc.
-        // (conseil : c'est plus facile si votre modèle s'étend à partir de @EasyAdmin/page/content.html.twig)
-
-        // return $this->render('some/path/my-dashboard.html.twig') ;
-
-
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Cyrcrea');
+            ->setTitle('La boutique CyrCrea');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+
+        yield MenuItem::section('Gestion des utilisateurs');
+        yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
+            MenuItem::linkToCrud('Créer un Utilisateur', 'fas fa-plus', User::class)
+                ->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Voir les Utilisateurs', 'fas fa-eye', User::class)
+        ]);
+
+        yield MenuItem::section('Gestion des produits');
+        yield MenuItem::linkToCrud('Produits', 'fa fa-shopping-cart', Product::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }
