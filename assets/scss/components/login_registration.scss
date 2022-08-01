@@ -18,9 +18,6 @@
   a {
     color: $primary;
   }
-    a:hover {
-        color: #d2882a;
-    }
 }
 .different_login {
   text-align: center;
@@ -210,7 +207,4 @@
       padding: 10px;
     }
   }
-}
-#to-login:hover {
-  color: $primary;
 }
