@@ -13,24 +13,29 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-        return parent::index();
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException("Votre rôle ne vous permet pas d'accéder a l'administration");
+        }
 
-        // Option 1. You can make your dashboard redirect to some common page of your backend
-        //
-        // $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-        // return $this->redirect($adminUrlGenerator->setController(OneOfYourCrudController::class)->generateUrl());
+        return $this->render('admin/dashboard.html.twig');
+    }
 
-        // Option 2. You can make your dashboard redirect to different pages depending on the user
-        //
+        // Option 1. Vous pouvez faire en sorte que votre tableau de bord redirige vers une page commune de votre backend.
+
+        // $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class) ;
+        // return $this->redirect($adminUrlGenerator->setController(OneOfYourCrudController::class)->generateUrl()) ;
+
+        // Option 2. Vous pouvez faire en sorte que votre tableau de bord redirige vers différentes pages selon l'utilisateur
+
         // if ('jane' === $this->getUser()->getUsername()) {
-        //     return $this->redirect('...');
+        // return $this->redirect('....') ;
         // }
 
-        // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
-        // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
-        //
-        // return $this->render('some/path/my-dashboard.html.twig');
-    }
+        // Option 3. Vous pouvez rendre un modèle personnalisé pour afficher un véritable tableau de bord avec des widgets, etc.
+        // (conseil : c'est plus facile si votre modèle s'étend à partir de @EasyAdmin/page/content.html.twig)
+
+        // return $this->render('some/path/my-dashboard.html.twig') ;
+
 
     public function configureDashboard(): Dashboard
     {
