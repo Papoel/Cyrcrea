@@ -34,6 +34,7 @@ class DashboardController extends AbstractDashboardController
         return Dashboard::new()
             ->setTitle('La boutique CyrCrea')
             ->renderContentMaximized()
+            ->renderSidebarMinimized()
         ;
     }
 
