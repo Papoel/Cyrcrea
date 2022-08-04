@@ -1,11 +1,26 @@
-<h1>Hi! Please confirm your email!</h1>
-
-<p>
-    Please confirm your email address by clicking the following link: <br><br>
-    <a href="{{ signedUrl }}">Confirm my Email</a>.
-    This link will expire in {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
-</p>
-
-<p>
-    Cheers!
-</p>
+<div class="bg-light">
+      <div class="container">
+          <img class="mx-center my-5" src="public/images/logo/logo.svg"/>
+          <div class="card p-5 py-4">
+              <div class="card-header">
+                <h1 class="h3 fw-bold">Confirmer votre inscription</h1>
+              </div>
+              <div class="card-body">
+                  <p>
+                      Veuillez confirmer votre adresse email en cliquant sur le lien suivant : <br><br>
+                        <a class="btn btn-primary p-3"
+                           href="{{ signedUrl }}">Confirmer mon e-mail
+                        </a>.
+                        Ce lien expirera dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+                  </p>
+              </div>
+              <div class="card-footer">
+                  <p class="text-muted text-center my-6">
+                      La boutique CyrCrea. <br>
+                      12 rue de blabla<br>
+                      77555 Brie Comte Robert <br>
+                  </p>
+              </div>
+          </div>
+      </div>
+</div>

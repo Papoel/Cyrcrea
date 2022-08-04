@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/Categories/CategoriesCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/Categories/CategoriesCrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/Product/ProductCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/Product/ProductCrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Categories.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/confirmation_email.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/confirmation_email.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,6 +301,7 @@
       <workItem from="1659375540586" duration="3684000" />
       <workItem from="1659382177343" duration="1648000" />
       <workItem from="1659454552879" duration="7381000" />
+      <workItem from="1659637760614" duration="4825000" />
     </task>
     <servers />
   </component>
