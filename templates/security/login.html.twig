@@ -3,7 +3,7 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
-    {{ include('partials/_title_section.html.twig', {'name': "Formulaire de connexion"}) }}
+    {{ include('layout/partials/_title_section.html.twig', {'name': "Formulaire de connexion"}) }}
 
     <main class="container w-75">
         {% if app.user %}

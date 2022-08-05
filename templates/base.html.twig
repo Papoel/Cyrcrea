@@ -14,20 +14,20 @@
 
     <body>
         <header class="header">
-            {{ include ('partials/header.html.twig') }}
+            {{ include ('layout/partials/header.html.twig') }}
         </header>
 
         <main role="main" class="container-fluid" id="content-app">
             {# if flash message in session #}
             {% if app.session.flashBag.has('success') %}
-                    {{ include("partials/_flash_messages.html.twig") }}
+                    {{ include("layout/partials/_flash_messages.html.twig") }}
             {% endif %}
 
             {% block body %}{% endblock %}
         </main>
 
         <footer>
-            {{ include ('partials/footer.html.twig') }}
+            {{ include ('layout/partials/footer.html.twig') }}
         </footer>
 
         {% block javascripts %}
