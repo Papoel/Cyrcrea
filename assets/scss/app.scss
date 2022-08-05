@@ -125,3 +125,33 @@ a.link:hover::after {
 .border_bottom_transition {
   border-bottom: 1px solid rgba(39, 97, 134, .5);
 }
+
+// Base class
+.callout {
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  background-color: var(--bd-callout-bg, var(--bs-gray-100));
+  border-left: 0.25rem solid var(--bd-callout-border, var(--bs-gray-300));
+}
+
+// Modifier classes
+.callout-info {
+  --bd-callout-bg: rgba(var(--bs-info-rgb), .075);
+  --bd-callout-border: rgba(var(--bs-info-rgb), .5);
+}
+
+.callout-warning {
+  --bd-callout-bg: rgba(var(--bs-warning-rgb), .075);
+  --bd-callout-border: rgba(var(--bs-warning-rgb), .5);
+}
+
+.callout-danger {
+  --bd-callout-bg: rgba(var(--bs-danger-rgb), .075);
+  --bd-callout-border: rgba(var(--bs-danger-rgb), .5);
+}
+
+.callout-success {
+  --bd-callout-bg: rgba(var(--bs-success-rgb), .075);
+  --bd-callout-border: rgba(var(--bs-success-rgb), .5);
+}
