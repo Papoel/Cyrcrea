@@ -1,23 +1,16 @@
-{% include 'layout/partials/html/_head' %}
-
+{#
 <div class="container">
     <div class="card d-flex justify-content-center">
         <div class="card-header">
-            <h1 class="h3 fw-bold">Email de confirmation</h1>
+            <h1 class="h3 fw-bold text-center text-uppercase">Email de confirmation</h1>
         </div>
         <div class="card-body">
-            <img style="width: 250px" class="mx-auto d-block" src="{{ asset('images/logo/logo.svg') }}" alt="Logo CyrCrea"/>
+            <img class="img mx-auto d-block" src="{{ email.image('@images/logo/light-logo.png') }}" alt="Logo CyrCrea"/>
             <div>
-                <p class="lead text-center">
-                    Veuillez confirmer votre adresse email en cliquant sur le lien suivant : <br><br>
-                </p>
-                    <a class="btn btn-primary p-3"
-                       href="{{ signedUrl }}">Confirmer mon e-mail
-                    </a>.
+                <p class="lead text-center">Veuillez confirmer votre adresse email en cliquant sur le lien suivant : <br><br></p>
+                    <a class="btn btn-primary p-3" href="{{ signedUrl }}">Confirmer mon e-mail</a>.
                 <div class="callout callout-success w-50 mx-auto mt-5">
-                    <span class="text-center d-block fst-italic text-muted">
-                        Ce lien expirera dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
-                    </span>
+                    <span class="text-center d-block fst-italic text-muted">Ce lien expirera dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.</span>
                 </div>
             </div>
         </div>
@@ -30,3 +23,107 @@
         </div>
     </div>
 </div>
+#}
+
+{% apply inline_css %}
+    <!doctype html>
+    <html lang="fr">
+        <head>
+            {% include 'layout/partials/html/_head' %}
+            {% include 'layout/partials/html/_link-css' %}
+            <style>
+                body {
+                    margin: 0;
+                    padding: 30px 0;
+                    background-color: #f3f3f3;
+                    font-family: Helvetica, Arial, sans-serif;
+                }
+                h1, .footer {
+                    background-color: #276186;
+                    color: #ffffff;
+                    padding: 30px 0 50px 0;
+                    font-weight: normal;
+                }
+                hr {
+                    border: none;
+                    border-top: 3px solid #276186;
+                    margin: 20px;
+                }
+                .container {
+                    background-color: #fefefe;
+                    width: 580px;
+                    margin: 0 auto;
+                }
+                .bottom {
+                    background-color: #efefee;
+                }
+                .block {
+                    margin: 0;
+                    padding: 10px 20px 20px 20px;
+                }
+                .logo {
+                    width: 100%;
+                }
+                .text-center {
+                    text-align: center;
+                }
+                .btn {
+                    display: inline-block;
+                    padding: 10px 20px;
+                    background-color: #276186;
+                    color: #fefefe;
+                    border: 1px solid #fff;
+                    border-radius: 25px;
+                    font-size: 20px;
+                    font-weight: bold;
+                    text-decoration: none;
+                }
+                a:hover {
+                    color: #276186;
+                    background-color: #549ec1;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="body">
+                <div class="container">
+                    <div class="header text-center">
+                        <img src="{{ email.image('@images/logo/light-logo.png') }}" class="logo" alt="CyrCrea Logo">
+                    </div>
+                    <div class="content">
+                        <h1 class="text-center">Enchanté de faire votre connaissance {{ email.toName }}!</h1>
+
+                        <p class="block">
+                            Bienvenue sur <strong>La Boutique CyrCrea</strong>, Nous sommes heureux de vous compter
+                            parmi nos clients.
+                            Commencez à visiter notre site et découvrez nos produits.
+                        </p>
+
+                        <p class="block">N'oubliez pas de confirmer votre adresse email en cliquant sur le bouton ci-dessous.</p>
+
+                        <p class="block text-center">
+                            <a class="btn btn-primary p-3 rounded" href="{{ signedUrl }}">Confirmer mon Email</a>
+                        </p>
+
+                        <p class="block">
+                            Consultez nos produits existants et partagez votre expériences dans les commentaires !
+                        </p>
+
+                        <p class="block text-center"><small class="text-center">Ce lien expirera dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.</small></p>
+
+                        <p class="block">Vous avez besoin de l'aide d'un ami ? Nous sommes toujours disponible, n'hésitez pas à nous contacter.</p>
+
+                        <hr>
+
+                        <p class="block bg-light">Salutations,<br><br>Votre sympathique <em>Équipe de La Boutique CyrCrea</em></p>
+
+                    </div>
+
+                    <div class="footer">
+                        <p class="block text-center">Envoyé avec ❤️ par Cyril.</p>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>
+{% endapply %}

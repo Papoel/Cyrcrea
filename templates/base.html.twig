@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
     {% include 'layout/partials/html/_head' %}
-
+    {% include 'layout/partials/html/_link-css' %}
     <body>
         <header class="header">
             {{ include ('layout/partials/header.html.twig') }}
         </header>
 
         <main role="main" class="container-fluid" id="content-app">
-            {# if flash message in session #}
             {% if app.session.flashBag.has('success') %}
                     {{ include("layout/partials/_flash_messages.html.twig") }}
             {% endif %}
-
             {% block body %}{% endblock %}
         </main>
 
