@@ -5,7 +5,7 @@
 {% block body %}
     {{ include('layout/partials/_title_section.html.twig', {'name': "Formulaire de connexion"}) }}
 
-    <main class="container w-75">
+    <section id="login" class="container">
         {% if app.user %}
             <div class="mb-3">
                 Vous êtes déjà connecté avec le compte {{ app.user.userIdentifier }}, si ce n'est pas vous
@@ -97,7 +97,7 @@
             </label>
         </div>
         #}
-    </main>
+    </section>
 {% endblock %}
 
 {% block javascripts %}
