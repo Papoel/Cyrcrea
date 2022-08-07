@@ -28,18 +28,19 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             $product->setIsNewArrival($faker->boolean());
             $product->setIsFeatured($faker->boolean());
             $product->setIsSpecialOffer($faker->boolean());
-            $product->setImage(
-                './public/images/'
-                . $images[$faker->numberBetween(0, 5)]
-                . '_' .
-                $faker->numberBetween(1, 4)
-                . '.png'
-            );
+
             $product->setQuantity($faker->numberBetween(15, 850));
             $product->setTags($faker->word($faker->numberBetween(1, 10)));
 
             $product->addCategory($this->getReference(sprintf('category%d', $faker->numberBetween(1, 6))));
             //$product->addReview($this->getReference(sprintf('review%d', $faker->numberBetween(1, 200))));
+
+            $product->setImage(
+                $images[$faker->numberBetween(0, 5)]
+                . '_' .
+                $faker->numberBetween(1, 4)
+                . '.png'
+            );
 
             $manager->persist($product);
             $this->addReference(sprintf('product%d', $i), $product);
