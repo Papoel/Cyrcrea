@@ -9,15 +9,21 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ProductCrudController extends AbstractCrudController
 {
-    public const PRODUCT_BASE_PATH = 'images/telechargements/';
+    public const PRODUCT_BASE_PATH = 'images/telechargements/produits';
     public const PRODUCT_UPLOAD_DIR = 'public/images/telechargements/produits/';
 
-    public function __construct(private EntityManagerInterface $entityManager)
+    /**
+     * @param EntityManagerInterface $entityManager
+     */
+    public function __construct(private readonly EntityManagerInterface $entityManager)
     {
     }
 
@@ -30,14 +36,27 @@ class ProductCrudController extends AbstractCrudController
     {
         yield IdField::new('id')->hideOnForm();
         yield TextField::new('name', 'Nom');
+        yield SlugField::new('slug', 'Slug')
+            ->setTargetFieldName('name');
         yield TextField::new('description', 'Description');
-        yield MoneyField::new('price', 'Prix')->setCurrency('EUR');
+        yield TextEditorField::new('more_informations', 'Informations complémentaires')
+            ->onlyOnDetail()
+        ;
+
+        yield MoneyField::new('price', 'Prix')
+            ->setCurrency('EUR');
         yield BooleanField::new('is_Best', 'Best');
         yield BooleanField::new('is_New_Arrival', 'Nouveau');
         yield BooleanField::new('is_Featured');
+
         yield ImageField::new('image', 'Image')
                 ->setBasePath(self::PRODUCT_BASE_PATH)
-                ->setUploadDir(self::PRODUCT_UPLOAD_DIR);
+                ->setUploadDir(self::PRODUCT_UPLOAD_DIR)
+                ->setUploadedFileNamePattern('[randomhash].[extension]')
+                ->setRequired(false);
+                // ->setFormTypeOption('allow_delete', false)
+        yield IntegerField::new('quantity', 'Quantité');
+        yield TextField::new('tags', 'Tags');
 
         if ($pageName === 'edit') {
             yield AssociationField::new('Categories', 'Catégories')
@@ -46,6 +65,5 @@ class ProductCrudController extends AbstractCrudController
                     'expanded' => false,
                 ]);
         }
-        //yield AssociationField::new('categories', 'Catégories');
     }
 }
