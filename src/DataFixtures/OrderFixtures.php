@@ -18,7 +18,7 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
 
         for ($i = 1; $i <= 250; $i++) {
             $order = new Order();
-            $order->setReference($faker->text($faker->numberBetween(30, 250)));
+            $order->setReference('Commande #' . $i);
             $order->setFullName($faker->firstName . ' ' . $faker->lastName);
             $order->setCarrierName($faker->company());
             $order->setCarrierPrice($faker->randomFloat(2, 0, 9.90));
@@ -31,7 +31,10 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
             );
             $order->setIsPaid($faker->boolean);
             $order->setMoreInformations($faker->text($faker->numberBetween(50, 500)));
-            $order->setCreatedAt(new \DateTimeImmutable());
+
+            $date = $faker->dateTimeBetween('-1 years', 'now');
+            $immutable = \DateTimeImmutable::createFromMutable($date);
+            $order->setCreatedAt($immutable);
 
             $order->setUser($this->getReference(sprintf('user%s', $faker->numberBetween(1, 3))));
 
