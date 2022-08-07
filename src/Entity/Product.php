@@ -48,7 +48,7 @@ class Product
     #[ORM\Column(type: 'integer')]
     private int $quantity;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'text', nullable: true)]
     private string $tags;
 
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: ReviewsProduct::class)]
@@ -57,9 +57,6 @@ class Product
     #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'products')]
     private Collection $Categories;
 
-    #[ORM\ManyToMany(targetEntity: TagsProduct::class, mappedBy: 'product')]
-    private Collection $tagsProducts;
-
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: RelatedProduct::class)]
     private Collection $relatedProducts;
 
@@ -67,7 +64,6 @@ class Product
     {
         $this->reviews = new ArrayCollection();
         $this->Categories = new ArrayCollection();
-        $this->tagsProducts = new ArrayCollection();
         $this->relatedProducts = new ArrayCollection();
     }
 
@@ -274,32 +270,6 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Collection<int, TagsProduct>
-     */
-    public function getTagsProducts(): Collection
-    {
-        return $this->tagsProducts;
-    }
-
-    public function addTagsProduct(TagsProduct $tagsProduct): self
-    {
-        if (!$this->tagsProducts->contains($tagsProduct)) {
-            $this->tagsProducts->add($tagsProduct);
-            $tagsProduct->addProduct($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTagsProduct(TagsProduct $tagsProduct): self
-    {
-        if ($this->tagsProducts->removeElement($tagsProduct)) {
-            $tagsProduct->removeProduct($this);
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, RelatedProduct>
