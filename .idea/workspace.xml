@@ -5,9 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Address/AddressController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Address/AddressController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/Address/AddressCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/Address/AddressCrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/Carrier/CarrierCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/Carrier/CarrierCrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Admin/Product/ProductCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/Product/ProductCrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Commande/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Commande/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Compte/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Compte/AccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AddressFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AddressFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/CarrierFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/CarrierFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/OrderDetailsFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/OrderDetailsFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ProductFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ProductFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/UsersFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UsersFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Address.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Addresses.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Carrier.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Carriers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Categories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/OrderDetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/OrderDetails.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/RelatedProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/RelatedProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/ReviewsProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/ReviewsProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AddressType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AddressType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/AddressRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AddressesRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CarrierRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CarriersRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/OrderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/OrdersRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ProductRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ProductsRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Controller/AddressControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/AddressControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Controller/OrderControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/OrderControllerTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,18 +279,26 @@
       <recent name="$PROJECT_DIR$/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/DataFixtures" />
+      <recent name="$PROJECT_DIR$/src/Services" />
       <recent name="$PROJECT_DIR$/assets/images/logo" />
       <recent name="$PROJECT_DIR$/templates/layout/partials/html" />
       <recent name="$PROJECT_DIR$/templates/layout" />
-      <recent name="$PROJECT_DIR$/assets/scss/components/_partials" />
-      <recent name="$PROJECT_DIR$/assets/scss/components" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHP Script.CouponsTypes.php">
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <configuration name="CouponsTypes.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/Entity/CouponsTypes.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.CouponsTypes.php" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -307,7 +341,8 @@
       <workItem from="1659637760614" duration="5120000" />
       <workItem from="1659695847386" duration="13937000" />
       <workItem from="1659798363179" duration="8555000" />
-      <workItem from="1659880053139" duration="11711000" />
+      <workItem from="1659880053139" duration="11901000" />
+      <workItem from="1660068382484" duration="6509000" />
     </task>
     <servers />
   </component>

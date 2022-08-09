@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductRepository;
+use App\Repository\ProductsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ProductRepository::class)]
-class Product
+#[ORM\Entity(repositoryClass: ProductsRepository::class)]
+class Products
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -27,7 +27,7 @@ class Product
     #[ORM\Column(type: 'text', nullable: true)]
     private string $moreInformations;
 
-    #[ORM\Column(type: 'float')]
+    #[ORM\Column(type: 'integer')]
     private float $price;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
@@ -46,10 +46,10 @@ class Product
     private string $image;
 
     #[ORM\Column(type: 'integer')]
-    private int $quantity;
+    private int $stock;
 
-    #[ORM\Column(type: 'text', nullable: true)]
-    private string $tags;
+    #[ORM\Column(type: 'datetime_immutable')]
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: ReviewsProduct::class)]
     private Collection $reviews;
@@ -60,11 +60,15 @@ class Product
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: RelatedProduct::class)]
     private Collection $relatedProducts;
 
+    #[ORM\OneToMany(mappedBy: 'products', targetEntity: OrderDetails::class)]
+    private Collection $orderDetails;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
         $this->Categories = new ArrayCollection();
         $this->relatedProducts = new ArrayCollection();
+        $this->orderDetails = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -120,12 +124,12 @@ class Product
         return $this;
     }
 
-    public function getPrice(): ?float
+    public function getPrice(): ?int
     {
         return $this->price;
     }
 
-    public function setPrice(float $price): self
+    public function setPrice(int $price): self
     {
         $this->price = $price;
 
@@ -192,28 +196,26 @@ class Product
         return $this;
     }
 
-    public function getQuantity(): ?int
+    public function getStock(): ?int
     {
-        return $this->quantity;
+        return $this->stock;
     }
 
-    public function setQuantity(int $quantity): self
+    public function setStock(int $stock): self
     {
-        $this->quantity = $quantity;
+        $this->stock = $stock;
 
         return $this;
     }
 
-    public function getTags(): ?string
+    public function getCreatedAt(): \DateTimeImmutable
     {
-        return $this->tags;
+        return $this->createdAt;
     }
 
-    public function setTags(?string $tags): self
+    public function setCreatedAt(\DateTimeImmutable $createdAt): void
     {
-        $this->tags = $tags;
-
-        return $this;
+        $this->createdAt = $createdAt;
     }
 
     /**
@@ -236,11 +238,9 @@ class Product
 
     public function removeReview(ReviewsProduct $review): self
     {
-        if ($this->reviews->removeElement($review)) {
-            // set the owning side to null (unless already changed)
-            if ($review->getProduct() === $this) {
-                $review->setProduct(null);
-            }
+        // set the owning side to null (unless already changed)
+        if ($this->reviews->removeElement($review) && $review->getProduct() === $this) {
+            $review->setProduct(null);
         }
 
         return $this;
@@ -291,10 +291,38 @@ class Product
 
     public function removeRelatedProduct(RelatedProduct $relatedProduct): self
     {
-        if ($this->relatedProducts->removeElement($relatedProduct)) {
+        // set the owning side to null (unless already changed)
+        if ($this->relatedProducts->removeElement($relatedProduct) && $relatedProduct->getProduct() === $this) {
+            $relatedProduct->setProduct(null);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OrderDetails>
+     */
+    public function getOrderDetails(): Collection
+    {
+        return $this->orderDetails;
+    }
+
+    public function addOrderDetail(OrderDetails $orderDetail): self
+    {
+        if (!$this->orderDetails->contains($orderDetail)) {
+            $this->orderDetails->add($orderDetail);
+            $orderDetail->setProducts($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderDetail(OrderDetails $orderDetail): self
+    {
+        if ($this->orderDetails->removeElement($orderDetail)) {
             // set the owning side to null (unless already changed)
-            if ($relatedProduct->getProduct() === $this) {
-                $relatedProduct->setProduct(null);
+            if ($orderDetail->getProducts() === $this) {
+                $orderDetail->setProducts(null);
             }
         }
 

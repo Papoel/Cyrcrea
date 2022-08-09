@@ -45,7 +45,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private \DateTimeImmutable $updatedAt;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Address::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Addresses::class)]
     private Collection $addresses;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class)]
@@ -211,14 +211,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Address>
+     * @return Collection<int, Addresses>
      */
     public function getAddresses(): Collection
     {
         return $this->addresses;
     }
 
-    public function addAddress(Address $address): self
+    public function addAddress(Addresses $address): self
     {
         if (!$this->addresses->contains($address)) {
             $this->addresses[] = $address;
@@ -228,7 +228,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeAddress(Address $address): self
+    public function removeAddress(Addresses $address): self
     {
         // set the owning side to null (unless already changed)
         if ($this->addresses->removeElement($address) && $address->getUser() === $this) {

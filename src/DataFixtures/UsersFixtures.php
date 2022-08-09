@@ -31,6 +31,10 @@ class UsersFixtures extends Fixture implements DependentFixtureInterface
         $userAdmin->setCreatedAt(new \DateTimeImmutable());
         $userAdmin->setIsVerified(true);
 
+        $date = $faker->dateTimeBetween('-1 years', 'now');
+        $immutable = \DateTimeImmutable::createFromMutable( $date );
+        $userAdmin->setCreatedAt($immutable);
+
         $userAdmin->addAddress($this->getReference('super-admin'));
 
         $manager->persist($userAdmin);
@@ -48,6 +52,10 @@ class UsersFixtures extends Fixture implements DependentFixtureInterface
         $userAdmin->setCreatedAt(new \DateTimeImmutable());
         $userAdmin->setIsVerified(true);
 
+        $date = $faker->dateTimeBetween('-1 years', 'now');
+        $immutable = \DateTimeImmutable::createFromMutable( $date );
+        $userAdmin->setCreatedAt($immutable);
+
         $userAdmin->addAddress($this->getReference('admin-adresse'));
 
         $manager->persist($userAdmin);
@@ -63,6 +71,10 @@ class UsersFixtures extends Fixture implements DependentFixtureInterface
             $user->setRoles(['ROLE_USER']);
             $user->setPassword($this->passwordHasher->hashPassword($user, 'password'));
             $user->setIsVerified($faker->boolean());
+
+            $date = $faker->dateTimeBetween('-10 months', '+ 30 days');
+            $immutable = \DateTimeImmutable::createFromMutable( $date );
+            $user->setCreatedAt($immutable);
 
             $manager->persist($user);
             $this->addReference(sprintf('user%d', $i), $user);

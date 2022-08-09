@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Carrier;
+use App\Entity\Carriers;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
@@ -15,7 +15,7 @@ class CarrierFixtures extends Fixture
 
         for ($i = 1; $i <= 10; $i++) {
             $carriers = [];
-            $carrier = new Carrier();
+            $carrier = new Carriers();
 
             $carrier->setName($faker->company());
             $carrier->setDescription($faker->text($faker->numberBetween(50, 250)));

@@ -5,7 +5,7 @@ namespace App\Controller\Commande;
 use App\Entity\Order;
 use App\Form\OrderType;
 use App\Repository\OrderDetailsRepository;
-use App\Repository\OrderRepository;
+use App\Repository\OrdersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class OrderController extends AbstractController
 {
     #[Route('/', name: 'app_order', methods: ['GET'])]
-    public function index(OrderRepository $orderRepository, orderDetailsRepository $orderDetailsRepository): Response
+    public function index(OrdersRepository $orderRepository, orderDetailsRepository $orderDetailsRepository): Response
     {
         $orders = $orderRepository->findUserOrders($this->getUser());
 
@@ -25,7 +25,7 @@ class OrderController extends AbstractController
     }
 
     #[Route('/new', name: 'app_order_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, OrderRepository $orderRepository): Response
+    public function new(Request $request, OrdersRepository $orderRepository): Response
     {
         $order = new Order();
         $form = $this->createForm(OrderType::class, $order);
@@ -52,7 +52,7 @@ class OrderController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_order_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Order $order, OrderRepository $orderRepository): Response
+    public function edit(Request $request, Order $order, OrdersRepository $orderRepository): Response
     {
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
@@ -70,7 +70,7 @@ class OrderController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_order_delete', methods: ['POST'])]
-    public function delete(Request $request, Order $order, OrderRepository $orderRepository): Response
+    public function delete(Request $request, Order $order, OrdersRepository $orderRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $order->getId(), $request->request->get('_token'))) {
             $orderRepository->remove($order, true);

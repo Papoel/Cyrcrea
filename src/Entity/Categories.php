@@ -25,7 +25,7 @@ class Categories
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: Product::class, mappedBy: 'Categories')]
+    #[ORM\ManyToMany(targetEntity: Products::class, mappedBy: 'Categories')]
     private Collection $products;
 
     public function __construct()
@@ -68,14 +68,14 @@ class Categories
     }
 
     /**
-     * @return Collection<int, Product>
+     * @return Collection<int, Products>
      */
     public function getProducts(): Collection
     {
         return $this->products;
     }
 
-    public function addProduct(Product $product): self
+    public function addProduct(Products $product): self
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
@@ -85,7 +85,7 @@ class Categories
         return $this;
     }
 
-    public function removeProduct(Product $product): self
+    public function removeProduct(Products $product): self
     {
         if ($this->products->removeElement($product)) {
             $product->removeCategory($this);

@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Carrier;
+use App\Entity\Coupons;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Carrier>
+ * @extends ServiceEntityRepository<Coupons>
  *
- * @method Carrier|null find($id, $lockMode = null, $lockVersion = null)
- * @method Carrier|null findOneBy(array $criteria, array $orderBy = null)
- * @method Carrier[]    findAll()
- * @method Carrier[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Coupons|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Coupons|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Coupons[]    findAll()
+ * @method Coupons[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CarrierRepository extends ServiceEntityRepository
+class CouponsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Carrier::class);
+        parent::__construct($registry, Coupons::class);
     }
 
-    public function add(Carrier $entity, bool $flush = false): void
+    public function add(Coupons $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class CarrierRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Carrier $entity, bool $flush = false): void
+    public function remove(Coupons $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class CarrierRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Carrier[] Returns an array of Carrier objects
+//     * @return Coupons[] Returns an array of Coupons objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class CarrierRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Carrier
+//    public function findOneBySomeField($value): ?Coupons
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

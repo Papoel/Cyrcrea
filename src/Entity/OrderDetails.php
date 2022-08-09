@@ -8,16 +8,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: OrderDetailsRepository::class)]
 class OrderDetails
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private int $id;
-
     #[ORM\Column(type: 'text')]
     private string $productName;
 
-    #[ORM\Column(type: 'float')]
-    private float $productPrice;
+    #[ORM\Column(type: 'integer')]
+    private int $productPrice;
 
     #[ORM\Column(type: 'text')]
     private string $quantity;
@@ -25,20 +20,21 @@ class OrderDetails
     #[ORM\Column(type: 'text')]
     private string $subTotalHt;
 
-    #[ORM\Column(type: 'float')]
-    private float $taxe;
+    #[ORM\Column(type: 'integer')]
+    private int $taxe;
 
-    #[ORM\Column(type: 'float')]
-    private float $subTotalTtc;
+    #[ORM\Column(type: 'integer')]
+    private int $subTotalTtc;
 
+    #[ORM\Id]
     #[ORM\ManyToOne(targetEntity: Order::class, inversedBy: 'orderDetails')]
     #[ORM\JoinColumn(nullable: false)]
     private Order $order;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    #[ORM\Id]
+    #[ORM\ManyToOne(inversedBy: 'orderDetails')]
+    #[ORM\JoinColumn(nullable: false)]
+    private Products $products;
 
     public function getProductName(): ?string
     {
@@ -52,12 +48,12 @@ class OrderDetails
         return $this;
     }
 
-    public function getProductPrice(): ?float
+    public function getProductPrice(): ?int
     {
         return $this->productPrice;
     }
 
-    public function setProductPrice(float $productPrice): self
+    public function setProductPrice(int $productPrice): self
     {
         $this->productPrice = $productPrice;
 
@@ -88,24 +84,24 @@ class OrderDetails
         return $this;
     }
 
-    public function getTaxe(): ?float
+    public function getTaxe(): ?int
     {
         return $this->taxe;
     }
 
-    public function setTaxe(float $taxe): self
+    public function setTaxe(int $taxe): self
     {
         $this->taxe = $taxe;
 
         return $this;
     }
 
-    public function getSubTotalTtc(): ?float
+    public function getSubTotalTtc(): ?int
     {
         return $this->subTotalTtc;
     }
 
-    public function setSubTotalTtc(float $subTotalTtc): self
+    public function setSubTotalTtc(int $subTotalTtc): self
     {
         $this->subTotalTtc = $subTotalTtc;
 
@@ -120,6 +116,18 @@ class OrderDetails
     public function setOrder(?Order $order): self
     {
         $this->order = $order;
+
+        return $this;
+    }
+
+    public function getProducts(): ?Products
+    {
+        return $this->products;
+    }
+
+    public function setProducts(?Products $products): self
+    {
+        $this->products = $products;
 
         return $this;
     }

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\OrderRepository;
+use App\Repository\OrdersRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: OrderRepository::class)]
-#[ORM\Table(name: '`order`')]
+#[ORM\Entity(repositoryClass: OrdersRepository::class)]
+#[ORM\Table(name: '`orders`')]
 class Order
 {
     #[ORM\Id]
@@ -16,8 +16,8 @@ class Order
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private string $reference;
+    #[ORM\Column(type: 'string', length: 25, unique: true)]
+    private string $reference; // 1
 
     #[ORM\Column(type: 'text')]
     private string $fullName;
@@ -37,8 +37,8 @@ class Order
     #[ORM\Column(type: 'text', nullable: true)]
     private string $moreInformations;
 
-    #[ORM\Column(type: 'datetime_immutable')]
-    private \DateTimeImmutable $createdAt;
+    #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
+    private \DateTimeImmutable $createdAt; // 2
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
@@ -46,6 +46,9 @@ class Order
 
     #[ORM\OneToMany(mappedBy: 'orderId', targetEntity: OrderDetails::class)]
     private Collection $orderDetails;
+
+    #[ORM\ManyToOne(inversedBy: 'orders')]
+    private ?Coupons $coupons = null;
 
     public function __construct()
     {
@@ -191,6 +194,18 @@ class Order
                 $orderDetail->setOrder(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCoupons(): ?Coupons
+    {
+        return $this->coupons;
+    }
+
+    public function setCoupons(?Coupons $coupons): self
+    {
+        $this->coupons = $coupons;
 
         return $this;
     }

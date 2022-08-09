@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin\Product;
 
-use App\Entity\Product;
+use App\Entity\Products;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -29,7 +29,7 @@ class ProductCrudController extends AbstractCrudController
 
     public static function getEntityFqcn(): string
     {
-        return Product::class;
+        return Products::class;
     }
 
     public function configureFields(string $pageName): iterable

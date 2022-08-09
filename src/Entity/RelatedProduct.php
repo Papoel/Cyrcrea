@@ -15,19 +15,19 @@ class RelatedProduct
 
     #[ORM\ManyToOne(inversedBy: 'relatedProducts')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Product $product = null;
+    private ?Products $product = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getProduct(): ?Product
+    public function getProduct(): ?Products
     {
         return $this->product;
     }
 
-    public function setProduct(?Product $product): self
+    public function setProduct(?Products $product): self
     {
         $this->product = $product;
 

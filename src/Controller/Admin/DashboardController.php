@@ -2,10 +2,10 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Carrier;
+use App\Entity\Carriers;
 use App\Entity\Categories;
 use App\Entity\Order;
-use App\Entity\Product;
+use App\Entity\Products;
 use App\Entity\ReviewsProduct;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -68,7 +68,7 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('Gestion produits')
             ->setBadge(count(
-                $this->entityManager->getRepository(Product::class)->findAll()
+                $this->entityManager->getRepository(Products::class)->findAll()
             ),
                 'dark'
             )
@@ -76,9 +76,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Actions Produits', 'fa-brands fa-product-hunt')
             ->setCssClass('fst-italic text-muted')
             ->setSubItems([
-                MenuItem::linkToCrud('Ajouter', 'fas fa-plus', Product::class)
+                MenuItem::linkToCrud('Ajouter', 'fas fa-plus', Products::class)
                     ->setAction(Crud::PAGE_NEW),
-                MenuItem::linkToCrud('Voir', 'fas fa-eye', Product::class),
+                MenuItem::linkToCrud('Voir', 'fas fa-eye', Products::class),
                 ]
             )
         ;
@@ -93,9 +93,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Actions Livreurs', 'fas fa-truck')
             ->setCssClass('fst-italic text-muted')
             ->setSubItems([
-                MenuItem::linkToCrud('Ajouter', 'fas fa-plus', Carrier::class)
+                MenuItem::linkToCrud('Ajouter', 'fas fa-plus', Carriers::class)
                     ->setAction(Crud::PAGE_NEW),
-                MenuItem::linkToCrud('Voir', 'fas fa-eye', Carrier::class),
+                MenuItem::linkToCrud('Voir', 'fas fa-eye', Carriers::class),
                 ]
             )
         ;

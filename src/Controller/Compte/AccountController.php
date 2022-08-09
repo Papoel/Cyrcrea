@@ -2,7 +2,7 @@
 
 namespace App\Controller\Compte;
 
-use App\Entity\Address;
+use App\Entity\Addresses;
 use App\Entity\User;
 use App\Form\AccountDetailsFormType;
 use App\Form\AddressFormType;
@@ -32,7 +32,7 @@ class AccountController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
         $userDetails = $entityManager->getRepository(User::class)->find($user);
-        $userAddresses = $entityManager->getRepository(Address::class)->findUserAddresses($user);
+        $userAddresses = $entityManager->getRepository(Addresses::class)->findUserAddresses($user);
 
 
         return $this->render('compte/account_detail.html.twig', [

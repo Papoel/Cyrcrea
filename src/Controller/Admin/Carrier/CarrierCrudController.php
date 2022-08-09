@@ -2,14 +2,14 @@
 
 namespace App\Controller\Admin\Carrier;
 
-use App\Entity\Carrier;
+use App\Entity\Carriers;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class CarrierCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Carrier::class;
+        return Carriers::class;
     }
 
     /*

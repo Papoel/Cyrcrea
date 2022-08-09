@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Address;
+use App\Entity\Addresses;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
@@ -14,7 +14,7 @@ class AddressFixtures extends Fixture
         $faker = Faker\Factory::create('fr_FR');
 
         $addresses = [];
-        $address = new Address();
+        $address = new Addresses();
 
         $address->setName('Aude & Papoel');
         $address->setCompany('ZELIS LABRI');
@@ -29,7 +29,7 @@ class AddressFixtures extends Fixture
         $addresses[] = $address;
 
         $addresses = [];
-        $address = new Address();
+        $address = new Addresses();
 
         $address->setName('Maison');
         $address->setCompany('Cyr-Créa');
@@ -46,7 +46,7 @@ class AddressFixtures extends Fixture
 
         for ($i = 1; $i <= 20; ++$i) {
             $addresses = [];
-            $address = new Address();
+            $address = new Addresses();
 
             $address->setName($faker->word(1));
             $address->setCompany($faker->company());

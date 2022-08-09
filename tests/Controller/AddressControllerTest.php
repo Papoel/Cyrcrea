@@ -2,21 +2,21 @@
 
 namespace App\Test\Controller;
 
-use App\Entity\Address;
-use App\Repository\AddressRepository;
+use App\Entity\Addresses;
+use App\Repository\AddressesRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class AddressControllerTest extends WebTestCase
 {
     private KernelBrowser $client;
-    private AddressRepository $repository;
+    private AddressesRepository $repository;
     private string $path = '/adresse/';
 
     protected function setUp(): void
     {
         $this->client = static::createClient();
-        $this->repository = (static::getContainer()->get('doctrine'))->getRepository(Address::class);
+        $this->repository = (static::getContainer()->get('doctrine'))->getRepository(Addresses::class);
 
         foreach ($this->repository->findAll() as $object) {
             $this->repository->remove($object, true);
@@ -63,7 +63,7 @@ class AddressControllerTest extends WebTestCase
     public function testShow(): void
     {
         $this->markTestIncomplete();
-        $fixture = new Address();
+        $fixture = new Addresses();
         $fixture->setName('My Title');
         $fixture->setCompany('My Title');
         $fixture->setAddress('My Title');
@@ -87,7 +87,7 @@ class AddressControllerTest extends WebTestCase
     public function testEdit(): void
     {
         $this->markTestIncomplete();
-        $fixture = new Address();
+        $fixture = new Addresses();
         $fixture->setName('My Title');
         $fixture->setCompany('My Title');
         $fixture->setAddress('My Title');
@@ -135,7 +135,7 @@ class AddressControllerTest extends WebTestCase
 
         $originalNumObjectsInRepository = count($this->repository->findAll());
 
-        $fixture = new Address();
+        $fixture = new Addresses();
         $fixture->setName('My Title');
         $fixture->setCompany('My Title');
         $fixture->setAddress('My Title');

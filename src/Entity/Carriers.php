@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\CarrierRepository;
+use App\Repository\CarriersRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CarrierRepository::class)]
-class Carrier
+#[ORM\Entity(repositoryClass: CarriersRepository::class)]
+class Carriers
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

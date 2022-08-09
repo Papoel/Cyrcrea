@@ -3,14 +3,14 @@
 namespace App\Test\Controller;
 
 use App\Entity\Order;
-use App\Repository\OrderRepository;
+use App\Repository\OrdersRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class OrderControllerTest extends WebTestCase
 {
     private KernelBrowser $client;
-    private OrderRepository $repository;
+    private OrdersRepository $repository;
     private string $path = '/order/';
 
     protected function setUp(): void

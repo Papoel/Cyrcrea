@@ -16,14 +16,16 @@ class OrderDetailsFixtures extends Fixture implements DependentFixtureInterface
 
         for ($i = 1; $i <= 250; $i++) {
             $orderDetail = new OrderDetails();
+            $orderDetail->setOrder($this->getReference(sprintf('commande%d', $i)));
+            $orderDetail->setProducts($this->getReference(sprintf('product%d', $faker->numberBetween(1, 1500))));
             $orderDetail->setProductName($faker->word(1));
-            $orderDetail->setProductPrice($faker->randomFloat(2, 1.50, 49.90));
+            $orderDetail->setProductPrice($faker->numberBetween(100, 99990,));
             $orderDetail->setQuantity($faker->numberBetween(1, 35));
-            $orderDetail->setSubTotalHt($faker->randomFloat(1.49, 49.90));
+            $orderDetail->setSubTotalHt($faker->numberBetween(149, 99990));
             $orderDetail->setTaxe(20.00);
             $orderDetail->setSubTotalTtc($orderDetail->getSubTotalHt() * $orderDetail->getTaxe());
 
-            $orderDetail->setOrder($this->getReference(sprintf('commande%d', $faker->numberBetween(1, 250))));
+            // $orderDetail->setOrder($this->getReference(sprintf('commande%d', $faker->numberBetween(1, 250))));
             $manager->persist($orderDetail);
         }
         $manager->flush();
@@ -32,7 +34,8 @@ class OrderDetailsFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies(): array
     {
         return [
-            OrderFixtures::class
+            OrderFixtures::class,
+            ProductFixtures::class
         ];
     }
 }
