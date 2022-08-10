@@ -55,8 +55,7 @@ class ProductCrudController extends AbstractCrudController
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false);
                 // ->setFormTypeOption('allow_delete', false)
-        yield IntegerField::new('quantity', 'Quantité');
-        yield TextField::new('tags', 'Tags');
+        yield IntegerField::new('stock', 'Quantité');
 
         if ($pageName === 'edit') {
             yield AssociationField::new('Categories', 'Catégories')

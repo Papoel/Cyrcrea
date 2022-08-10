@@ -23,7 +23,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             $product->setSlug($faker->slug(3));
             $product->setDescription($faker->text($faker->numberBetween(30, 400)));
             $product->setMoreInformations($faker->word($faker->numberBetween(10, 95)));
-            $product->setPrice($faker->randomFloat());
+            $product->setPrice($faker->numberBetween(200, 15000));
             $product->setIsBest($faker->boolean());
             $product->setIsNewArrival($faker->boolean());
             $product->setIsFeatured($faker->boolean());
