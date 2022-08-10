@@ -65,6 +65,7 @@ class Products
 
     public function __construct()
     {
+        $this->createdAt = new \DateTimeImmutable();
         $this->reviews = new ArrayCollection();
         $this->Categories = new ArrayCollection();
         $this->relatedProducts = new ArrayCollection();
