@@ -25,8 +25,8 @@ class Order
     #[ORM\Column(type: 'string', length: 255)]
     private string $carrierName;
 
-    #[ORM\Column(type: 'float')]
-    private float $carrierPrice;
+    #[ORM\Column(type: 'integer')]
+    private int $carrierPrice;
 
     #[ORM\Column(type: 'text')]
     private string $deliveryAddress;
@@ -96,12 +96,12 @@ class Order
         return $this;
     }
 
-    public function getCarrierPrice(): ?float
+    public function getCarrierPrice(): ?int
     {
         return $this->carrierPrice;
     }
 
-    public function setCarrierPrice(float $carrierPrice): self
+    public function setCarrierPrice(int $carrierPrice): self
     {
         $this->carrierPrice = $carrierPrice;
 

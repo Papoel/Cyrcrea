@@ -45,17 +45,9 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-
         yield MenuItem::linkToRoute('Visiter le site', 'fas fa-store', 'app_home');
 
-
-        yield MenuItem::section('Gestion utilisateurs')
-            ->setBadge(count(
-                $this->entityManager->getRepository(User::class)->findAll()
-            ),
-                'dark'
-            )
-        ;
+        yield MenuItem::section('Gestion utilisateurs')->setBadge(count($this->entityManager->getRepository(User::class)->findAll()), 'dark');
         yield MenuItem::subMenu('Actions Utilisateurs', 'fas fa-users')
             ->setCssClass('fst-italic text-muted')
             ->setSubItems([
@@ -67,12 +59,7 @@ class DashboardController extends AbstractDashboardController
         ;
 
         yield MenuItem::section('Gestion produits')
-            ->setBadge(count(
-                $this->entityManager->getRepository(Products::class)->findAll()
-            ),
-                'dark'
-            )
-        ;
+            ->setBadge(count($this->entityManager->getRepository(Products::class)->findAll()), 'dark');
         yield MenuItem::subMenu('Actions Produits', 'fa-brands fa-product-hunt')
             ->setCssClass('fst-italic text-muted')
             ->setSubItems([
@@ -84,12 +71,7 @@ class DashboardController extends AbstractDashboardController
         ;
 
         yield MenuItem::section('Gestion livreurs')
-            ->setBadge(count(
-                $this->entityManager->getRepository(Categories::class)->findAll()
-            ),
-                'dark'
-            )
-        ;
+            ->setBadge(count($this->entityManager->getRepository(Categories::class)->findAll()), 'dark');
         yield MenuItem::subMenu('Actions Livreurs', 'fas fa-truck')
             ->setCssClass('fst-italic text-muted')
             ->setSubItems([
@@ -101,12 +83,7 @@ class DashboardController extends AbstractDashboardController
         ;
 
         yield MenuItem::section('Gestion catégories')
-            ->setBadge(count(
-                $this->entityManager->getRepository(Categories::class)->findAll()
-            ),
-                'dark'
-            )
-        ;
+            ->setBadge(count($this->entityManager->getRepository(Categories::class)->findAll()), 'dark');
         yield MenuItem::subMenu('Actions Catégories', 'fas fa-boxes-stacked')
             ->setCssClass('fst-italic text-muted')
             ->setSubItems([
@@ -118,11 +95,7 @@ class DashboardController extends AbstractDashboardController
         ;
 
         yield MenuItem::section('Gestion commandes')
-            ->setBadge(count(
-                $this->entityManager->getRepository(Order::class)->findAll()),
-                'dark'
-            )
-        ;
+            ->setBadge(count($this->entityManager->getRepository(Order::class)->findAll()), 'dark');
         yield MenuItem::subMenu('Actions Commandes', 'fa-brands fa-jedi-order')
             ->setCssClass('fst-italic text-muted')
             ->setSubItems([
@@ -132,13 +105,7 @@ class DashboardController extends AbstractDashboardController
         ;
 
         yield MenuItem::section('Critiques Produits')
-            ->setBadge(count(
-                $this->entityManager->getRepository(ReviewsProduct::class)->findAll()
-            ),
-                'danger'
-            )
-        ;
-
+            ->setBadge(count($this->entityManager->getRepository(ReviewsProduct::class)->findAll()), 'danger');
         yield MenuItem::subMenu('Actions Critiques', 'fas fa-comment-dots')
             ->setCssClass('fst-italic text-muted')
             ->setSubItems([

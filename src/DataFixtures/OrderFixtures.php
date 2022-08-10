@@ -21,7 +21,7 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
             $order->setReference('Commande #' . $i);
             $order->setFullName($faker->firstName . ' ' . $faker->lastName);
             $order->setCarrierName($faker->company());
-            $order->setCarrierPrice($faker->randomFloat(2, 0, 9.90));
+            $order->setCarrierPrice($faker->numberBetween(0, 2490));
             $order->setDeliveryAddress(
                 $faker->address()
                 . ' ' .
