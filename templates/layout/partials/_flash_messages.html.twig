@@ -1,5 +1,5 @@
 <div id="message-flashes" class="container-fluid p-0 alert-dismissible">
-    {% for type, messages in app.flashes %}
+    {% for type, messages, error in app.flashes %}
         {% for message in messages %}
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
                 <symbol id="success" fill="currentColor" viewbox="0 0 16 16">
