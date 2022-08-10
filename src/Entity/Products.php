@@ -25,25 +25,25 @@ class Products
     private string $description;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private string $moreInformations;
+    private ?string $moreInformations = null;
 
     #[ORM\Column(type: 'integer')]
-    private float $price;
+    private int $price;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
-    private bool $isBest = false;
+    private ?bool $isBest = false;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
-    private bool $isNewArrival = false;
+    private ?bool $isNewArrival = false;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
-    private bool $isFeatured = false;
+    private ?bool $isFeatured = false;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
-    private bool $isSpecialOffer = false;
+    private ?bool $isSpecialOffer = false;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private string $image;
+    private ?string $image = null;
 
     #[ORM\Column(type: 'integer')]
     private int $stock;

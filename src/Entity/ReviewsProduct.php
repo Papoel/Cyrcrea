@@ -17,7 +17,7 @@ class ReviewsProduct
     private string $note;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private string $comment;
+    private ?string $comment = null;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'reviews')]
     private User $user;

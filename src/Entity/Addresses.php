@@ -17,13 +17,13 @@ class Addresses
     private string $name;
 
     #[ORM\Column(type: 'string', length: 150, nullable: true)]
-    private ?string $company;
+    private ?string $company = null;
 
     #[ORM\Column(type: 'text')]
     private string $address;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private ?string $complement;
+    private ?string $complement = null;
 
     #[ORM\Column(type: 'string', length: 255)]
     private string $city;
@@ -35,7 +35,7 @@ class Addresses
     private string $country;
 
     #[ORM\Column(type: 'string', length: 30, nullable: true)]
-    private ?string $phone;
+    private ?string $phone = null;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'addresses')]
     #[ORM\JoinColumn(nullable: true)]

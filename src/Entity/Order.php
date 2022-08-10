@@ -32,10 +32,10 @@ class Order
     private string $deliveryAddress;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
-    private bool $isPaid;
+    private ?bool $isPaid = false;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private string $moreInformations;
+    private ?string $moreInformations = null;
 
     #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
     private \DateTimeImmutable $createdAt; // 2
