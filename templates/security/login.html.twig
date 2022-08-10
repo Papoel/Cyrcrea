@@ -5,94 +5,93 @@
 {% block body %}
     {{ include('layout/partials/_title_section.html.twig', {'name': "Formulaire de connexion"}) }}
 
-
-<section id="formulaire-connexion" class="container">
-    {% if app.user %}
-        <div class="mb-3">
-            Vous êtes déjà connecté avec le compte {{ app.user.userIdentifier }}, si ce n'est pas vous
-            veuillez vous <a href="{{ path('app_logout') }}">cliquer ici pour vous déconnecter</a>
-        </div>
-    {% else %}
-        <div class="row">
-            <div class="bg-light mt-4 p-4">
-                <div class="text-center py-2 bg-light"><h1 class="text-center p-3">Formulaire de Connexion</h1></div>
-                {% if error %}
-                    <div class="alert alert-danger">
-                        {{ error.messageKey|trans(error.messageData, 'security') }}
-                    </div>
-                {% endif %}
-                <form method="post">
-                    <div class="form-group mx-2 mt-3">
-                        <label class="text-muted mb-2"
-                               for="inputEmail">Email</label>
-                        <input type="email" value="{{ last_username }}" name="email"
-                               id="inputEmail" class="form-control"
-                               autocomplete="email" required autofocus>
-                    </div>
-                    <div class="form-group mx-2 mt-3">
-                        <div class="mb-3">
-                            <label class="text-muted mb-2" for="inputPassword">Mot de passe</label>
-                            <div class="input-group">
-                                <input id="inputPassword" class="form-control"
-                                       type="password" name="password"
-                                       autocomplete="current-password" required>
-                                <div id="passwordIcon" class="input-group-text"
-                                     onclick="ShowPassword()">
-                                    <svg id="showPassword"
-                                         xmlns="http://www.w3.org/2000/svg"
-                                         width="16" height="16" fill="currentColor"
-                                         class="bi bi-eye d-none"
-                                         viewBox="0 0 16 16">
-                                      <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                                      <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                                    </svg>
-                                    <svg id="hidePassword"
-                                         xmlns="http://www.w3.org/2000/svg"
-                                         width="16" height="16" fill="currentColor"
-                                         class="bi bi-eye-slash d-none"
-                                         viewBox="0 0 16 16">
-                                      <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
-                                      <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
-                                      <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z"/>
-                                    </svg>
+    <section id="formulaire-connexion" class="container">
+        {% if app.user %}
+            <div class="mb-3">
+                Vous êtes déjà connecté avec le compte {{ app.user.userIdentifier }}, si ce n'est pas vous
+                veuillez vous <a href="{{ path('app_logout') }}">cliquer ici pour vous déconnecter</a>
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="shadow-lg mt-4 p-4">
+                    <div class="text-center py-2 bg-light"><h1 class="text-center p-3">Formulaire de Connexion</h1></div>
+                    {% if error %}
+                        <div class="alert alert-danger">
+                            {{ error.messageKey|trans(error.messageData, 'security') }}
+                        </div>
+                    {% endif %}
+                    <form method="post">
+                        <div class="form-group mx-2 mt-3">
+                            <label class="text-muted mb-2"
+                                   for="inputEmail">Email</label>
+                            <input type="email" value="{{ last_username }}" name="email"
+                                   id="inputEmail" class="form-control"
+                                   autocomplete="email" required autofocus>
+                        </div>
+                        <div class="form-group mx-2 mt-3">
+                            <div class="mb-3">
+                                <label class="text-muted mb-2" for="inputPassword">Mot de passe</label>
+                                <div class="input-group">
+                                    <input id="inputPassword" class="form-control"
+                                           type="password" name="password"
+                                           autocomplete="current-password" required>
+                                    <div id="passwordIcon" class="input-group-text"
+                                         onclick="ShowPassword()">
+                                        <svg id="showPassword"
+                                             xmlns="http://www.w3.org/2000/svg"
+                                             width="16" height="16" fill="currentColor"
+                                             class="bi bi-eye d-none"
+                                             viewBox="0 0 16 16">
+                                          <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                          <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                        </svg>
+                                        <svg id="hidePassword"
+                                             xmlns="http://www.w3.org/2000/svg"
+                                             width="16" height="16" fill="currentColor"
+                                             class="bi bi-eye-slash d-none"
+                                             viewBox="0 0 16 16">
+                                          <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
+                                          <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
+                                          <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z"/>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <input type="hidden" name="_csrf_token"
-                           value="{{ csrf_token('authenticate') }}">
-                    <div class="redirection d-flex justify-content-between form-group mx-2 mt-4">
-                        <div class="check-form">
-                            <div class="custom-checkbox">
-                                <input id="rememberMe" class="form-check-input"
-                                       type="checkbox" name="checkbox">
-                                <label class="form-check-label"
-                                       for="rememberMe"><span>Se souvenir de moi</span></label>
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}">
+                        <div class="redirection d-flex justify-content-between form-group mx-2 mt-4">
+                            <div class="check-form">
+                                <div class="custom-checkbox">
+                                    <input id="rememberMe" class="form-check-input"
+                                           type="checkbox" name="checkbox">
+                                    <label class="form-check-label"
+                                           for="rememberMe"><span>Se souvenir de moi</span></label>
+                                </div>
+                            </div>
+                            <div class="form-group mx-2">
+                                <a class="link"
+                                   href="{{ path('app_forgot_password_request') }}">Mot de passe oublié?</a>
                             </div>
                         </div>
-                        <div class="form-group mx-2">
-                            <a class="link"
-                               href="{{ path('app_forgot_password_request') }}">Mot de passe oublié?</a>
-                        </div>
-                    </div>
 
-                    <div class="form-group mx-2">
-                        <button class="btn btn-primary mt-3 w-100" type="submit">Se connecter</button>
-                    </div>
-                </form>
-                <div class="different_login"><span class="bg-light">✨ ou ✨</span></div>
-                    <ul class="btn-login list_none text-center">
-                        <li><a href="#" class="btn-facebook"><i class="bi bi-facebook"></i>Facebook</a></li>
-                        <li><a href="#" class="btn-google"><i class="bi bi-google"></i>Google</a></li>
-                    </ul>
-                    <div class="redirection text-center bg-light mt-4 py-3">Vous n'avez pas encore de compte?
-                        <br><a class="link" href="{{ path('app_register') }}">Inscrivez-vous maintenant.</a>
+                        <div class="form-group mx-2">
+                            <button class="btn btn-primary mt-3 w-100" type="submit">Se connecter</button>
+                        </div>
+                    </form>
+                    <div class="different_login"><span class="bg-light">✨ ou ✨</span></div>
+                        <ul class="btn-login list_none text-center">
+                            <li><a href="#" class="btn-facebook"><i class="bi bi-facebook"></i>Facebook</a></li>
+                            <li><a href="#" class="btn-google"><i class="bi bi-google"></i>Google</a></li>
+                        </ul>
+                        <div class="redirection text-center bg-light mt-4 py-3">Vous n'avez pas encore de compte?
+                            <br><a class="link" href="{{ path('app_register') }}">Inscrivez-vous maintenant.</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    {% endif %}
-</section>
+        {% endif %}
+    </section>
 {% endblock %}
 
 {% block javascripts %}
