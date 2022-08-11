@@ -5,6 +5,7 @@ namespace App\Controller\Admin\Product;
 use App\Entity\Products;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -56,6 +57,9 @@ class ProductCrudController extends AbstractCrudController
                 ->setRequired(false);
                 // ->setFormTypeOption('allow_delete', false)
         yield IntegerField::new('stock', 'Quantité');
+
+        // Transform the field tag in array on index and in string on edit
+        yield TextField::new('tags', 'Cible');
 
         if ($pageName === 'edit') {
             yield AssociationField::new('Categories', 'Catégories')
