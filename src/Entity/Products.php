@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ProductsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductsRepository::class)]
@@ -50,6 +51,9 @@ class Products
 
     #[ORM\Column(type: 'datetime_immutable')]
     private \DateTimeImmutable $createdAt;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $tags = null;
 
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: ReviewsProduct::class)]
     private Collection $reviews;
@@ -326,6 +330,18 @@ class Products
                 $orderDetail->setProducts(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTags(): ?string
+    {
+        return $this->tags;
+    }
+
+    public function setTags(?string $tags): self
+    {
+        $this->tags = $tags;
 
         return $this;
     }

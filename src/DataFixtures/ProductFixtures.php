@@ -33,8 +33,28 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             $immutable = \DateTimeImmutable::createFromMutable( $date );
             $product->setCreatedAt($immutable);
 
+            $list = [
+                0 => 'tag#1',
+                1 => 'tag#2',
+                2 => 'tag3#',
+                3 => 'tag#4',
+                4 => 'tag#5',
+                5 => 'tag#6',
+                6 => 'tag#7',
+                7 => 'tag#8',
+                8 => 'tag#9',
+                9 => 'tag#10'
+            ];
+            $nbTag = $faker->numberBetween(2, 9);
+            $tag = array_rand($list, $nbTag);
+
+            $tags = '';
+            foreach ($tag as $key => $value) {
+                $tags .= $list[$value] . ', ';
+            }
+            $product->setTags(substr($tags, 0, -2));
+
             $product->setStock($faker->numberBetween(15, 850));
-            // $product->setTags($faker->word($faker->numberBetween(1, 10)));
 
             $product->addCategory($this->getReference(sprintf('category%d', $faker->numberBetween(1, 6))));
             //$product->addReview($this->getReference(sprintf('review%d', $faker->numberBetween(1, 200))));
