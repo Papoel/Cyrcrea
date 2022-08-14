@@ -3,12 +3,9 @@
     {% include 'layout/partials/html/_head' %}
     {% include 'layout/partials/html/_link-css' %}
     <body>
-        <header class="header">
-            {{ include ('layout/partials/header.html.twig') }}
-        </header>
+        <header class="header">{{ include ('layout/partials/header.html.twig') }}</header>
 
         <main role="main" class="container-fluid" id="content-app">
-{#            {% if app.session.flashBag.has('success') %}#}
             {% if app.session.flashBag %}
                     {{ include("layout/partials/_flash_messages.html.twig") }}
             {% endif %}
@@ -19,9 +16,7 @@
             {{ include ('layout/partials/footer.html.twig') }}
         </footer>
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-
+        {% block javascripts %}{% endblock %}
+        {{ encore_entry_script_tags('app') }}
     </body>
 </html>
