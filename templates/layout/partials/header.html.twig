@@ -1,58 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-dark justify-content-between">
-    <a class="navbar-brand" href="/">
-        <span class="p-3">La Boutique CyrCréa</span>
-    </a>
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+      <a class="navbar-brand text-uppercase ms-2" href="#">La Boutique CyrCrea</a>
+{#      <img class="d-none d-md-block img-responsive" src="{{ asset('images/logo/dark-logo.png') }}" alt="Logo">#}
 
-    <ul class="navbar-nav">
-        {% if app.user %}
-            {# verify is user has role admin #}
-            {% if is_granted('ROLE_ADMIN') %}
-                <li class="nav-item">
-                <a class="nav-link" href="{{ path('admin') }}">
-                    <i class="bi bi-speedometer2"></i>
-                </a>
-            </li>
-            {% endif %}
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_logout') }}">
-                    Déconnexion
-                    <i class="bi bi-box-arrow-right"></i>
-                </a>
-            </li>
-        {% endif %}
-
-        {% if not app.user %}
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_login') }}">
-                    Connexion
-                    <i class="bi bi-box-arrow-in-right"></i>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_register') }}">
-                    Inscription
-                    <i class="bi bi-person-plus"></i>
-                </a>
-            </li>
-        {% endif %}
-    </ul>
-
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-nav">
+          <div class="d-flex me-auto">
+              {% if is_granted('ROLE_ADMIN') == true %}
+                  <a href="{{ path('admin') }}" class="btn btn-outline-info me-1">
+                      <i class="bi bi-speedometer2"></i>
+                      Administration
+                  </a>
+              {% endif %}
+              {% if app.user is null %}
+                  <div class="nav-item">
+                        <a class="btn btn-outline-success" aria-current="page" href="{{ path('app_login') }}"><i
+                                    class="bi bi-box-arrow-in-right"></i> Connexion</a>
+                    </div>
+                  {% else %}
+                  <div class="nav-item">
+                      <a class="btn btn-danger" href="{{ path('app_logout') }}">
+                          <i class="bi bi-box-arrow-right"></i>
+                          Déconnexion
+                      </a>
+                  </div>
+              {% endif %}
+            </div>
+        </div>
+  </div>
 </nav>
 
-<!-- Sous navBar -->
 {% if app.user %}
     <div class="bg-light text-dark">
         <div class="navbar-expand-lg navbar-light justify-content-between">
             <nav class="expand-lg navbar-light justify-content-between">
-                <a href="" class="navbar navbar-expand-lg">
-                    <!-- Logo -->
-                    <img src="" alt="">
-                </a>
                 <div class="collapse navbar-collapse justify-content-between py-2" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav px-2">
                         <li class="dropdown">
-                            <a class="nav-link" href="#">Accueil</a>
+                            <a class="nav-link" href="/">Accueil</a>
                         </li>
                         <li class="dropdown">
                             <a class="nav-link" href="#" data-toggle="dropdown">Pages</a>
@@ -71,10 +58,8 @@
                     <!-- Form Search -->
                     <div class="col-3">
                         <div class="input-group">
-                            <input id="search-product"
-                                   class="form-control border-end-0 border rounded-pill"
-                                   type="text"
-                                   placeholder="Rechercher un produit">
+                            <input id="search-product" class="form-control border-end-0 border rounded-pill"
+                                   type="search" placeholder="Rechercher un produit">
                             <span class="input-group-append">
                                 <button class="btn btn-outline-secondary border-start-0 border rounded-pill ms-3"
                                         type="button">
