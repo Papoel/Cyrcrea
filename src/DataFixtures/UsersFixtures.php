@@ -26,8 +26,7 @@ class UsersFixtures extends Fixture implements DependentFixtureInterface
         $userAdmin->setLastname('Briffard');
         $userAdmin->setEmail('superadmin@cyrcrea.fr');
         $userAdmin->setRoles(['ROLE_ADMIN']);
-        $hash = $this->passwordHasher->hashPassword($userAdmin, ('password'));
-        $userAdmin->setPassword($hash);
+        $userAdmin->setPassword($this->passwordHasher->hashPassword($userAdmin, ('password')));
         $userAdmin->setCreatedAt(new \DateTimeImmutable());
         $userAdmin->setIsVerified(true);
 
@@ -38,28 +37,29 @@ class UsersFixtures extends Fixture implements DependentFixtureInterface
         $userAdmin->addAddress($this->getReference('super-admin'));
 
         $manager->persist($userAdmin);
+        $this->addReference('user1', $userAdmin);
         $users[] = $userAdmin;
 
         $users = [];
-        $userAdmin = new User();
+        $userAdmin2 = new User();
 
-        $userAdmin->setFirstname('Cyril');
-        $userAdmin->setLastname('Lamy');
-        $userAdmin->setEmail('admin@cyrcrea.fr');
-        $userAdmin->setRoles(['ROLE_ADMIN']);
-        $hash = $this->passwordHasher->hashPassword($userAdmin, ('password'));
-        $userAdmin->setPassword($hash);
-        $userAdmin->setCreatedAt(new \DateTimeImmutable());
-        $userAdmin->setIsVerified(true);
+        $userAdmin2->setFirstname('Cyril');
+        $userAdmin2->setLastname('Lamy');
+        $userAdmin2->setEmail('admin@cyrcrea.fr');
+        $userAdmin2->setRoles(['ROLE_ADMIN']);
+        $userAdmin2->setPassword($this->passwordHasher->hashPassword($userAdmin2, ('password')));
+        $userAdmin2->setCreatedAt(new \DateTimeImmutable());
+        $userAdmin2->setIsVerified(true);
 
         $date = $faker->dateTimeBetween('-1 years', 'now');
         $immutable = \DateTimeImmutable::createFromMutable( $date );
-        $userAdmin->setCreatedAt($immutable);
+        $userAdmin2->setCreatedAt($immutable);
 
-        $userAdmin->addAddress($this->getReference('admin-adresse'));
+        $userAdmin2->addAddress($this->getReference('admin-adresse'));
 
-        $manager->persist($userAdmin);
-        $users[] = $userAdmin;
+        $manager->persist($userAdmin2);
+        $this->addReference('user2', $userAdmin2);
+        $users[] = $userAdmin2;
 
         for ($i = 1; $i <= 3; ++$i) {
             $users = [];
@@ -77,7 +77,7 @@ class UsersFixtures extends Fixture implements DependentFixtureInterface
             $user->setCreatedAt($immutable);
 
             $manager->persist($user);
-            $this->addReference(sprintf('user%d', $i), $user);
+            $this->addReference(sprintf('user%d', $i + 2), $user);
             $users[] = $user;
         }
 
