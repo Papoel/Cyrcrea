@@ -53,7 +53,7 @@ class AddressFixtures extends Fixture
             $address->setAddress($faker->address());
             $address->setComplement(sprintf('Apt. %d', $i));
             $address->setCity($faker->city());
-            $address->setPostal($faker->postcode());
+            $address->setPostal(str_replace(' ', '', $faker->postcode()));
             $address->setCountry('France');
             $address->setPhone($faker->phoneNumber());
 
