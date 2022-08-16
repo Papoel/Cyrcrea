@@ -14,8 +14,6 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Faker\Factory::create('fr_FR');
 
-        $images = ['bijou', 'bonnet', 'drone', 'gadget', 'montre', 'portable'];
-
         for ($i = 1; $i <= 1500; $i++) {
             $product = new Products();
 
@@ -59,15 +57,10 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             $product->addCategory($this->getReference(sprintf('category%d', $faker->numberBetween(1, 6))));
             //$product->addReview($this->getReference(sprintf('review%d', $faker->numberBetween(1, 200))));
 
-            $product->setImage(
-                $images[$faker->numberBetween(0, 5)]
-                . '_' .
-                $faker->numberBetween(1, 4)
-                . '.png'
-            );
+            // $product->addImage($this->getReference(sprintf('image%d', $faker->numberBetween(1, 6))));
 
+            $this->setReference('product' .$i, $product);
             $manager->persist($product);
-            $this->addReference(sprintf('product%d', $i), $product);
         }
 
         $manager->flush();
