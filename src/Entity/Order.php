@@ -17,7 +17,7 @@ class Order
     private int $id;
 
     #[ORM\Column(type: 'string', length: 25, unique: true)]
-    private string $reference; // 1
+    private string $reference;
 
     #[ORM\Column(type: 'text')]
     private string $fullName;
@@ -38,21 +38,21 @@ class Order
     private ?string $moreInformations = null;
 
     #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
-    private \DateTimeImmutable $createdAt; // 2
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
     private User $user;
 
-    #[ORM\OneToMany(mappedBy: 'orderId', targetEntity: OrderDetails::class)]
-    private Collection $orderDetails;
-
     #[ORM\ManyToOne(inversedBy: 'orders')]
     private ?Coupons $coupons = null;
 
+    #[ORM\OneToMany(mappedBy: 'orders', targetEntity: OrdersDetails::class, orphanRemoval: true)]
+    private Collection $ordersDetails;
+
     public function __construct()
     {
-        $this->orderDetails = new ArrayCollection();
+        $this->ordersDetails = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -168,36 +168,6 @@ class Order
         return $this;
     }
 
-    /**
-     * @return Collection<int, OrderDetails>
-     */
-    public function getOrderDetails(): Collection
-    {
-        return $this->orderDetails;
-    }
-
-    public function addOrderDetail(OrderDetails $orderDetail): self
-    {
-        if (!$this->orderDetails->contains($orderDetail)) {
-            $this->orderDetails[] = $orderDetail;
-            $orderDetail->setOrder($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrderDetail(OrderDetails $orderDetail): self
-    {
-        if ($this->orderDetails->removeElement($orderDetail)) {
-            // set the owning side to null (unless already changed)
-            if ($orderDetail->getOrder() === $this) {
-                $orderDetail->setOrder(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getCoupons(): ?Coupons
     {
         return $this->coupons;
@@ -206,6 +176,36 @@ class Order
     public function setCoupons(?Coupons $coupons): self
     {
         $this->coupons = $coupons;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OrdersDetails>
+     */
+    public function getOrdersDetails(): Collection
+    {
+        return $this->ordersDetails;
+    }
+
+    public function addOrdersDetail(OrdersDetails $ordersDetail): self
+    {
+        if (!$this->ordersDetails->contains($ordersDetail)) {
+            $this->ordersDetails->add($ordersDetail);
+            $ordersDetail->setOrders($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrdersDetail(OrdersDetails $ordersDetail): self
+    {
+        if ($this->ordersDetails->removeElement($ordersDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($ordersDetail->getOrders() === $this) {
+                $ordersDetail->setOrders(null);
+            }
+        }
 
         return $this;
     }

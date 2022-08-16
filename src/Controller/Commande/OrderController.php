@@ -5,6 +5,7 @@ namespace App\Controller\Commande;
 use App\Entity\Order;
 use App\Form\OrderType;
 use App\Repository\OrderDetailsRepository;
+use App\Repository\OrdersDetailsRepository;
 use App\Repository\OrdersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class OrderController extends AbstractController
 {
     #[Route('/', name: 'app_order', methods: ['GET'])]
-    public function index(OrdersRepository $orderRepository, orderDetailsRepository $orderDetailsRepository): Response
+    public function index(OrdersRepository $orderRepository, ordersDetailsRepository $orderDetailsRepository): Response
     {
         $orders = $orderRepository->findUserOrders($this->getUser());
 
