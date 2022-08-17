@@ -12,20 +12,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/commande')]
+#[Route('/commande', name: 'app_order_')]
 class OrderController extends AbstractController
 {
-    #[Route('/', name: 'app_order', methods: ['GET'])]
+    #[Route('/', name: 'index', methods: ['GET'])]
     public function index(OrdersRepository $orderRepository, ordersDetailsRepository $orderDetailsRepository): Response
     {
         $orders = $orderRepository->findUserOrders($this->getUser());
 
-        return $this->render('commande/index.html.twig', [
+        return $this->render('order/index.html.twig', [
             'commandes' => $orders,
         ]);
     }
 
-    #[Route('/new', name: 'app_order_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
     public function new(Request $request, OrdersRepository $orderRepository): Response
     {
         $order = new Order();
@@ -44,7 +44,7 @@ class OrderController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_order_show', methods: ['GET'])]
+    #[Route('/{reference}', name: 'show', methods: ['GET'])]
     public function show(Order $order): Response
     {
         return $this->render('order/show.html.twig', [
@@ -52,7 +52,7 @@ class OrderController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_order_edit', methods: ['GET', 'POST'])]
+    #[Route('/{reference}/edit', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Order $order, OrdersRepository $orderRepository): Response
     {
         $form = $this->createForm(OrderType::class, $order);
@@ -70,7 +70,7 @@ class OrderController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_order_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, Order $order, OrdersRepository $orderRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $order->getId(), $request->request->get('_token'))) {
