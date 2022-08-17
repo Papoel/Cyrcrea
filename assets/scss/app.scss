@@ -157,3 +157,14 @@ a.link:hover::after {
   --bd-callout-bg: rgba(var(--bs-success-rgb), .075);
   --bd-callout-border: rgba(var(--bs-success-rgb), .5);
 }
+
+a.link-order {
+  text-decoration: none;
+  color: #007185;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #C7511F;
+  }
+}
