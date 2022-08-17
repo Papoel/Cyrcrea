@@ -3,6 +3,7 @@
 @import './components/breadcrumb';
 @import './components/login_registration';
 @import './components/errors';
+@import './components/button';
 @import './variables/colors';
 @import '~bootstrap';
 @import '~bootstrap-icons';
@@ -10,6 +11,7 @@
 
 body {
   font-family: 'open sans', sans-serif;
+  font-size: 12px;
 }
 
 html {
