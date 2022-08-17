@@ -1,54 +1,161 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Order{% endblock %}
+{% block title %} {{ order.reference }} {% endblock %}
 
 {% block body %}
-    <h1>Order</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ order.id }}</td>
-            </tr>
-            <tr>
-                <th>Reference</th>
-                <td>{{ order.reference }}</td>
-            </tr>
-            <tr>
-                <th>FullName</th>
-                <td>{{ order.fullName }}</td>
-            </tr>
-            <tr>
-                <th>CarrierName</th>
-                <td>{{ order.carrierName }}</td>
-            </tr>
-            <tr>
-                <th>CarrierPrice</th>
-                <td>{{ order.carrierPrice }}</td>
-            </tr>
-            <tr>
-                <th>DeliveryAddress</th>
-                <td>{{ order.deliveryAddress }}</td>
-            </tr>
-            <tr>
-                <th>IsPaid</th>
-                <td>{{ order.isPaid ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>MoreInformations</th>
-                <td>{{ order.moreInformations }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ order.createdAt ? order.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+    {{ include('layout/partials/_title_section.html.twig', { name: 'Vos Commandes' }) }}
 
-    <a href="{{ path('app_order_index') }}">back to list</a>
+    <section id="order-card" class="container my-3">
+        {% for orderDetail in order.ordersDetails %}
+            <div class="card mb-3">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-4">
+                            <span class="text-uppercase text-muted">Commande effectuée le </span>
+                        </div>
+                        <div class="col-2">
+                            <span class="text-uppercase text-muted">Total </span>
+                        </div>
+                        <div class="col-3">
+                            <span class="text-uppercase text-muted">Adresse de livraison </span>
+                        </div>
+                        <div class="col-3">
+                            <span class="text-uppercase text-muted">N° de commande</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <span>{{ order.createdAt|format_datetime(locale='fr',pattern="dd MMMM YYYY") }}</span>
+                        </div>
+                        <div class="col-2">
+                            <span>{{ ((orderDetail.products.price / 100) * (orderDetail.quantity)) * (1 + 20/100) }} €</span>
+                        </div>
+                        <div class="col-3">
+                            <span>{{ orderDetail.orders.user.fullname }}</span>
+                        </div>
+                        <div class="col-3">
+                            <span>{{ order.reference }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div id="order-delivery" class="d-flex justify-content-between align-items-center">
+                            {# TODO: Affiché la date de livraison #}
+                            <div class="col-5">
+                                <h6 class="fw-bold">Livré : <span>2 juillet 2022</span></h6>
+                            </div>
+                            <div class="col-3">
+                                <a class="button basic" href="#">Suivre mon colis</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="order-products" class="d-flex justify-content-between align-items-center">
+                            <div id="order-product-image" class="col-2">
+                                <img class="rounded" src="{{ asset('images/bijou/bijou_1.PNG') }}" alt="{{ orderDetail.products.name }}" style="width: 90px">
+                            </div>
+                            <div id="order-product-description" class="col-7">
+                                {# TODO: Lien vers le produit #}
+                                <a class="link-order" href="#">
+                                    <span class="text-uppercase">{{ orderDetail.products.name }}</span>
+                                    - {{ orderDetail.products.description }}
+                                </a>
+                            </div>
+                            <div id="order-actions" class="col-3">
+                                <a href="#" class="button basic">Retourner les articles</a>
+                                <a href="#" class="button basic">Commenter le produit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2"></div>
+                            <a href="#" class="button bg-primary"><i class="bi bi-bootstrap-reboot me-2"></i>Acheter à nouveau</a>
+                            {# TODO: Lien vers l'article #}
+                            {#<a href="{{ path('app_order_show', {reference: orderDetail.products.slug}) }}" class="button basic">Détail de l'article</a>#}
+                            <a href="#" class="button basic">Détail de l'article</a>
+                        </div>
+                    </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-6">
+                            {# TODO: Lien vers archives des commandes. #}
+                            <a href="#" class="link-order">Archiver ma commande</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
 
-    <a href="{{ path('app_order_edit', {'id': order.id}) }}">edit</a>
 
-    {{ include('order/_delete_form.html.twig') }}
+    <hr>
+
+
+    <section class="container">
+        <div class="my-4" id="order-detail">
+            <h1>Commande {{ order.reference }}</h1>
+
+            {% set TVA = 20 %}
+
+            <table class="table">
+                <tbody>
+                {% for orderDetail in order.ordersDetails %}
+                    <tr>
+                        <th>Nom du produit</th>
+                        <td>{{ orderDetail.products.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Quantité d'articles</th>
+                        <td>{{ orderDetail.quantity }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prix Unitaire</th>
+                        <td>{{ orderDetail.products.price / 100 }} €</td>
+                    </tr>
+                    <tr>
+                        <th>Prix TTC</th>
+                        <td>{{ ((orderDetail.products.price / 100) * (orderDetail.quantity)) * (1 + TVA/100) }}
+                            €
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description du produit</th>
+                        <td>{{ orderDetail.products.description }}</td>
+                    </tr>
+                {% endfor %}
+                <fieldset>
+                    <legend>Adresse de Wahh</legend>
+                </fieldset>
+                <tr>
+                    <th>Transporteur</th>
+                    <td>{{ order.carrierName }}</td>
+                </tr>
+                <tr>
+                    <th>Frais de livraison</th>
+                    <td>{{ order.carrierPrice / 100 }} €</td>
+                </tr>
+                <tr>
+                    <th>Adresse de livraison</th>
+                    <td>{{ order.deliveryAddress }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    {% if order.isPaid %}
+                        <td><span class="badge rounded-pill bg-success text-light">Payé</span></td>
+                    {% else %}
+                        <td><span
+                                    class="badge rounded-pill bg-danger text-light"> En attente de paiement</span></td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th>Date de la commande</th>
+                    <td>{{ order.createdAt|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }}</td>
+                </tr>
+            </table>
+
+            <a class="btn btn-sm btn-primary" href="{{ path('app_order_index') }}">Retour aux commandes</a>
+        </div>
+    </section>
 {% endblock %}
