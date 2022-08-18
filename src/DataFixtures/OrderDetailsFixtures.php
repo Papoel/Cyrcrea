@@ -31,13 +31,11 @@ class OrderDetailsFixtures extends Fixture implements DependentFixtureInterface
             $product_qty = $faker->numberBetween(1, 5);
             $product_price = $detail->getProducts()->getPrice();
 
-            //dd($product_qty, $product_price, 'RESULTAT :', $product_qty * $product_price);
             $detail->setQuantity($product_qty);
-            $detail->setPrice($product_price * $detail->getQuantity());
-
+            $detail->setPriceHt($product_price * $detail->getQuantity());
+            $detail->setPriceTtc($detail->getPriceHt() + ($detail->getPriceHt() * 0.2));
             $manager->persist($detail);
         }
-
 
         $manager->flush();
     }
