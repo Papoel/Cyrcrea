@@ -8,11 +8,16 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: OrdersDetailsRepository::class)]
 class OrdersDetails
 {
+    public const TVA = 20;
+
     #[ORM\Column]
     private ?int $quantity = null;
 
     #[ORM\Column]
-    private ?int $price = null;
+    private ?int $price_ht = null;
+
+    #[ORM\Column]
+    private ?int $price_ttc = null;
 
     #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'ordersDetails')]
@@ -36,14 +41,28 @@ class OrdersDetails
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPriceHt(): ?int
     {
-        return $this->price;
+        return $this->price_ht;
     }
 
-    public function setPrice(int $price): self
+    public function setPriceHt(?int $price_ht): self
     {
-        $this->price = $price;
+        $this->price_ht = $price_ht;
+
+        return $this;
+    }
+
+    public function getPriceTtc(): ?int
+    {
+        return $this->price_ttc;
+    }
+
+    public function setPriceTtc(?int $price_ttc): self
+    {
+        // $this->price_ttc = $this->getPriceHt() * self::TVA;
+
+        $this->price_ttc = $price_ttc;
 
         return $this;
     }
