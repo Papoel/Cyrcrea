@@ -23,7 +23,7 @@ class ReviewsProductFixtures extends Fixture implements DependentFixtureInterfac
                 ),
                 $review
             ));
-            $review->setProduct($this->getReference(sprintf('product%d', $faker->numberBetween(1, 1500))));
+            $review->setProduct($this->getReference(sprintf('product%d', $faker->numberBetween(1, 15))));
 
             $review->setNote($faker->numberBetween(0, 5));
             $review->setComment($faker->word($faker->numberBetween(10, 200)));

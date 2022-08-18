@@ -14,7 +14,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Faker\Factory::create('fr_FR');
 
-        for ($i = 1; $i <= 1500; $i++) {
+        for ($i = 1; $i <= 15; $i++) {
             $product = new Products();
 
             $product->setName($faker->word($faker->numberBetween(1, 5)));

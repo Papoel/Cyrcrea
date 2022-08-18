@@ -24,7 +24,7 @@ class OrderDetailsFixtures extends Fixture implements DependentFixtureInterface
             );
 
             $detail->setProducts(
-                $this->getReference(sprintf('product%d', $faker->numberBetween(1, 1500)
+                $this->getReference(sprintf('product%d', $faker->numberBetween(1, 15)
                 ))
             );
 
