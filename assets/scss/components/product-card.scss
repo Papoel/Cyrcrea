@@ -1,0 +1,44 @@
+.card-action-heart {
+  //color: #E26D5C;
+  color: crimson;
+  background: #fff;
+  border-radius: 100%;
+  padding: 15px;
+  font-size: 15px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-action-heart:hover {
+  color: #fff;
+  //background: #E26D5C;
+  background: crimson;
+  -webkit-animation: pulse 1.5s infinite;
+}
+
+@-webkit-keyframes pulse {
+
+  0% {
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  70% {
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    //box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+    box-shadow: 0 0 0 25px rgba(220, 20, 60, 0.2);
+  }
+
+  100% {
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    //box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+    box-shadow: 0 0 0 0 rgba(220, 20, 60, 0.15);
+  }
+}
