@@ -29,7 +29,7 @@
                             <span>{{ order.createdAt|format_datetime(locale='fr',pattern="dd MMMM YYYY") }}</span>
                         </div>
                         <div class="col-2">
-                            <span>{{ ((orderDetail.products.price / 100) * (orderDetail.quantity)) * (1 + 20/100) }} €</span>
+                            <span>{{ (orderDetail.priceTtc / 100) }} €</span>
                         </div>
                         <div class="col-3">
                             <span>{{ orderDetail.orders.user.fullname }}</span>
