@@ -3,49 +3,27 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
+
 {{ include('layout/partials/_title_section.html.twig', { name: 'Liste de nos produits' }) }}
 
-<section class="container mt-3">
-    <div class="row">
-        {% for produit in produits %}
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2">
-                <div class="card h-100">
-                    <div class="card-header">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="my-auto">{{ produit.name }}</h5>
-                            <a class="card-action-heart" href="#">
-                                <i class="bi bi-heart"></i>
-                            </a>
-                        </div>
-                    </div>
+<section>
 
-                    <img src="{{ asset('images/bijou/bijou_3.PNG') }}" class="card-img-top" alt="...">
-
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="{{ path('app_product_show', {'slug': produit.slug} ) }}" class="link-order">
-                                {{ produit.name }}
-                            </a>
-                        </h5>
-                        <p class="card-text">
-                            {{ produit.description|u.truncate(120, '...') }}
-                        </p>
-                    </div>
-
-                    <div class="card-footer">
-                        <a href="#" class="button bg-primary">
-                            Acheter
-                            <i class="bi bi-cart-check fs-5 mx-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-{#            <a class="card-action-heart" href="#">#}
-{#                <i class="bi bi-heart"></i>#}
-{#            </a>#}
-
-        {% endfor %}
+    <div class="bg-dark container-fluid">
+        <div class="row p-5">
+            {% for new in news %}
+                {% include('layout/partials/products/new_arrival_card.html.twig') %}
+            {% endfor %}
+        </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+            {% for produit in produits %}
+                {% include('layout/partials/products/card.html.twig') %}
+            {% endfor %}
+        </div>
+    </div>
+
 </section>
 
 {% endblock %}

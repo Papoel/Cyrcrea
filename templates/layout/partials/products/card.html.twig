@@ -1,0 +1,34 @@
+<div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2">
+    <div class="card h-100">
+{#        <div class="card-header">#}
+{#            <div class="d-flex justify-content-between">#}
+{#                <h5 class="text-uppercase text-muted my-auto mx-auto">{{ produit.name }}</h5>#}
+{#                <div style="z-index: 1;">#}
+{#                    <a class="card-action-heart" href="#">#}
+{#                        <i class="bi bi-heart"></i>#}
+{#                    </a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+        <img src="{{ asset('images/bijou/bijou_3.PNG') }}" class="card-img-top" alt="...">
+
+        <div class="card-body">
+            <h5 class="card-title">
+                <a href="{{ path('app_product_show', {'slug': produit.slug} ) }}" class="link-order">
+                    {{ produit.name }}
+                </a>
+            </h5>
+            <p class="card-text">
+                {{ produit.description|u.truncate(120, '...') }}
+            </p>
+        </div>
+
+        <div class="card-footer">
+            <a href="#" class="button bg-primary px-4">
+                <span class="me-2"> Ajouter au panier</span>
+                <i class="bi bi-cart-check fs-5"></i>
+            </a>
+        </div>
+    </div>
+</div>
