@@ -14,20 +14,30 @@ class ProductController extends AbstractController
     #[Route('/', name: 'app_product_index')]
     public function index(ProductsRepository $productsRepository, CategoriesRepository $categoriesRepository): Response
     {
-//        $product = $productsRepository->findOneBy(['id' => 3]);
-//
-//        $categoriesProduct = [];
-//
-//        foreach ($product->getCategories() as $category) {
-//            $categoriesProduct[] = $category->getName();
-//        }
-//        dd('Liste des catégories du Produit n°' .$product->getId(),
-//            $categoriesProduct
-//        );
+        // Obtenir tous les produits à vendre
+        $products = $productsRepository->findAll();
+        // Obtenir toutes les catégories TODO: à re-factoriser (usage dans le Header !)
+        $categories = $categoriesRepository->findAll();
+
+        // Obtenir tous les produits 'Meilleurs Ventes' = true
+        $productsBestSeller = $productsRepository->findBy(['isBest' => true]);
+        // Obtenir tous les produits 'Nouvel arrivage'
+        $productsIsNewArrival = $productsRepository->findBy(['isNewArrival' => true]);
+        // Obtenir tous les produits 'Promotion'
+        $productsIsSpecialOffer = $productsRepository->findBy(['isSpecialOffer' => true]);
+        // Obtenir tous les produits 'En vedette'
+        $productsIsFeatured = $productsRepository->findBy(['isFeatured' => true]);
+
+        // Dumper dans un tableau
+         // dd([$productsBestSeller, $productsIsNewArrival, $productsIsSpecialOffer, $productsIsFeatured]);
 
         return $this->render('product/index.html.twig', [
-            'produits' => $productsRepository->findAll(),
-            'categories' => $categoriesRepository->findAll(),
+            'produits'      => $products,
+            'categories'    => $categories,
+            'bestSellers'   => $productsBestSeller,
+            'news'          => $productsIsNewArrival,
+            'offerSpecials' => $productsIsSpecialOffer,
+            'featured'      => $productsIsFeatured,
         ]);
     }
 
