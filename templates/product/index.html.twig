@@ -22,9 +22,14 @@
                     <img src="{{ asset('images/bijou/bijou_3.PNG') }}" class="card-img-top" alt="...">
 
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h5 class="card-subtitle">soubtitle</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">
+                            <a href="{{ path('app_product_show', {'slug': produit.slug} ) }}" class="link-order">
+                                {{ produit.name }}
+                            </a>
+                        </h5>
+                        <p class="card-text">
+                            {{ produit.description|u.truncate(120, '...') }}
+                        </p>
                     </div>
 
                     <div class="card-footer">
