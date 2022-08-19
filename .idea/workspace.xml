@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Produit/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Produit/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/partials/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/partials/header.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -336,7 +331,7 @@
       <workItem from="1660655933915" duration="22456000" />
       <workItem from="1660743880221" duration="22622000" />
       <workItem from="1660801320146" duration="21148000" />
-      <workItem from="1660903915083" duration="7492000" />
+      <workItem from="1660903915083" duration="8147000" />
     </task>
     <servers />
   </component>
