@@ -1,27 +1,38 @@
-<nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-expand-md navbar-dark">
   <div class="container-fluid">
       <a class="navbar-brand text-uppercase ms-2" href="#">La Boutique CyrCrea</a>
 {#      <img class="d-none d-md-block img-responsive" src="{{ asset('images/logo/dark-logo.png') }}" alt="Logo">#}
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+      >
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="navbar-nav">
           <div class="d-flex me-auto">
               {% if is_granted('ROLE_ADMIN') == true %}
-                  <a href="{{ path('admin') }}" class="btn btn-outline-info me-1">
+                  <a href="{{ path('admin') }}" class="btn btn-sm btn-outline-info me-1">
                       <i class="bi bi-speedometer2"></i>
                       Administration
                   </a>
               {% endif %}
               {% if app.user is null %}
                   <div class="nav-item">
-                        <a class="btn btn-outline-success" aria-current="page" href="{{ path('app_login') }}"><i
-                                    class="bi bi-box-arrow-in-right"></i> Connexion</a>
+                        <a class="btn btn-sm btn-outline-success"
+                           aria-current="page"
+                           href="{{ path('app_login') }}">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            Connexion
+                        </a>
                     </div>
                   {% else %}
                   <div class="nav-item">
-                      <a class="btn btn-danger" href="{{ path('app_logout') }}">
+                      <a class="btn btn-danger btn-sm" href="{{ path('app_logout') }}">
                           <i class="bi bi-box-arrow-right"></i>
                           Déconnexion
                       </a>
@@ -34,25 +45,33 @@
 
 {% if app.user %}
     <div class="bg-light text-dark">
-        <div class="navbar-expand-lg navbar-light justify-content-between">
-            <nav class="expand-lg navbar-light justify-content-between">
+        <nav class="navbar-expand-md navbar-light justify-content-between">
+{#            <nav class="expand-lg navbar-light justify-content-between">#}
                 <div class="collapse navbar-collapse justify-content-between py-2" id="navbarSupportedContent">
                     <ul class="navbar-nav px-2">
                         <li class="dropdown">
                             <a class="nav-link" href="/">Accueil</a>
                         </li>
                         <li class="dropdown">
-                            <a class="nav-link" href="#" data-toggle="dropdown">Pages</a>
+                            <a class="nav-link" href="#" data-toggle="dropdown">Liste de souhaits</a>
                         </li>
-                        <li class="">
-                            <a class="nav-link" href="#" data-toggle="dropdown">Produits</a>
-
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Catégories
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-light">
+                                {% for categorie in categories %}
+                                    <li>
+                                        {# TODO: Lien vers les catégories #}
+                                        <a href="#" class="dropdown-item">
+                                            <span class="text-capitalize">
+                                                {{ categorie.name }}
+                                            </span>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
                         </li>
-                        <li class="">
-                            <a class="nav-link" href="#" data-toggle="dropdown">Boutique</a>
-
-                        </li>
-                        <li><a class="nav-link nav_item" href="#">Contact</a></li>
                     </ul>
 
                     <!-- Form Search -->
@@ -88,7 +107,7 @@
 
                 </div>
 
-            </nav>
-        </div>
+{#            </nav>#}
+        </nav>
     </div>
 {% endif %}
