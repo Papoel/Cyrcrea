@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% set product_name = produits.name %}
+
+    {{ include('layout/partials/_title_section.html.twig', { name: 'Détail de ' }) }}
+
+    <section class="container">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                        <th>Catégories</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ produits.id }}</td>
+                            <td>{{ produits.name }}</td>
+                            <td>{{ produits.description }}</td>
+                            <td>{{ produits.price / 100 }}</td>
+                            {# Loop on all categories and display #}
+                            <td>
+                                {% for category in produits.categories %}
+                                    {% if category.name == 'montre' %}
+                                        <span class="badge bg-primary">
+                                            {{ loop.index }} {{ category.name }}
+                                        </span>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
