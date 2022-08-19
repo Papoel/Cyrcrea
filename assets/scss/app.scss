@@ -1,11 +1,11 @@
 @import './components/black-component';
 @import './components/light-component';
-@import './components/breadcrumb';
 @import './components/login_registration';
 @import './components/errors';
 @import './components/button';
 @import './components/product-card';
 @import './variables/colors';
+@import './variables/override';
 @import '~bootstrap';
 @import '~bootstrap-icons';
 @import '~bootstrap/scss/variables';
