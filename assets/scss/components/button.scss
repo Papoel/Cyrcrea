@@ -90,3 +90,17 @@
     opacity: 1;
   }
 }
+
+.btn_radius-left {
+    border-radius: 4px 0 0 4px !important;
+}
+.btn_radius-right {
+    border-radius: 0 4px 4px 0 !important;
+}
+
+.search_form-border:focus-within {
+  margin: -1px;
+  padding: 0;
+  border: 4px solid #9cc5c7;
+  border-radius: 8px;
+}
