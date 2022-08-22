@@ -73,9 +73,13 @@
                                                         Toutes nos catégories
                                                     </button>
                                                     <ul class="dropdown-menu">
-                                                        {% for categorie in categories %}
-                                                            <li><a class="text-capitalize dropdown-item" href="#">{{ categorie.name }}</a></li>
-                                                        {% endfor %}
+                                                        {# TODO:
+                                                            Mettre en cache les Catégorie et optimiser le Controller
+                                                            eviter de passer les catégories à tous les Controller
+                                                        #}
+{#                                                        {% for categorie in categories %}#}
+{#                                                            <li><a class="text-capitalize dropdown-item" href="#">{{ categorie.name }}</a></li>#}
+{#                                                        {% endfor %}#}
                                                     </ul>
                                                 </div>
                                             </div>
