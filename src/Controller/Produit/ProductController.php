@@ -16,8 +16,6 @@ class ProductController extends AbstractController
     {
         // Obtenir tous les produits à vendre
         $products = $productsRepository->findAll();
-        // Obtenir toutes les catégories TODO: à re-factoriser (usage dans le Header !)
-        $categories = $categoriesRepository->findAll();
 
         // Obtenir tous les produits 'Meilleurs Ventes' = true
         $productsBestSeller = $productsRepository->findBy(['isBest' => true]);
@@ -33,7 +31,6 @@ class ProductController extends AbstractController
 
         return $this->render('product/index.html.twig', [
             'produits'      => $products,
-            'categories'    => $categories,
             'bestSellers'   => $productsBestSeller,
             'news'          => $productsIsNewArrival,
             'offerSpecials' => $productsIsSpecialOffer,
@@ -44,10 +41,8 @@ class ProductController extends AbstractController
     #[Route('/produit/{slug}', name: 'app_product_show')]
     public function show(Products $product, CategoriesRepository $categoriesRepository): Response
     {
-        // TODO: Re-Factorisation général, ne passer les catégories que dans le Header...
         return $this->render('product/show.html.twig', [
             'produits' => $product,
-            'categories' => $categoriesRepository->findAll(),
         ]);
     }
 }
