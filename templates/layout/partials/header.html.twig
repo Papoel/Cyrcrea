@@ -46,7 +46,6 @@
 {% if app.user %}
     <div class="bg-light text-dark">
         <nav class="navbar-expand-md navbar-light justify-content-between">
-{#            <nav class="expand-lg navbar-light justify-content-between">#}
                 <div class="collapse navbar-collapse justify-content-between py-2" id="navbarSupportedContent">
                     <ul class="navbar-nav px-2">
                         <li class="nav-item">
@@ -56,65 +55,44 @@
                             <a class="nav-link" href="#" data-toggle="dropdown">Liste de souhaits</a>
                         </li>
                     </ul>
-
-                    <form class="search_form-border">
+                    <!-- Form Search -->
+                    <form id="form-search" class="search_form-border">
                         <div class="form-row align-items-center">
                             <div class="col-auto">
-                                <div class="">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="">
-                                                <div class="dropdown">
-                                                    <button type="button"
-                                                        class="btn btn-primary dropdown-toggle shadow-none btn_radius-left"
-                                                        data-bs-toggle="dropdown"
-                                                        aria-expanded="false"
-                                                        style="font-size: 12px">
-                                                        Toutes nos catégories
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        {# TODO:
-                                                            Mettre en cache les Catégorie et optimiser le Controller
-                                                            eviter de passer les catégories à tous les Controller
-                                                        #}
-{#                                                        {% for categorie in categories %}#}
-{#                                                            <li><a class="text-capitalize dropdown-item" href="#">{{ categorie.name }}</a></li>#}
-{#                                                        {% endfor %}#}
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <input type="text"
-                                               class="form-control shadow-none search_form"
-                                               id="inlineFormInputGroup"
-                                               placeholder="Rechercher un produit"
-                                               style="font-size: 12px"
-                                        >
-                                        <div>
-                                            <button type="submit" class="btn btn-primary btn_radius-right" style="font-size: 12px">
-                                                <i class="bi bi-search"></i>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="dropdown">
+                                            <button type="button"
+                                                class="btn btn-primary dropdown-toggle shadow-none btn_radius-left"
+                                                data-bs-toggle="dropdown"
+                                                aria-expanded="false"
+                                                style="font-size: 12px">
+                                                Toutes nos catégories
                                             </button>
+                                            <ul class="dropdown-menu">
+                                                {% for categorie in categories.findAll() %}
+                                                    <li>
+                                                        <a class="text-capitalize dropdown-item" href="#">{{ categorie.name }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
                                         </div>
+                                    </div>
+                                    <input type="text"
+                                           class="form-control shadow-none search_form"
+                                           id="inlineFormInputGroup"
+                                           placeholder="Rechercher un produit"
+                                           style="font-size: 12px"
+                                    >
+                                    <div>
+                                        <button type="submit" class="btn btn-primary btn_radius-right" style="font-size: 12px">
+                                            <i class="bi bi-search"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </form>
-
-                    <!-- Form Search -->
-{#                    <div class="col-3">#}
-{#                        <div class="input-group">#}
-{#                            <input id="search-product" class="form-control border-end-0 border rounded-pill"#}
-{#                                   type="search" placeholder="Rechercher un produit" style="font-size: 0.75rem">#}
-{#                            <span class="input-group-append">#}
-{#                                <button class="btn btn-outline-secondary border-start-0 border rounded-pill ms-3"#}
-{#                                        type="button">#}
-{#                                    <i class="bi bi-search"></i>#}
-{#                                </button>#}
-{#                            </span>#}
-{#                        </div>#}
-{#                    </div>#}
 
                     <!-- Panier -->
                     <div class="flex justify-content-end mx-1">
