@@ -5,7 +5,6 @@ namespace App\Controller\Compte;
 use App\Entity\Addresses;
 use App\Entity\User;
 use App\Form\AccountDetailsFormType;
-use App\Form\AddressFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
