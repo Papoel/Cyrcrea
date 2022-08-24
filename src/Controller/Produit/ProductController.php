@@ -3,8 +3,10 @@
 namespace App\Controller\Produit;
 
 use App\Entity\Products;
+use App\Entity\ReviewsProduct;
 use App\Repository\CategoriesRepository;
 use App\Repository\ProductsRepository;
+use App\Repository\ReviewRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,7 +14,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     #[Route('/', name: 'app_product_index')]
-    public function index(ProductsRepository $productsRepository, CategoriesRepository $categoriesRepository): Response
+    public function index(
+        ProductsRepository $productsRepository,
+        CategoriesRepository $categoriesRepository,
+        ReviewRepository $reviewsProduct): Response
     {
         // Obtenir tous les produits à vendre
         $products = $productsRepository->findAll();
@@ -39,10 +44,15 @@ class ProductController extends AbstractController
     }
 
     #[Route('/produit/{slug}', name: 'app_product_show')]
-    public function show(Products $product, CategoriesRepository $categoriesRepository): Response
+    public function show(Products $product, ReviewRepository $reviewRepository): Response
     {
-        return $this->render('product/show.html.twig', [
-            'produits' => $product,
+        // Calcul de la note moyenne d'un produit
+        $note = $reviewRepository->countAverageProduct($product);
+
+
+        return $this->render('product/view.html.twig', [
+            'produit' => $product,
+            'note' => $note,
         ]);
     }
 }
