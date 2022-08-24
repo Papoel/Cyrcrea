@@ -37,9 +37,10 @@ services:
   maildev:
     image: maildev/maildev
     container_name: maildev_cyrcrea
-    command: bin/maildev --web 80 --smtp 25 --hide-extensions STARTTLS
+    command: bin/maildev --web 80 --smtp 1025 --hide-extensions STARTTLS
     ports:
       - "8081:80"
+      - "1025:1025"
     restart: always
     networks:
       - dev
