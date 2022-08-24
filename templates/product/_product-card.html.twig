@@ -48,7 +48,7 @@
                 <div class="product-price d-flex justify-content-around">
                     {% if produit.discount > 0 %}
                         <span class="price">
-                            <span class="currency">
+                            <span class="currency text-danger">
                                 {# Somme de base x (1 – y/100)) #}
                                 {% set valeur_initiale = produit.price %}
                                 {% set remise = produit.discount %}
@@ -60,10 +60,10 @@
                             {% set decimal = new_price - (new_price/100)|round(0, 'floor') * 100 %}
 
                             {% if decimal > 0 %}
-                                <span class="product-card_price-separator">.</span>
-                                <span class="cent">{{ decimal|round(0, 'floor')}}</span>
+                                <span class="product-card_price-separator text-danger">.</span>
+                                <span class="cent text-danger">{{ decimal|round(0, 'floor')}}</span>
                             {% endif %}
-                            <span class="sign">€</span>
+                            <span class="sign text-danger">€</span>
                         </span>
                     {% else %}
                         <span class="price">
