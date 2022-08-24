@@ -2,9 +2,12 @@
 
 namespace App\Repository;
 
+use App\Entity\Products;
 use App\Entity\ReviewsProduct;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Exception;
 use Doctrine\Persistence\ManagerRegistry;
+use http\Message;
 
 /**
  * @extends ServiceEntityRepository<ReviewsProduct>
@@ -37,6 +40,17 @@ class ReviewRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    //SELECT AVG(note) FROM reviews_product WHERE `product_id` = 1;
+    public function countAverageProduct(Products $products) {
+
+        return $this->createQueryBuilder('a')
+            ->select('AVG(a.note)')
+            ->andWhere('a.product = :product')
+            ->setParameter('product', $products)
+            ->getQuery()->getSingleScalarResult()
+            ;
     }
 
 //    /**
