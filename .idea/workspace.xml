@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/product-card.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/product-card.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/scss/components/product-card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/components/product-card.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Produit/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Produit/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ReviewRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ReviewRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/partials/_title_section.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/partials/_title_section.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product/_product-card.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/_product-card.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -342,7 +338,8 @@
       <workItem from="1661181835180" duration="41317000" />
       <workItem from="1661320599545" duration="12000" />
       <workItem from="1661325658766" duration="52000" />
-      <workItem from="1661337743125" duration="6898000" />
+      <workItem from="1661337743125" duration="12454000" />
+      <workItem from="1661353486864" duration="18347000" />
     </task>
     <servers />
   </component>

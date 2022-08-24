@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+{% block body %}
+    {{ include('layout/partials/_title_section.html.twig', { name: 'Détail de ' ~ produit.name }) }}
+
+    <section class="container sproduct my-5">
+        <div class="row mt-5">
+            <div class="col-lg-5 col-md-12 col-12">
+                {# Image principale du produit #}
+                <img src="{{ asset('images/uploads/bonnet_1.PNG') }}" alt="" class="img-fluid pb-1 detail-img-principal">
+
+                {# Boucle pour afficher toutes les images secondaires #}
+                <div class="small-img-group">
+                    <div class="small-img-col">
+                        <img src="{{ asset('images/uploads/bonnet_2.PNG') }}" alt="" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="{{ asset('images/uploads/bonnet_3.PNG') }}" alt="" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="{{ asset('images/uploads/bonnet_4.PNG') }}" alt="" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="{{ asset('images/uploads/bonnet_1.PNG') }}" alt="" class="small-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 col-12">
+                <h6 class="text-muted">Vêtement / Femme</h6>
+                <h3 class="py-4">{{ produit.name }}</h3>
+                <h2>{{ produit.price / 100 }} €</h2>
+
+                <div class="row g-3 mt-4">
+                    {% if produit.stock < 1 %}
+                        <div class="alert alert-danger">
+                            <p class="lead">Ce produit est victime de son succès, nous sommes désolé.</p>
+                        </div>
+                    {% else %}
+                        <div class="col-md-3">
+                            <select class="form-select shadow-none" id="quantity" required="">
+                                <option value="0" disabled>Choisir...</option>
+                                {% for stock in range(1, produit.stock) %}
+                                    <option value="0">{{ stock }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        {#
+                            <div class="col-md-4">
+                                <select class="form-select shadow-none" id="size" required="">
+                                    <option value="" disabled>Choisir...</option>
+                                    {% if produit.tags is not null %}
+                                            <option value="">{{ produit.tags }}</option>
+                                        <option></option>
+                                    {% endif %}
+                                </select>
+                            </div>
+                        #}
+
+                        <div class="col-md-5">
+                            {# Todo Ajouter au panier #}
+                            <a href="#" class="btn btn-outline-primary btn-md">Ajouter au panier</a>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <h4 class="my-5">Détail du produit</h4>
+                <p class="lead">{{ produit.description|raw }}</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

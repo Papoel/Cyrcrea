@@ -241,3 +241,32 @@
     box-shadow: 0 0 0 0 rgba(220, 20, 60, 0.15);
   }
 }
+
+/**********************************************************
+ ***********************  DETAILS  ************************
+ **********************************************************/
+
+
+.small-img-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.small-img-col {
+  flex-basis: 24%;
+  cursor: pointer;
+}
+
+.small-img {
+  width: 100%
+}
+
+.sproduct {
+  display: block;
+  padding: 5px 10px;
+}
+
+.detail-buy-btn {
+  background: $primary;
+
+}
