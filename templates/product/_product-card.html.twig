@@ -1,40 +1,75 @@
-    <article class="col-lg-3 col-md-4 col-sm-6 mb-3">
-        <div class="card">
-            <div id="produit-{{ produit.id }}" class="product-box">
-                <div class="product-inner-box position-relative">
-                    {# Icône et ajout à la wishlist #}
-                    <div class="icons position-absolute ">
-                        <a href="#">
-                            <i class="bi bi-heart-fill"></i>
-                        </a>
-                        <a href="{{ path('app_product_show', { slug: produit.slug }) }}">
-                            <i class="bi bi-eye-fill"></i>
-                        </a>
-                    </div>
-                    {% if produit.isSpecialOffer == true %}
-                        {# Promtion / Offre spéciale #}
-                        <div class="solde">
-                            <span class="badge rounded-0"><i class="bi bi-arrow-down"></i> 25%</span>
-                        </div>
-                    {% endif %}
-                    {# Image du produit #}
-                    <img src="{{ asset('images/uploads/gadget_1.PNG') }}" class="img-fluid" alt="{{ produit.name }}">
-                    {# Boutton Ajouter au panier #}
-                    <div class="cart-btn">
-                        <button class="btn btn-primary shadow-sm rounded-pill"><i class="bi bi-cart"></i>Ajouter au panier</button>
-                    </div>
+<article class="col-lg-3 col-md-4 col-sm-6 mb-3">
+    <div class="card">
+        <div id="produit-{{ produit.id }}" class="product-box">
+            <div class="product-inner-box position-relative">
+                {# Icône et ajout à la wishlist #}
+                <div class="icons position-absolute ">
+                    <a href="#">
+                        <i class="bi bi-heart-fill"></i>
+                    </a>
+                    <a href="{{ path('app_product_show', { slug: produit.slug }) }}">
+                        <i class="bi bi-eye-fill"></i>
+                    </a>
                 </div>
+                {% if produit.isSpecialOffer == true and produit.discount > 0 %}
+                    {# Promtion / Offre spéciale #}
+                    <div class="solde">
+                        <span class="badge rounded-0"><i class="bi bi-arrow-down"></i> {{ produit.discount }}%</span>
+                    </div>
+                {% endif %}
+                {# Image du produit #}
+                <img src="{{ asset('images/uploads/gadget_1.PNG') }}" class="img-fluid" alt="{{ produit.name }}">
+                {# Boutton Ajouter au panier #}
+                <div class="cart-btn">
+                    <button class="btn btn-primary shadow-sm rounded-pill"><i class="bi bi-cart"></i>Ajouter au panier</button>
+                </div>
+            </div>
 
-                <div class="card-footer">
-                    <h5 class="product-card_title">
-                        <a href="#">{{ produit.name }}</a>
-                    </h5>
-                    <p class="product-card_description">{{ produit.description }}</p>
+            <div class="card-footer">
+                <h5 class="product-card_title">
+                    <a href="#">{{ produit.name }}</a>
+                </h5>
+                <p class="product-card_description">{{ produit.description }}</p>
+            </div>
+
+            {# Note du produit #}
+            <div class="card-footer border-0">
+                {# Affichage de la moyenne de chaque produit #}
+                <div class="d-flex justify-content-end">
+                    <i class="bi bi-star" data-value="1"></i><i class="bi bi-star" data-value="2"></i><i class="bi bi-star" data-value="3"></i><i class="bi bi-star" data-value="4"></i><i class="bi bi-star" data-value="5"></i>
+                    {# <span class="rating-count">{{ note|round(1, 'common')}}</span>#}
+                    {# <span class="note">2.6/5</span>#}
+                    <input id="note" data-id="{{ produit.id }}" type="hidden" value="0">
                 </div>
-                <div class="card-footer bg-light">
-                    <div class="product-price d-flex justify-content-between">
+            </div>
+
+            {# Prix de l'article #}
+            <div class="card-footer bg-light">
+                <div class="product-price d-flex justify-content-around">
+                    {% if produit.discount > 0 %}
                         <span class="price">
-                            <span class="currency">{{ (produit.price / 100)|round(0, 'floor') }}</span>
+                            <span class="currency">
+                                {# Somme de base x (1 – y/100)) #}
+                                {% set valeur_initiale = produit.price %}
+                                {% set remise = produit.discount %}
+                                {% set new_price = (valeur_initiale * (1 - remise / 100)) %}
+
+                                {# Display price without decimal #}
+                                {{ (new_price/100)|round(0, 'floor')}}
+                            </span>
+                            {% set decimal = new_price - (new_price/100)|round(0, 'floor') * 100 %}
+
+                            {% if decimal > 0 %}
+                                <span class="product-card_price-separator">.</span>
+                                <span class="cent">{{ decimal|round(0, 'floor')}}</span>
+                            {% endif %}
+                            <span class="sign">€</span>
+                        </span>
+                    {% else %}
+                        <span class="price">
+                            <span class="currency">
+                                {{ (produit.price / 100)|round(0, 'floor') }}
+                            </span>
                             {% set decimal = produit.price - (produit.price / 100)|round(0, 'floor') * 100 %}
                             {% if decimal > 0 %}
                                 <span class="product-card_price-separator">.</span>
@@ -42,45 +77,28 @@
                             {% endif %}
                             <span class="sign">€</span>
                         </span>
-                        {# Affichage de la moyenne de chaque produit #}
-                        <div class="rate">
-                            <span class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-{#                                <span class="rating-count">{{ note|round(1, 'common')}}</span>#}
-                            </span>
-                        </div>
-                    </div>
+                    {% endif %}
+
+                    {% if produit.isSpecialOffer == true %}
+                        <span class="old-price">
+                            <del class="currency">
+                                {{ (produit.price / 100)|round(0, 'floor') }}
+                            </del>
+                            {% set decimal = produit.price - ((produit.price) / 100)|round(0, 'floor') * 100 %}
+                            {% if decimal > 0 %}
+                                <span class="product-card_price-separator">.</span>
+                                <del class="cent">{{ decimal }}</del>
+                            {% endif %}
+                            <span class="sign">€</span>
+                        </span>
+                    {% endif %}
+
                 </div>
             </div>
         </div>
-    </article>
-
-
-
-{#
-    <div class="product-info">
-         Nom du produit
-        <div class="product-card_footer">
-            <div class="product-name">
-                <a href="{{ path('app_product_show', {slug: produit.slug}) }}" class="m-1">{{ produit.name }}</a>
-            </div>
-        </div>
-         Affichage du prix
-        <div class="product-price">
-            <span class="price">
-                <span class="currency">99</span>
-                <span class="cent">.99</span>
-                <span class="sign">€</span>
-            </span>
-            <span>{{ produit.price / 100 }} €</span>
-        </div>
     </div>
-#}
 
+</article>
 
 {% block javascripts%}
     {{ encore_entry_script_tags('product-card') }}
