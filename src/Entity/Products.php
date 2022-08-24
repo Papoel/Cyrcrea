@@ -67,6 +67,9 @@ class Products
     #[ORM\OneToMany(mappedBy: 'products', targetEntity: Images::class, orphanRemoval: true)]
     private Collection $images;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $discount = null;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
@@ -361,6 +364,18 @@ class Products
                 $image->setProducts(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDiscount(): ?int
+    {
+        return $this->discount;
+    }
+
+    public function setDiscount(?int $discount): self
+    {
+        $this->discount = $discount;
 
         return $this;
     }
