@@ -157,6 +157,29 @@
   color: $primary;
 }
 
+.product-price .old-price {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0;
+  padding: 0;
+  color: #555555a5;
+}
+
+.product-price .old-price .sign {
+  display: inline-block;
+  font-family: "Lato",sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  vertical-align: middle;
+  margin-left: -5px;
+}
+
+// Change color of line in balise del
+.product-price .old-price del {
+  font-size:       15px;
+  text-decoration: #666666a5 line-through;
+}
+
 .product-price .price .cent{
   font-size: 14px;
   font-weight: 300;
