@@ -66,4 +66,13 @@ Un produit à un nombre en stock et un tarif unitaire
 - Récupérer le panier
 
 <hr>
+
 Combien de temps le panier est sauvegardé et comment ?
+
+<hr>
+
+Chose à Faire :
+
+- [ ] Responsive Login
+- [ ] Responsive Register
+- [ ] Responsive Password Forget
