@@ -3,7 +3,6 @@
 namespace App\Controller\Produit;
 
 use App\Entity\Products;
-use App\Entity\ReviewsProduct;
 use App\Repository\CategoriesRepository;
 use App\Repository\ProductsRepository;
 use App\Repository\ReviewRepository;
@@ -21,7 +20,6 @@ class ProductController extends AbstractController
     {
         // Obtenir tous les produits à vendre
         $products = $productsRepository->findAll();
-
         // Obtenir tous les produits 'Meilleurs Ventes' = true
         $productsBestSeller = $productsRepository->findBy(['isBest' => true]);
         // Obtenir tous les produits 'Nouvel arrivage'
@@ -35,11 +33,11 @@ class ProductController extends AbstractController
          // dd([$productsBestSeller, $productsIsNewArrival, $productsIsSpecialOffer, $productsIsFeatured]);
 
         return $this->render('product/index.html.twig', [
-            'produits'      => $products,
-            'bestSellers'   => $productsBestSeller,
-            'news'          => $productsIsNewArrival,
-            'offerSpecials' => $productsIsSpecialOffer,
-            'featured'      => $productsIsFeatured,
+            'products'             => $products,
+            'productBestSellers'   => $productsBestSeller,
+            'productNewArrival'    => $productsIsNewArrival,
+            'productSpecialOffer'  => $productsIsSpecialOffer,
+            'productFeatured'      => $productsIsFeatured,
         ]);
     }
 
