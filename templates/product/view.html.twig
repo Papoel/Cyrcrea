@@ -6,8 +6,8 @@
 {% block body %}
     {{ include('layout/partials/_title_section.html.twig', { name: 'Détail de ' ~ produit.name }) }}
 
-    <section class="container sproduct my-5">
-        <div class="row mt-5">
+    <section class="container single-product my-5">
+        <div class="row mt-3">
             <div class="col-lg-5 col-md-12 col-12">
                 {# Image principale du produit #}
                 <img src="{{ asset('images/uploads/bonnet_1.PNG') }}" alt="" class="img-fluid pb-1 detail-img-principal">
@@ -30,8 +30,10 @@
             </div>
 
             <div class="col-lg-6 col-md-12 col-12">
-                <h6 class="text-muted">Vêtement / Femme</h6>
-                <h3 class="py-4">{{ produit.name }}</h3>
+                {% for categorie in produit.categories %}
+                    <h6 class="badge rounded-pill bg-primary px-3 py-1 text-uppercase">{{ categorie }}</h6>
+                {% endfor %}
+                <h3 class="py-4 text-uppercase">{{ produit.name }}</h3>
                 <h2>{{ produit.price / 100 }} €</h2>
 
                 <div class="row g-3 mt-4">
