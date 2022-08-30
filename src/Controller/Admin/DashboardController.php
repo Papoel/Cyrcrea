@@ -45,7 +45,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToRoute('Visiter le site', 'fas fa-store', 'app_home');
+        yield MenuItem::linkToRoute('Visiter le site', 'fas fa-store', 'app_product_index');
 
         yield MenuItem::section('Gestion utilisateurs')->setBadge(count($this->entityManager->getRepository(User::class)->findAll()), 'dark');
         yield MenuItem::subMenu('Actions Utilisateurs', 'fas fa-users')
