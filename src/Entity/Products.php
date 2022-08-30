@@ -379,4 +379,10 @@ class Products
 
         return $this;
     }
+
+    // Return the price with the discount
+    public function getPriceWithDiscount(): ?int
+    {
+        return $this->price - ($this->price * $this->discount / 100);
+    }
 }
