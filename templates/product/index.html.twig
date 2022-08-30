@@ -6,22 +6,12 @@
 
     {{ include('layout/partials/_title_section.html.twig', { name: 'Liste de nos produits' }) }}
 
-{#    <section>#}
-{#        <div class="bg-dark container-fluid">#}
-{#            <div class="row p-5">#}
-{#                {% for new in news %}#}
-{#                    {% include('layout/partials/products/new_arrival_card.html.twig') %}#}
-{#                {% endfor %}#}
-{#            </div>#}
-{#        </div>#}
-{#    </section>#}
-
+    {# Afficher la liste des produit #}
     <section id="products-cards" class="px-4">
         <div id="product-card">
             <div class="row">
-                {% for produit in produits %}
+                {% for product in products %}
                     {% include('product/_product-card.html.twig') %}
-                    {# {% include('layout/partials/products/card.html.twig') %} #}
                 {% endfor %}
             </div>
         </div>
