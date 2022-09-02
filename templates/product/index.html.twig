@@ -32,4 +32,30 @@
         </div>
     </section>
 
+    {# Afficher le titre de la section #}
+    {{ include('layout/partials/section-hero.html.twig', { title: 'Nos offres spéciales', btn_msg: 'Consulter nos offres' }) }}
+    {# Afficher la liste des produits (Offres Spéciales) #}
+    <section id="products-cards_specialOffer" class="px-4">
+        <div id="product-card">
+            <div class="row {{productSpecialOffer|length <= 3 ? 'justify-content-center' : ''}}">
+                {% for product in productSpecialOffer %}
+                    {% include('product/_product-card.html.twig') %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {# Afficher le titre de la section #}
+    {{ include('layout/partials/section-hero.html.twig', { title: 'Nos coup de coueur ❤️', btn_msg: 'Notre sélection ❤️' }) }}
+    {# Afficher la liste des produits (Offres Spéciales) #}
+    <section id="products-cards_specialOffer" class="px-4">
+        <div id="product-card">
+            <div class="row {{productFeatured|length <= 3 ? 'justify-content-center' : ''}}">
+                {% for product in productFeatured %}
+                    {% include('product/_product-card.html.twig') %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
 {% endblock %}
