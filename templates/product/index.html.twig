@@ -6,11 +6,11 @@
 
     {{ include('layout/partials/_title_section.html.twig', { name: 'Accueil' }) }}
 
+    {# Afficher le titre de la section #}
     {{ include('layout/partials/section-hero.html.twig', { title: 'les nouveautés', btn_msg: 'Consulter nos nouveautés' }) }}
-
-    <section id="products-cards" class="px-4">
+    <section id="products-cards_newArrival" class="px-4">
         <div id="product-card">
-            <div class="row justify-content-center">
+            <div class="row {{productNewArrival|length <= 3 ? 'justify-content-center' : ''}}">
                 {% for product in productNewArrival %}
                     {% include('product/_product-card.html.twig') %}
                 {% endfor %}
@@ -19,13 +19,13 @@
     </section>
 
 
-    {{ include('layout/partials/section-hero.html.twig', { title: 'les artciles disponibles', btn_msg: 'Consulter tous nos articles' }) }}
-
+    {# Afficher le titre de la section #}
+    {{ include('layout/partials/section-hero.html.twig', { title: 'Nos meilleures ventes', btn_msg: 'Consulter nos Best Seller' }) }}
     {# Afficher la liste des produit #}
-    <section id="products-cards" class="px-4">
+    <section id="products-cards_bestSellers" class="px-4">
         <div id="product-card">
-            <div class="row">
-                {% for product in products %}
+            <div class="row {{productBestSellers|length <= 3 ? 'justify-content-center' : ''}}">
+                {% for product in productBestSellers %}
                     {% include('product/_product-card.html.twig') %}
                 {% endfor %}
             </div>

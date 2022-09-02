@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scss/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scss/components/button.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/components/button.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/product/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -345,7 +343,7 @@
       <workItem from="1661864440203" duration="6132000" />
       <workItem from="1661876491201" duration="1503000" />
       <workItem from="1661882275651" duration="577000" />
-      <workItem from="1662107286596" duration="13323000" />
+      <workItem from="1662107286596" duration="15494000" />
     </task>
     <servers />
   </component>
