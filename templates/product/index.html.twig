@@ -4,7 +4,22 @@
 
 {% block body %}
 
-    {{ include('layout/partials/_title_section.html.twig', { name: 'Liste de nos produits' }) }}
+    {{ include('layout/partials/_title_section.html.twig', { name: 'Accueil' }) }}
+
+    {{ include('layout/partials/section-hero.html.twig', { title: 'les nouveautés', btn_msg: 'Consulter nos nouveautés' }) }}
+
+    <section id="products-cards" class="px-4">
+        <div id="product-card">
+            <div class="row justify-content-center">
+                {% for product in productNewArrival %}
+                    {% include('product/_product-card.html.twig') %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+    {{ include('layout/partials/section-hero.html.twig', { title: 'les artciles disponibles', btn_msg: 'Consulter tous nos articles' }) }}
 
     {# Afficher la liste des produit #}
     <section id="products-cards" class="px-4">

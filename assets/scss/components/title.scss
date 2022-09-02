@@ -1,0 +1,33 @@
+:root {
+  --main-color: #276186;
+  --separation-color: #B75329FF;
+}
+
+#section_title{
+  text-align: center;
+  padding-bottom: 80px;
+}
+
+#section_title h2 {
+  font-size: 32px;
+  text-transform: uppercase;
+  color: var(--main-color);
+  font-weight: 700;
+  letter-spacing: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+#section_title h2:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 15%;
+  height: 3px;
+  background: var(--separation-color);
+  left: 0;
+  right: 0;
+  bottom: -33%;
+  margin: auto;
+}
