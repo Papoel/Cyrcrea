@@ -63,16 +63,20 @@
 }
 
 .button.basic {
-  color: #202129;
+  //color: #202129;
+  color: slategrey;
   background-color: rgba(0, 0, 0, 0.03);
   border-color: #D5D9D9;
   border-style: solid;
-  border-width: 1px;;
+  border-width: 1px;
+  transition: 0.25s ease-in-out;
 
 
   &:hover {
-    color: #202129;
-    background-color: var(--color-opal);
+    color: #363636;
+    background-color: var(--color-smoke);
+    letter-spacing: 1px;
+    scale: 1.05;
     //box-shadow: 2px 5px 10px rgba(0, 130, 150, 0.2);
     opacity: 1;
   }
