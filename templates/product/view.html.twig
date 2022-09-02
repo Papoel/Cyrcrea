@@ -10,21 +10,17 @@
         <div class="row mt-3">
             <div class="col-lg-5 col-md-12 col-12">
                 {# Image principale du produit #}
-                <img src="{{ asset('images/uploads/bonnet_1.PNG') }}" alt="" class="img-fluid pb-1 detail-img-principal">
-
-                {# Boucle pour afficher toutes les images secondaires #}
+                <img id="mainImg" src="{{ asset('images/uploads/bonnet_1.PNG') }}" alt="" class="img-fluid pb-1">
+                {# =>  Boucler pour afficher toutes les images secondaires <= #}
                 <div class="small-img-group">
                     <div class="small-img-col">
-                        <img src="{{ asset('images/uploads/bonnet_2.PNG') }}" alt="" class="small-img">
+                        <img src="{{ asset('images/uploads/bonnet_2.PNG') }}" alt="" class="secondary-images">
                     </div>
                     <div class="small-img-col">
-                        <img src="{{ asset('images/uploads/bonnet_3.PNG') }}" alt="" class="small-img">
+                        <img src="{{ asset('images/uploads/bonnet_3.PNG') }}" alt="" class="secondary-images">
                     </div>
                     <div class="small-img-col">
-                        <img src="{{ asset('images/uploads/bonnet_4.PNG') }}" alt="" class="small-img">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="{{ asset('images/uploads/bonnet_1.PNG') }}" alt="" class="small-img">
+                        <img src="{{ asset('images/uploads/bonnet_4.PNG') }}" alt="" class="secondary-images">
                     </div>
                 </div>
             </div>
@@ -74,4 +70,19 @@
             </div>
         </div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        let mainImg = document.querySelector('#mainImg');
+        let smallimg = document.querySelectorAll('.secondary-images');
+
+        for (let i = 0; i < smallimg.length; i++) {
+            smallimg[i].addEventListener('click', function() {
+                mainImg.src = this.src;
+            } );
+        }
+
+    </script>
 {% endblock %}
