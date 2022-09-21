@@ -21,7 +21,10 @@
                 <img src="{{ asset('images/uploads/gadget_1.PNG') }}" class="img-fluid" alt="{{ product.name }}">
                 {# Boutton Ajouter au panier #}
                 <div class="cart-btn">
-                    <button class="btn btn-primary shadow-sm rounded-pill"><i class="bi bi-cart"></i>Ajouter au panier</button>
+                    <a href="{{ path('add_to_cart', {'id': product.id }) }}" class="btn btn-primary shadow-sm rounded-pill">
+                        <i class="bi bi-cart"></i>
+                        Ajouter au panier
+                    </a>
                 </div>
             </div>
 
