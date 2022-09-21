@@ -39,6 +39,12 @@ class ProductsRepository extends ServiceEntityRepository
         }
     }
 
+    public function save(?Products $product): void
+    {
+        $this->getEntityManager()->persist($product);
+        $this->getEntityManager()->flush();
+    }
+
 //    /**
 //     * @return Product[] Returns an array of Product objects
 //     */
