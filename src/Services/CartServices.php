@@ -27,6 +27,7 @@ class CartServices
     {
         // Mettre à jour le panier dans la session
         $this->requestStack->getSession()->set('cart', $cart);
+        $this->requestStack->getSession()->set('cartData', $this->getFullCart());;
     }
 
     // Ajouter un produit au panier et mettre a jour le stock produit dans la base de données

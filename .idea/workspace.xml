@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scss/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ProductsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ProductsRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/partials/_title_section.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/partials/_title_section.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/CartServices.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/CartServices.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/layout/partials/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/partials/header.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product/_product-card.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/_product-card.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +40,8 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="panier" />
-                    <option name="lastUsedInstant" value="1662135040" />
+                    <option name="branchName" value="header-panier" />
+                    <option name="lastUsedInstant" value="1663780285" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -359,6 +356,7 @@
       <workItem from="1663310030924" duration="69000" />
       <workItem from="1663488493833" duration="5423000" />
       <workItem from="1663775398722" duration="3525000" />
+      <workItem from="1663844094612" duration="10081000" />
     </task>
     <servers />
   </component>

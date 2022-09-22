@@ -46,74 +46,174 @@
 {% if app.user %}
     <div class="bg-light text-dark">
         <nav class="navbar-expand-md navbar-light justify-content-between">
-                <div class="collapse navbar-collapse justify-content-between py-2" id="navbarSupportedContent">
-                    <ul class="navbar-nav px-2">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-toggle="dropdown">Liste de souhaits</a>
-                        </li>
-                    </ul>
-                    <!-- Form Search -->
-                    <form id="form-search" class="search_form-border">
-                        <div class="form-row align-items-center">
-                            <div class="col-auto">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="dropdown">
-                                            <button type="button"
-                                                class="btn btn-primary dropdown-toggle shadow-none btn_radius-left"
-                                                data-bs-toggle="dropdown"
-                                                aria-expanded="false"
-                                                style="font-size: 12px">
-                                                Toutes nos catégories
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                {% for categorie in categories.findAll() %}
-                                                    <li>
-                                                        <a class="text-capitalize dropdown-item" href="#">{{ categorie.name }}</a>
-                                                    </li>
-                                                {% endfor %}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <input type="text"
-                                           class="form-control shadow-none search_form"
-                                           id="inlineFormInputGroup"
-                                           placeholder="Rechercher un produit"
-                                           style="font-size: 12px"
-                                    >
-                                    <div>
-                                        <button type="submit" class="btn btn-primary btn_radius-right" style="font-size: 12px">
-                                            <i class="bi bi-search"></i>
+            <div class="collapse navbar-collapse justify-content-between py-2" id="navbarSupportedContent">
+                <ul class="navbar-nav px-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="dropdown">Liste de souhaits</a>
+                    </li>
+                </ul>
+                <!-- Form Search -->
+                <form id="form-search" class="search_form-border">
+                    <div class="form-row align-items-center">
+                        <div class="col-auto">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="dropdown">
+                                        <button type="button"
+                                            class="btn btn-primary dropdown-toggle shadow-none btn_radius-left"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                            style="font-size: 12px">
+                                            Toutes nos catégories
                                         </button>
+                                        <ul class="dropdown-menu">
+                                            {% for categorie in categories.findAll() %}
+                                                <li>
+                                                    <a class="text-capitalize dropdown-item" href="#">{{ categorie.name }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
                                     </div>
+                                </div>
+                                <input type="text"
+                                       class="form-control shadow-none search_form"
+                                       id="inlineFormInputGroup"
+                                       placeholder="Rechercher un produit"
+                                       style="font-size: 12px"
+                                >
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn_radius-right" style="font-size: 12px">
+                                        <i class="bi bi-search"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </form>
-
-                    <!-- Panier -->
-                    <div class="flex justify-content-end mx-1">
-                        <span class="input-group-append">
-                            <a class="btn btn-outline-secondary border-start-0 border rounded-pill"
-                               href="{{ path('app_cart') }}">
-                                <i class="bi bi-cart3"></i>
-                            </a>
-                        </span>
-                        <!-- Paramètre du compte -->
-                        <span class="input-group-append">
-                            <a class="btn btn-outline-secondary border-start-0 border rounded-pill"
-                               href="{{ path('app_compte') }}">
-                                <i class="bi bi-gear"></i>
-                            </a>
-                        </span>
                     </div>
+                </form>
 
+                <!-- Panier -->
+                <div class="flex justify-content-end mx-1">
+                    <span id="cart-icon" class="input-group-append">
+                        <a class="btn btn-outline-secondary border-start-0 border rounded-pill"
+                           href="{{ path('app_cart') }}">
+                            <i class="bi bi-cart3"></i>
+                        </a>
+                    </span>
+
+                    {# Récapitulatif du panier a afficher on hover ... #}
+                    <!-- Test 1 => Forme de Tableau
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-3 text-uppercase">Produit</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="py-2 text-uppercase">Prix</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="py-2 text-uppercase">Quantité</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="py-2 text-uppercase">Supprimer</div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for element in app.session.get('cartData') %}
+                                <tr>
+                                    <th scope="row" class="border-0">
+                                        <div>
+                            <img src="https://bootstrapious.com/i/snippets/sn-cart/product-1.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
+                            <div class="ms-3 d-inline-block align-middle">
+                                <h6 class="mb-0">
+                                    <a class="text-dark d-inline-block align-middle" href="#">{{ element.product.name }}</a>
+                                </h6>
+                                {# TODO : Afficher la catégorie du produit
+                                    <span class="badge rounded-pill bg-dark px-3 py-1 mt-1">
+                                    {{ element.product.category.name }}
+                                    {% for category in element.product.categories %}
+                                        Catégorie: {{ category.name }}
+                                    {% endfor %}
+                                    </span>
+                                #}
+                            </div>
+                        </div>
+                                    </th>
+                                    <td class="border-0 align-middle text-center">{{ element.quantity }}</td>
+                                    <td class="border-0 align-middle text-center">{{ element.prixTotal / 100 }} €</td>
+                                    <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="text-danger bi bi-trash3"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>-->
+
+                    <!-- Test 2 => Forme de Carte-->
+                    <!-- TODO: Afficher la carte on hover de l'icône cart-->
+
+                    <div id="cart-hidden" class="card" style="width: 18rem;">
+                        <div class="card-header"><h5>Mon panier</h5></div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Produit</th>
+                                        <th scope="col">Infos</th>
+                                        <th scope="col">Supprimer</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for element in app.session.get('cartData') %}
+                                        <tr>
+                                            <td class="align-middle {{ loop.last ? "border border-0" :"" }}" rowspan="2">{{ element.product.name }}</td>
+                                            <td class="border border-0 text-center">x {{ element.quantity }}</td>
+                                            <td class="text-center align-middle {{ loop.last ? "border border-0" :"" }}" colspan="2" rowspan="2"><a href="{{ path('delete_all_from_cart', {'id': element.product.id}) }}"><i class="text-danger bi bi-trash3"></i></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"  class="{{ loop.last ? "border border-0" :"" }} not-first-cell text-start">{{ element.prixTotal / 100 }} €</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin Test 2 => Forme de Carte -->
+
+                    <!-- Paramètre du compte -->
+                    <span class="input-group-append">
+                        <a class="btn btn-outline-secondary border-start-0 border rounded-pill"
+                           href="{{ path('app_compte') }}">
+                            <i class="bi bi-gear"></i>
+                        </a>
+                    </span>
                 </div>
 
-{#            </nav>#}
+            </div>
         </nav>
     </div>
 {% endif %}
+
+{% block Javascripts %}
+    <script>
+        const cartIcon = document.querySelector('#cart-icon');
+        const cartHidden = document.querySelector('#cart-hidden');
+
+        // Cacher par défaut l'élément cartHidden
+        cartHidden.style.display = 'none';
+
+        // Afficher un récap panier on hover de l'icone cart je peux supprimer un produit
+        cartIcon.addEventListener('mouseover', () => {
+            cartHidden.style.display = 'block';
+            cartHidden.style.position = 'absolute';
+            cartHidden.style.right = '0';
+            cartHidden.style.zIndex = '1000';
+        });
+    </script>
+{% endblock %}
