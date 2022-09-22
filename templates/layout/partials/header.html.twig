@@ -155,8 +155,8 @@
 
                     <!-- Test 2 => Forme de Carte-->
                     <!-- TODO: Afficher la carte on hover de l'icône cart-->
-
-                    <div id="cart-hidden" class="card" style="width: 18rem;">
+                    {% if app.session.get('cartData') %}
+                        <div id="cart-hidden" class="card" style="width: 18rem;">
                         <div class="card-header"><h5>Mon panier</h5></div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -184,6 +184,8 @@
                             </div>
                         </div>
                     </div>
+                    {% endif %}
+
                     <!-- Fin Test 2 => Forme de Carte -->
 
                     <!-- Paramètre du compte -->
@@ -199,21 +201,3 @@
         </nav>
     </div>
 {% endif %}
-
-{% block Javascripts %}
-    <script>
-        const cartIcon = document.querySelector('#cart-icon');
-        const cartHidden = document.querySelector('#cart-hidden');
-
-        // Cacher par défaut l'élément cartHidden
-        cartHidden.style.display = 'none';
-
-        // Afficher un récap panier on hover de l'icone cart je peux supprimer un produit
-        cartIcon.addEventListener('mouseover', () => {
-            cartHidden.style.display = 'block';
-            cartHidden.style.position = 'absolute';
-            cartHidden.style.right = '0';
-            cartHidden.style.zIndex = '1000';
-        });
-    </script>
-{% endblock %}
