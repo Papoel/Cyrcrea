@@ -1,0 +1,37 @@
+<form id="form-search" class="search_form-border">
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="dropdown">
+                        <button type="button"
+                                class="btn btn-primary dropdown-toggle shadow-none btn_radius-left"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                style="font-size: 12px">
+                            Toutes nos catégories
+                        </button>
+                        <ul class="dropdown-menu">
+                            {% for categorie in categories.findAll() %}
+                                <li>
+                                    <a class="text-capitalize dropdown-item" href="#">{{ categorie.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <input type="text"
+                       class="form-control shadow-none search_form"
+                       id="inlineFormInputGroup"
+                       placeholder="Rechercher un produit"
+                       style="font-size: 12px"
+                >
+                <div>
+                    <button type="submit" class="btn btn-primary btn_radius-right" style="font-size: 12px">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

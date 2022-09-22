@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/partials/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/partials/header.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +39,8 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="header-panier" />
-                    <option name="lastUsedInstant" value="1663780285" />
+                    <option name="branchName" value="clean" />
+                    <option name="lastUsedInstant" value="1663874489" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />

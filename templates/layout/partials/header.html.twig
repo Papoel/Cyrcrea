@@ -1,8 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark">
   <div class="container-fluid">
       <a class="navbar-brand text-uppercase ms-2" href="#">La Boutique CyrCrea</a>
-{#      <img class="d-none d-md-block img-responsive" src="{{ asset('images/logo/dark-logo.png') }}" alt="Logo">#}
-
+      {# <img class="d-none d-md-block img-responsive" src="{{ asset('images/logo/dark-logo.png') }}" alt="Logo">#}
       <button class="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
@@ -38,8 +37,8 @@
                       </a>
                   </div>
               {% endif %}
-            </div>
-        </div>
+          </div>
+      </div>
   </div>
 </nav>
 
@@ -56,43 +55,7 @@
                     </li>
                 </ul>
                 <!-- Form Search -->
-                <form id="form-search" class="search_form-border">
-                    <div class="form-row align-items-center">
-                        <div class="col-auto">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="dropdown">
-                                        <button type="button"
-                                            class="btn btn-primary dropdown-toggle shadow-none btn_radius-left"
-                                            data-bs-toggle="dropdown"
-                                            aria-expanded="false"
-                                            style="font-size: 12px">
-                                            Toutes nos catégories
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            {% for categorie in categories.findAll() %}
-                                                <li>
-                                                    <a class="text-capitalize dropdown-item" href="#">{{ categorie.name }}</a>
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                </div>
-                                <input type="text"
-                                       class="form-control shadow-none search_form"
-                                       id="inlineFormInputGroup"
-                                       placeholder="Rechercher un produit"
-                                       style="font-size: 12px"
-                                >
-                                <div>
-                                    <button type="submit" class="btn btn-primary btn_radius-right" style="font-size: 12px">
-                                        <i class="bi bi-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                {% include('partial/products/search.html.twig') %}
 
                 <!-- Panier -->
                 <div class="flex justify-content-end mx-1">
@@ -103,64 +66,9 @@
                         </a>
                     </span>
 
-                    {# Récapitulatif du panier a afficher on hover ... #}
-                    <!-- Test 1 => Forme de Tableau
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th scope="col" class="border-0 bg-light">
-                                    <div class="p-2 px-3 text-uppercase">Produit</div>
-                                </th>
-                                <th scope="col" class="border-0 bg-light">
-                                    <div class="py-2 text-uppercase">Prix</div>
-                                </th>
-                                <th scope="col" class="border-0 bg-light">
-                                    <div class="py-2 text-uppercase">Quantité</div>
-                                </th>
-                                <th scope="col" class="border-0 bg-light">
-                                    <div class="py-2 text-uppercase">Supprimer</div>
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for element in app.session.get('cartData') %}
-                                <tr>
-                                    <th scope="row" class="border-0">
-                                        <div>
-                            <img src="https://bootstrapious.com/i/snippets/sn-cart/product-1.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
-                            <div class="ms-3 d-inline-block align-middle">
-                                <h6 class="mb-0">
-                                    <a class="text-dark d-inline-block align-middle" href="#">{{ element.product.name }}</a>
-                                </h6>
-                                {# TODO : Afficher la catégorie du produit
-                                    <span class="badge rounded-pill bg-dark px-3 py-1 mt-1">
-                                    {{ element.product.category.name }}
-                                    {% for category in element.product.categories %}
-                                        Catégorie: {{ category.name }}
-                                    {% endfor %}
-                                    </span>
-                                #}
-                            </div>
-                        </div>
-                                    </th>
-                                    <td class="border-0 align-middle text-center">{{ element.quantity }}</td>
-                                    <td class="border-0 align-middle text-center">{{ element.prixTotal / 100 }} €</td>
-                                    <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="text-danger bi bi-trash3"></i></a></td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>-->
-
-                    <!-- Test 2 => Forme de Carte-->
-                    <!-- TODO: Afficher la carte on hover de l'icône cart-->
                     {% if app.session.get('cartData') %}
                         {% include('cart/cart-floating.html.twig') %}
-
                     {% endif %}
-
-                    <!-- Fin Test 2 => Forme de Carte -->
 
                     <!-- Paramètre du compte -->
                     <span class="input-group-append">
