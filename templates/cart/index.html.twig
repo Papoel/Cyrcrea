@@ -11,156 +11,104 @@
                 <!-- Récapitulatif des articles commandés -->
                 {% if cart %}
                     <div class="col-md-8">
-                            <div class="card mb-4">
+                        <div class="card mb-4">
                             <div class="card-header py-3">
                                 <h5 class="mb-0 text-primary">Récapitulatif de ma commande</h5>
                             </div>
                             <!-- Boucle article du panier -->
                             {% for product in cart %}
                                 <div class="card-body">
-                                <!-- Carte article -->
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                                        <!-- Image -->
-                                        <div class="rounded">
-                                            {# Todo : Faire le bon lien avec l'image #}
-                                            <img src="https://api.lorem.space/image?w=150&h=180" class="img-fluid d-block" alt="img">
+                                    <!-- Carte article -->
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                                            <!-- Image -->
+                                            <div class="rounded">
+                                                {# Todo : Faire le bon lien avec l'image #}
+                                                <img src="https://api.lorem.space/image?w=150&h=180" class="img-fluid d-block" alt="img">
+                                            </div>
+                                            <!-- Image -->
                                         </div>
-                                        <!-- Image -->
-                                    </div>
-
-                                    <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                                        <!-- Data -->
-                                        <p class="h6 text-uppercase text-muted"><strong>{{ product.product.name }}</strong></p>
-                                        <p class="lh-sm">
-                                            <strong class="d-inline-block mb-1">Description: </strong><br>
-                                            {{ product.product.description }}
-                                        </p>
-                                        <!-- Afficher le montant de la remise du produit si il y en a une -->
-                                        {% if product.product.discount is not null %}
+                                        <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                                            <!-- Data -->
+                                            <p class="h6 text-uppercase text-muted"><strong>{{ product.product.name }}</strong></p>
                                             <p class="lh-sm">
-                                                <strong class="d-inline-block mb-1 text-danger">Prix soldé: </strong><br>
-                                                {# Afficher le prix unitaire avec la remise en pourcentage déduite #}
-                                                <span id="unit-price-{{ product.product.id }}">{{ ((product.product.price - (product.product.price * product.product.discount / 100)) / 100) | number_format(2) }}</span> €
+                                                <strong class="d-inline-block mb-1">Description: </strong><br>
+                                                {{ product.product.description }}
                                             </p>
-                                        {% else %}
-                                            <p class="lh-sm">
-                                                <strong class="d-inline-block mb-1">Prix unitaire: </strong><br>
-                                                <span id="unit-price-{{ product.product.id }}">{{ (product.product.price / 100) | number_format(2) }}</span> €
-                                            </p>
-                                        {% endif %}
-                                        <!-- Todo: Supprimer l'article -->
-                                        <a class="btn btn-danger btn-sm"
-                                           href="{{ path('delete_all_from_cart', {'id': product.product.id}) }}" >
-                                            <i class="bi bi-trash-fill"></i>
-                                        </a>
-                                        {# Bouton d'ajout à la liste de souhait #}
-                                        {# <button type="button" class="btn btn-success btn-sm mb-2" data-mdb-toggle="tooltip" #}
-                                        {# title="Ajouter à la liste de souhait" alt=""> #}
-                                        {# <i class="bi bi-heart-fill"></i> #}
-                                        {# </button> #}
-                                        <!-- Data -->
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                                            <!-- Afficher le montant de la remise du produit si il y en a une -->
+                                            {% if product.product.discount is not null %}
+                                                <p class="lh-sm">
+                                                    <strong class="d-inline-block mb-1 text-danger">Prix soldé: </strong><br>
+                                                    {# Afficher le prix unitaire avec la remise en pourcentage déduite #}
+                                                    <span id="unit-price-{{ product.product.id }}">{{ ((product.product.price - (product.product.price * product.product.discount / 100)) / 100) | number_format(2) }}</span> €
+                                                </p>
+                                            {% else %}
+                                                <p class="lh-sm">
+                                                    <strong class="d-inline-block mb-1">Prix unitaire: </strong><br>
+                                                    <span id="unit-price-{{ product.product.id }}">{{ (product.product.price / 100) | number_format(2) }}</span> €
+                                                </p>
+                                            {% endif %}
+                                            <!-- Todo: Supprimer l'article -->
+                                            <a class="btn btn-danger btn-sm"
+                                               href="{{ path('delete_all_from_cart', {'id': product.product.id}) }}" >
+                                                <i class="bi bi-trash-fill"></i>
+                                            </a>
+                                            {# TODO: Bouton d'ajout à la liste de souhait
+                                             <button type="button" class="btn btn-success btn-sm mb-2" data-mdb-toggle="tooltip"
+                                             title="Ajouter à la liste de souhait" alt="">
+                                             <i class="bi bi-heart-fill"></i>
+                                            </button>
+                                            #}
+                                            <!-- Data -->
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                                         <!-- Quantité(s) -->
                                         <div class="d-flex mb-4" style="max-width: 300px">
-                                            <a class="btn btn-danger px-2 me-2" href="{{ path('decrease_from_cart', {id: product.product.id}) }}"><i class="bi bi-dash-lg"></i></a>
-
-                                            {# <button id="decrease-product"
-                                                    class="btn btn-primary px-2 me-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                            <a class="btn btn-danger px-2 me-2" href="{{ path('decrease_from_cart', {id: product.product.id}) }}">
                                                 <i class="bi bi-dash-lg"></i>
-                                            </button> #}
-
+                                            </a>
                                             <div class="form-group">
                                                 <input id="form-quantity-{{ loop.index }}" min="0" name="quantity" value="{{ product.quantity }}" type="number" class="form-control text-center" />
                                                 <label class="form-label d-none" for="form-quantity-{{ loop.index }}">Quantité</label>
                                             </div>
-
-                                            {# <button id="add-product" class="btn btn-primary px-2 ms-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <i class="bi bi-plus-lg"></i>
-                                            </button>  #}
-
                                             <a class="btn btn-success px-2 ms-2" href="{{ path('add_to_cart', {id: product.product.id}) }}"><i class="bi bi-plus-lg"></i></a>
                                         </div>
                                         <!-- Quantité(s) -->
-                                        <div>
-                                        </div>
-
-                                        <!-- Prix de l'article -->
+                                    </div>
+                                </div>
+                                    <!-- Prix de l'article -->
+                                    <div>
                                         <p class="text-start text-md-center h5">
                                             {# Todo : JS Prendre la valeur unitaire et la multiplier par la quantité #}
                                             <span class="text-secondary" id="total-price-{{ product.product.id }}"></span>
                                         </p>
-                                        <!-- Prix de l'article -->
                                     </div>
-                                </div>
-                                <!-- Carte article -->
+                                    <!-- Prix de l'article -->
+                                    <!-- Carte article -->
                                     {% if not loop.last%}
                                         <hr class="my-4" />
                                     {% endif %}
-                                <!-- Ici se trouve les autres carte articles ajoutés au panier -->
-                            </div>
+                                    <!-- Ici se trouve les autres carte articles ajoutés au panier -->
+                                </div>
                             {% endfor %}
+                            <!-- Boucle article du panier -->
                         </div>
-                        <!-- Boucle article du panier -->
 
-                        <!-- Livraison -->
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <p><strong>Livraison prévue</strong></p>
-                                <p class="mb-0">12.10.2020 - 14.10.2020</p>
-                            </div>
-                        </div>
-                        <!-- Fin Livraison -->
-                        <!-- Méthode de paiement accepté -->
-                        <div class="card mb-4 mb-lg-0">
-                            <div class="card-body">
-                                <p><strong>Nous acceptons</strong></p>
-                                <img class="me-2" width="45px"
-                                     src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
-                                     alt="Visa" />
-                                <img class="me-2" width="45px"
-                                     src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
-                                     alt="American Express" />
-                                <img class="me-2" width="45px"
-                                     src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
-                                     alt="Mastercard" />
-    <!--                            <img class="me-2" width="45px"
-                                     src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.webp"
-                                     alt="PayPal accepté" />-->
-                            </div>
-                        </div>
+                        <!-- Carte Livraison -->
+                        {% include('cart/carrer.html.twig') %}
+                        <!-- Fin Carte Livraison -->
+
                     </div>
-                    <!-- Fin Méthode de paiement accepté -->
 
                     <!-- Côté Droit - Partie Récap de paiement -->
                     <div class="col-md-4">
+                        <!--  Coupon de réduction -->
+                        {% include('cart/coupon.html.twig') %}
+                        <!--  Coupon de réduction -->
+
                         <!--  Partie Récap de la commande -->
                         {% include('cart/resume.html.twig') %}
                         <!--  Partie Récap de la commande -->
-
-                        <!-- Support technique  -->
-                        <div class="card mb-4">
-                            <div class="card-header py-3">
-                                <h5 class="mb-0">Support</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-text text-center">
-                                    <div class="d-flex justify-content-center">
-                                        <i class="bi bi-telephone-fill h5 me-2"></i>
-                                        <p class="lead">+33 6 50 10 69 23</p>
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <i class="bi bi-envelope h5 me-2"></i>
-                                        <p class="lead">contact@cycrea.fr</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Support technique -->
                     </div>
                     <!-- Côté Droit -->
 
@@ -188,35 +136,9 @@
         const quantity = product.quantity
         const discount = product.discount
         const totalPrice = (unitPrice * quantity) - ((unitPrice * quantity) * discount / 100)
-        // console.log('Prix unitaire: ' + unitPrice, 'quantité: ' + quantity, 'réduc: ' + discount ,' => ' + totalPrice);
-
         const totalPriceElement = document.querySelector(`#total-price-${product.productId}`)
+
         totalPriceElement.textContent = totalPrice.toFixed(2) + '€'
-        {# Récuperer le prix unitaire produit dans la carte #}
     });
-
-    {# Récupérer le prix et la quantité de chaque produit #}
-    /*cart.forEach((product, index) => {
-        console.log(index)
-        const unitPrice = cart[index].price / 100;
-        const quantity = cart[index].quantity;
-        const discount = cart[index].discount;
-        const totalPrice = (unitPrice * quantity) - ((unitPrice * quantity) * (discount / 100));
-        console.log('Prix unitaire: ' + unitPrice, 'quantité: ' + quantity, 'réduc: ' + discount ,' => ' + totalPrice);
-    });*/
-    {# Récupérer le prix et la quantité de chaque produit #}
-
-    {# Récupérer pour chaque produit la le prix total calculé et le mettre à jour en temps réel #}
-    /*cart.forEach((product, index) => {
-        const unitPrice = cart[index].price / 100;
-        const quantity = cart[index].quantity;
-        const discount = cart[index].discount;
-        const totalPrice = (unitPrice * quantity) - ((unitPrice * quantity) * (discount / 100));
-
-        const totalPriceElement = document.querySelector(`#total-price-${index + 1}`);
-        totalPriceElement.innerText = totalPrice.toFixed(2) + ' €';
-        console.log(totalPriceElement);
-    });*/
-
     </script>
 {% endblock %}
