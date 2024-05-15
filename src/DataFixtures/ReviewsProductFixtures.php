@@ -16,17 +16,19 @@ class ReviewsProductFixtures extends Fixture implements DependentFixtureInterfac
 
         for ($i = 1; $i <= 200; $i++) {
             $review = new ReviewsProduct();
-            $review->setUser($this->getReference(
-                sprintf(
-                    'user%d',
-                    $faker->numberBetween(1, 3)
-                ),
-                $review
-            ));
-            $review->setProduct($this->getReference(sprintf('product%d', $faker->numberBetween(1, 15))));
+
+            // Corrected call to getReference
+            $userReferenceName = sprintf('user%d', $faker->numberBetween(1, 5));
+            $user = $this->getReference($userReferenceName);
+
+            $productReferenceName = sprintf('product%d', $faker->numberBetween(1, 15));
+            $product = $this->getReference($productReferenceName);
+
+            $review->setUser($user);
+            $review->setProduct($product);
 
             $review->setNote($faker->numberBetween(0, 5));
-            $review->setComment($faker->word($faker->numberBetween(10, 200)));
+            $review->setComment($faker->sentence($faker->numberBetween(10, 200)));
 
             $manager->persist($review);
             $this->addReference(sprintf('review%d', $i), $review);

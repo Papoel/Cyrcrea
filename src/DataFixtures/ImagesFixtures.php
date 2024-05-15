@@ -3,29 +3,37 @@
 namespace App\DataFixtures;
 
 use App\Entity\Images;
+use App\Entity\Products;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Faker;
-use Random\RandomException;
+use Faker\Factory;
+use Faker\Generator;
 
 class ImagesFixtures extends Fixture implements DependentFixtureInterface
 {
+    private Generator $faker;
+
+    public function __construct()
+    {
+        $this->faker = Factory::create('fr_FR');
+    }
+
     public function load(ObjectManager $manager): void
     {
-        $faker = Faker\Factory::create('fr_FR');
-
         for ($img = 1; $img <= 100; $img++) {
             $image = new Images();
-            $image->setName($faker->image( null, 640, 380));
-            try {
-                $product = $this->getReference('product' . random_int(1, 15));
-            } catch (RandomException $e) {
-                dump('Erreur Fixtures Images: ' .$e);
-            }
-            $image->setProducts($product);
 
-            //dump($image);
+            // Use a random string for the image name
+            $imageName = $this->faker->lexify('image_??????.jpg');
+            $image->setName($imageName);
+
+            // Reference a random product
+            $productReference = sprintf('product%d', $this->faker->numberBetween(1, 15));
+            $product = $this->getReference($productReference);
+
+            /** @var Products $product */
+            $image->setProducts($product);
 
             $manager->persist($image);
         }
@@ -36,7 +44,7 @@ class ImagesFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies(): array
     {
         return [
-            ProductFixtures::class
+            ProductFixtures::class,
         ];
     }
 }
