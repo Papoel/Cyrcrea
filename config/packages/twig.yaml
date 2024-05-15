@@ -1,5 +1,4 @@
 twig:
-<<<<<<< ours
     default_path: '%kernel.project_dir%/templates'
     form_themes: ['bootstrap_5_layout.html.twig']
     # Variable globales pour charger les catégories dans un template twig plutôt que dans le controller
@@ -8,9 +7,7 @@ twig:
             '@App\Repository\CategoriesRepository'
     paths:
         'assets/images': images
-=======
     file_name_pattern: '*.twig'
->>>>>>> theirs
 
 when@test:
     twig:
