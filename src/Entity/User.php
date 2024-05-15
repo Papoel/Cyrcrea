@@ -33,7 +33,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'json')]
     private array $roles = ["ROLE_USER"];
 
-    private $plainPassword;
+    private ?string $plainPassword;
 
     #[ORM\Column(type: 'string')]
     private string $password;
