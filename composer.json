@@ -4,7 +4,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/annotations": "^1.0",
@@ -114,6 +114,8 @@
         }
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest"
+        ,
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "phpunit/phpunit": "^9.5",
         "squizlabs/php_codesniffer": "*",

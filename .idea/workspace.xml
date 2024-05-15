@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="" />
+    <list default="true" id="866ca312-159d-4d85-9b04-7d5eee981382" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/cyrcrea.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cyrcrea.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ImagesFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ImagesFixtures.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +18,9 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="DarkyenusTimeTracker">
+    <option name="totalTimeSeconds" value="433" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -218,6 +226,7 @@
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/vendor/twig/cssinliner-extra" />
       <path value="$PROJECT_DIR$/vendor/twig/string-extra" />
+      <path value="$PROJECT_DIR$/vendor/psr/clock" />
     </include_path>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
@@ -239,7 +248,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "update",
     "js.last.introduce.type": "LET",
     "last_opened_file_path": "/Users/papoel/Documents/sandbox/SitesWeb/cyrcrea/assets",
     "list.type.of.created.stylesheet": "SCSS",
@@ -250,7 +259,7 @@
     "nodejs_package_manager_path": "npm",
     "php.override.implement.member.chooser.php.doc": "NONE",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -394,7 +403,7 @@
       <workItem from="1675852927236" duration="14000" />
       <workItem from="1676996655751" duration="734000" />
       <workItem from="1678101896921" duration="720000" />
-      <workItem from="1715786502815" duration="865000" />
+      <workItem from="1715786502815" duration="1419000" />
     </task>
     <servers />
   </component>
